@@ -62,8 +62,8 @@
     <string name="stringCancelTest">테스트 취소</string>
     <string name="stringTestEnable">테스트 하기</string>
     <string name="stringTestDisable">통과</string>
-    <string name="stringUpgradeBtn">Upgrade</string>
-    <string name="stringReviewBtn">Review</string>
+    <string name="stringUpgradeBtn">업그레이드</string>
+    <string name="stringReviewBtn">복습</string>
     <string name="stringNextQuestionBtn">다음</string>
     <string name="stringFastReviewNotCourses">복습할 내용이 없네요, 공부하러 갑시다!</string>
     <string name="stringSearchNotList">검색결과 없습니다</string>
