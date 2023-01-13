@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">XueChinese</string>
-
+    <string name="app_name">学Chinese</string>
     <string name="stringDoubleExit">Press again to exit %s</string>
 </resources>
