@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    app:shape="roundRect"
+    app:shapeRadius="10dp">
+
+    <include
+        android:id="@+id/user_center_achievement_inc_ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/block_user_center_model_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginBottom="15dp">
+        <com.gjjy.usercenterlib.widget.PlateView
+            android:id="@+id/user_center_achievement_pv_exp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="63dp"
+            android:layout_weight="1"/>
+        <com.gjjy.usercenterlib.widget.PlateView
+            android:id="@+id/user_center_achievement_pv_heart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="63dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <com.gjjy.usercenterlib.widget.PlateView
+            android:id="@+id/user_center_achievement_pv_lightning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="63dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+</com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>

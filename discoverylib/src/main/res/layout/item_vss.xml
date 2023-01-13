@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp">
+
+    <TextView
+        android:id="@+id/item_vss_tv_pinyin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="měi rén huà juàn cán liú yī sī qīng huī tàn yú měi"
+        android:textSize="12sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/item_vss_tv_chinese_char"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:text="美人画卷残留一丝青灰叹余美"
+        android:textSize="18sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:id="@+id/item_vss_tv_translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Beauty painting scroll remains a trace of gray sigh more than the United States"
+        android:textSize="12sp"
+        android:textColor="@color/color99"
+        android:gravity="center" />
+</LinearLayout>

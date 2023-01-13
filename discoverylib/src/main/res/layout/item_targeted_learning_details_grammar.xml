@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <TextView
+        android:id="@+id/item_targeted_learning_details_grammar_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="1.你可以帮我支付吗？"
+        android:textSize="18sp"
+        android:textColor="@color/color33"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp" />
+
+    <TextView
+        android:id="@+id/item_targeted_learning_details_grammar_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Put 吗(ma) at the end of the sentence to express a question tone."
+        android:textSize="15sp"
+        android:textColor="@color/color66"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/shape_grammar_for_example_icon"
+        android:drawablePadding="8dp"
+        android:text="@string/stringExample"
+        android:textSize="18sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/item_targeted_learning_details_grammar_rv_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp" />
+
+    <LinearLayout
+        android:id="@+id/item_targeted_learning_details_grammar_ll_notes_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp"
+        tools:ignore="UseCompoundDrawables">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_targeted_learning_details_grammar_notes_icon"
+            android:contentDescription="@string/stringEmpty"
+            android:layout_marginEnd="11dp"/>
+        <TextView
+            android:id="@+id/item_targeted_learning_details_grammar_tv_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="How to evaluate a movie or TV play? Let’s learn! Let’s learn!"
+            android:textSize="12sp"
+            android:textColor="@color/color66" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        android:layout_marginTop="14dp"/>
+
+</LinearLayout>

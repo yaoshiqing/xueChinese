@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">steerlib</string>
+    <string name="stringLanguageLevelTitle">Select your level</string>
+    <string name="stringObjectiveTitle">Why do you want to learn Chinese?</string>
+    <string name="stringLanguageLevelItemTitle1">Beginner</string>
+    <string name="stringLanguageLevelItemTitle2">Intermediate</string>
+    <string name="stringLanguageLevelItemTitle3">Advanced</string>
+    <string name="stringObjectiveItemTitle1">Interest</string>
+    <string name="stringObjectiveItemTitle2">Travel</string>
+    <string name="stringObjectiveItemTitle3">Family/Friend</string>
+    <string name="stringObjectiveItemTitle4">School</string>
+    <string name="stringObjectiveItemTitle5">Work</string>
+    <string name="stringObjectiveItemTitle6">Skills</string>
+    <string name="stringObjectiveItemTitle7">Others</string>
+    <string name="stringNewStartBtn">GET STARTED</string>
+    <string name="stringOtherLoginBtn">HAVE AN ACCOUNT</string>
+</resources>

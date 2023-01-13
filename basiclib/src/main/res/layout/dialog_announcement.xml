@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="302dp"
+    android:layout_height="470dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@color/colorWhite"
+            android:layout_gravity="end"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="34dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_announcement_title_icon"
+            android:contentDescription="@string/stringEmpty"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/announcement_iv_close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_announcement_close_btn"
+            android:contentDescription="@string/stringEmpty"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:layout_gravity="end"
+            android:focusable="true"
+            android:clickable="true"
+            android:visibility="visible"/>
+    </FrameLayout>
+
+    <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        android:gravity="center_horizontal"
+        app:shapeRadius="10dp"
+        android:translationY="-10dp">
+
+        <com.gjjy.basiclib.widget.ContentWebView
+            android:id="@+id/announcement_cwv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+</LinearLayout>

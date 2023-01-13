@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_skip_test_fewer_lightning_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_skip_test_fewer_lightning_tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:minWidth="87dp"
+        android:text="@string/stringZero"
+        android:textSize="17sp"
+        android:textColor="@color/color99"
+        android:textStyle="bold"
+        android:background="@drawable/ic_skip_test_fewer_lightning_fewer"
+        android:gravity="center"
+        android:layout_gravity="end"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="15dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ic_dialog_def_bg"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal|bottom">
+        <TextView
+            android:id="@+id/dialog_skip_test_fewer_lightning_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_small_lightning"
+            android:drawablePadding="10dp"
+            android:text="@string/contentDialogSkipTestOfFewerLightningTitle"
+            android:textSize="17sp"
+            android:textColor="@color/color66"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="19dp" />
+
+        <TextView
+            android:id="@+id/dialog_skip_test_fewer_lightning_tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contentDialogSkipTestOfFewerLightning"
+            android:textSize="17sp"
+            android:textColor="@color/color99"
+            android:lineSpacingMultiplier="1.2"
+            android:gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/dialog_skip_test_fewer_lightning_tv_start_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stringStartNow"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:background="@drawable/ic_touch_btn_true"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"
+            android:focusable="true"
+            android:clickable="true"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/dialog_skip_test_fewer_lightning_tv_go_practice_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stringFewerLightningGoPracticeBtn"
+            android:textSize="17sp"
+            android:textColor="@color/colorMain"
+            android:textStyle="bold"
+            android:background="@drawable/ic_touch_skip_btn"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"
+            android:focusable="true"
+            android:clickable="true"/>
+    </LinearLayout>
+</LinearLayout>

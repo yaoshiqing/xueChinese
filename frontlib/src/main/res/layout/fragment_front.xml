@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/front_iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_front_list_bg_1"
+        android:contentDescription="@string/stringEmpty"
+        android:scaleType="centerCrop"
+        android:visibility="visible"/>
+
+    <com.gjjy.frontlib.widget.damping.DampingLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:damEnablePullUp="false">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/front_rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:fastScrollEnabled="false"
+            android:visibility="gone"/>
+    </com.gjjy.frontlib.widget.damping.DampingLinearLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        layout="@layout/block_front_bar"
+        android:layout_marginTop="20dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:background="#1affffff"
+        android:layout_gravity="bottom">
+    <ImageView
+        android:id="@+id/arrow_img_up"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_arrow_up"
+        android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="8dp">
+        <TextView
+            android:id="@+id/front_tv_upgrade_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringUpgradeBtn"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/ic_front_upgrade_btn"
+            android:gravity="center_horizontal|bottom"
+            android:paddingBottom="3dp"
+            android:layout_marginBottom="18dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:visibility="gone"/>
+        <TextView
+            android:id="@+id/front_tv_review_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringReviewBtn"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/ic_front_review_btn"
+            android:gravity="center_horizontal|bottom"
+            android:paddingBottom="3dp"
+            android:focusable="true"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/front_tv_review_btn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="36dp"-->
+    <!--            android:background="@drawable/ic_front_review_bg"-->
+    <!--            android:clickable="true"-->
+    <!--            android:focusable="true"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/stringReviewBtn"-->
+    <!--            android:textSize="13sp"-->
+    <!--            android:textColor="@color/color65"-->
+    <!--            android:layout_gravity="end"-->
+    <!--            android:layout_marginTop="7dp"-->
+    <!--            android:layout_marginEnd="2dp"/>-->
+
+</FrameLayout>

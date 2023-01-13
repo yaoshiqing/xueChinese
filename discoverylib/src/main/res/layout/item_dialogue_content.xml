@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:text="你"
+    android:textSize="17sp"
+    android:textColor="@color/color66"
+    android:textStyle="bold"
+    android:maxLines="1"
+    android:gravity="center_horizontal|bottom"/>

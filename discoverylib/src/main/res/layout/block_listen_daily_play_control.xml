@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/listen_daily_play_control_iv_play_btn"
+        android:layout_width="61dp"
+        android:layout_height="67dp"
+        android:src="@drawable/ic_listen_daily_play_btn"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="41dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:tag="false"/>
+
+    <ImageView
+        android:id="@+id/listen_daily_play_control_iv_step_fall_back_btn"
+        android:layout_width="40dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_listen_daily_fall_back_btn"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/listen_daily_play_control_iv_play_btn"
+        android:focusable="true"
+        android:clickable="true"/>
+
+    <ImageView
+        android:id="@+id/listen_daily_play_control_iv_step_go_ahead_btn"
+        android:layout_width="40dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_listen_daily_go_ahead_btn"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/listen_daily_play_control_iv_play_btn"
+        android:focusable="true"
+        android:clickable="true" />
+
+    <ImageView
+        android:id="@+id/listen_daily_play_control_iv_speed_btn"
+        android:layout_width="37dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_listen_daily_speed_2_btn"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="11dp"
+        android:focusable="true"
+        android:clickable="true" />
+
+</RelativeLayout>

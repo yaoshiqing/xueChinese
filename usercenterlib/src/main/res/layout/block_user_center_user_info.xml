@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_user_center_bg"
+        android:contentDescription="@string/stringEmpty"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|bottom"
+        android:layout_marginTop="78dp"
+        android:layout_marginBottom="30dp">
+
+        <com.gjjy.basiclib.widget.PhotoView
+            android:id="@+id/user_center_pv_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/user_center_tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringSignature"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:maxLength="25"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/user_center_tv_user_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="ID:12553288"
+            android:textSize="13sp"
+            android:textColor="@color/colorWhite"
+            android:layout_marginBottom="5dp" />
+
+        <LinearLayout
+            android:id="@+id/user_center_ll_invite_code_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp"
+            android:visibility="visible">
+            <TextView
+                android:id="@+id/user_center_tv_invite_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/stringInviteCode"
+                android:textSize="13sp"
+                android:textColor="@color/colorWhite"
+                android:maxLines="1"
+                android:layout_marginStart="20dp"
+                android:focusable="true"
+                android:clickable="true" />
+
+            <ImageView
+                android:id="@+id/user_center_iv_invite_code_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_invite_code_help_icon"
+                android:contentDescription="@string/stringEmpty"
+                android:paddingStart="5dp"
+                android:paddingEnd="20dp"
+                android:focusable="true"
+                android:clickable="true" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/user_center_tv_vip_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="VIP: 2021/03/03-2022/03/03"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringUserPlanOfLearnt"
+                android:textSize="14sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_center_tv_plan_words_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/stringZero"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringUserPlanOfWords"
+                android:textSize="14sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/user_center_tv_plan_days_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringZero"
+                android:textSize="18sp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:includeFontPadding="false"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringUserPlanOfDays"
+                android:textSize="14sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

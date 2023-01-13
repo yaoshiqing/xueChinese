@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:paddingStart="11dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="21dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+            <com.ybear.ybcomponent.widget.shape.ShapeImageView
+                android:id="@+id/item_msg_list_of_interactive_siv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_photo_user"
+                android:contentDescription="@string/stringEmpty"
+                app:shape="oval"
+                app:shapeBorderSize="1dp"
+                app:shapeBorderColor="@color/colorEE"/>
+            <ImageView
+                android:id="@+id/item_msg_list_of_interactive_iv_vip_icon"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_photo_user_vip_icon"
+                android:contentDescription="@string/stringEmpty"
+                android:layout_gravity="end|bottom"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="11dp">
+            <TextView
+                android:id="@+id/item_msg_list_of_interactive_tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Little monster"
+                android:textSize="14sp"
+                android:textColor="@color/color33"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+            <TextView
+                android:id="@+id/item_msg_list_of_interactive_tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Recently"
+                android:textSize="12sp"
+                android:textColor="@color/color66"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_msg_list_of_interactive_tv_interact_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        tools:text="\@Charles: China's tear-jerker film Hi, Mom has overtaken American fantasy Wonder... Woman to become the ..."
+        android:textSize="14sp"
+        android:textColor="@color/color33"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:layout_marginTop="11dp"/>
+
+    <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorMeBg"
+        app:shape="roundRect"
+        app:shapeRadius="10dp"
+        android:layout_marginTop="10dp">
+        <com.ybear.ybcomponent.widget.shape.ShapeImageView
+            android:id="@+id/item_msg_list_of_interactive_siv_my_img"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:contentDescription="@string/stringEmpty"
+            android:scaleType="centerCrop"
+            app:shape="roundRect"
+            app:shapeRadius="5dp"/>
+        <TextView
+            android:id="@+id/item_msg_list_of_interactive_tv_my_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="Charles：学习是人在生活过程中，\n通过获得经验而产生的行为或行为潜\n能的\n相对持久为方式。"
+            android:textSize="12sp"
+            android:textColor="@color/color66"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="17dp"/>
+    </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+</LinearLayout>

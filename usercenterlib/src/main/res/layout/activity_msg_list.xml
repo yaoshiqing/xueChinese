@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/msg_list_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        app:toolbarTitle="@string/stringMsgList"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_msg_notify_not_msg_bg"
+            android:text="@string/stringNotMessage"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="120dp"/>
+
+        <com.gjjy.basiclib.widget.PubRefreshLayout
+            android:id="@+id/msg_list_prl_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorNotifyBg"
+            android:paddingTop="10dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/msg_list_rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+            <com.scwang.smart.refresh.footer.BallPulseFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.gjjy.basiclib.widget.PubRefreshLayout>
+    </FrameLayout>
+
+</LinearLayout>

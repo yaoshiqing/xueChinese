@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/vouchers_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarTitle="@string/stringVouchers" />
+
+    <RadioGroup
+        android:id="@+id/vouchers_rg_table"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/vouchers_rb_unused_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/stringVouchersTableOfUnused"
+            android:textSize="18sp"
+            android:textColor="@drawable/selector_vouchers_text_color"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:button="@null"
+            android:gravity="center"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/vouchers_rb_in_use_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/stringVouchersTableOfInUse"
+            android:textSize="18sp"
+            android:textColor="@drawable/selector_vouchers_text_color"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:button="@null"
+            android:gravity="center"
+            android:checked="false"/>
+
+        <RadioButton
+            android:id="@+id/vouchers_rb_expired_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/stringVouchersTableOfExpired"
+            android:textSize="18sp"
+            android:textColor="@drawable/selector_vouchers_text_color"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:button="@null"
+            android:gravity="center"
+            android:checked="false"/>
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/vouchers_iv_table_div"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_vouchers_table_div"
+        android:contentDescription="@string/stringEmpty"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorNotifyBg">
+        <TextView
+            android:id="@+id/vouchers_tv_not_data_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:drawableTop="@drawable/ic_msg_notify_not_msg_bg"
+            android:drawablePadding="30dp"
+            android:textColor="@color/color66"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="65dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <com.ybear.ybcomponent.widget.ViewPager
+            android:id="@+id/vouchers_vp_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+
+    </FrameLayout>
+
+</LinearLayout>

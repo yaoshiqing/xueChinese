@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp">
+    <TextView
+        android:id="@+id/item_voice_center_tv_pinyin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="zhong guo ren"
+        android:textColor="@color/color66"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/item_voice_center_tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="中国人"
+        android:textColor="@color/color66"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:gravity="center_horizontal"/>
+</LinearLayout>

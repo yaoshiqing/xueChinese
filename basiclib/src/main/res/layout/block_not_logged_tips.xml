@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="50dp"
+    app:shapeRadius="10dp"
+    android:drawableStart="@drawable/ic_not_logged_tips_icon"
+    android:drawablePadding="7dp"
+    android:text="@string/stringNotLoggedTips"
+    android:textSize="12sp"
+    android:textColor="@color/colorTips"
+    android:background="@color/colorWhite"
+    android:gravity="center_vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp">
+</com.ybear.ybcomponent.widget.shape.ShapeTextView>

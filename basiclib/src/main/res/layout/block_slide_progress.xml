@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="90dp"
+    android:orientation="vertical"
+    android:background="@drawable/shape_slide_progress_bg">
+    <TextView
+        android:id="@+id/slide_progress_tv_slide_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/initSlideProgress"
+        android:textColor="@color/colorWhite"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal|bottom"/>
+
+    <SeekBar
+        android:id="@+id/slide_progress_sb_seek"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/SeekBarStyle"
+        android:thumb="@null"
+        android:layout_marginBottom="10dp"
+        android:focusable="false"
+        android:clickable="false"/>
+</LinearLayout>

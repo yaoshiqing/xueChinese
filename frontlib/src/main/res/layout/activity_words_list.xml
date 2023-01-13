@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/words_list_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarOtherBtnSrc="@drawable/ic_search_icon"/>
+
+    <LinearLayout
+        android:id="@+id/words_list_ll_menu_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@color/colorMain10"
+        android:paddingStart="21dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="21dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/words_bar_tv_menu_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableEnd="@drawable/ic_front_menu_item_open"
+            android:drawablePadding="8dp"
+            tools:text="Text233"
+            android:textSize="18sp"
+            android:textColor="@color/colorMain"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:focusable="true"
+            android:clickable="true"
+            android:tag="0" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <CheckBox
+            android:id="@+id/words_list_cb_py_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/selector_words_list_py"
+            android:checked="true"
+            android:layout_marginEnd="12dp"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/words_list_cb_en_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/selector_words_list_en"
+            android:checked="true"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.gjjy.frontlib.widget.WordsListRecyclerView
+            android:id="@+id/words_list_rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="21dp"/>
+        <ImageView
+            android:id="@+id/words_list_iv_rv_top_item"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:contentDescription="@string/stringEmpty"
+            android:visibility="gone"/>
+    </FrameLayout>
+</LinearLayout>

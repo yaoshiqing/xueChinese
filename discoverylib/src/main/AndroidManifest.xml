@@ -1,0 +1,49 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gjjy.discoverylib">
+
+    <application>
+
+        <activity
+            android:name="com.gjjy.discoverylib.ui.activity.MyCourseActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
+        </activity>
+
+        <activity
+            android:name="com.gjjy.discoverylib.ui.activity.PopularVideosMoreListActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
+        </activity>
+
+        <activity
+            android:name="com.gjjy.discoverylib.ui.activity.ListenDailyMoreListActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
+        </activity>
+
+        <activity
+            android:name="com.gjjy.discoverylib.ui.activity.ListenDailyDetailsActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
+        </activity>
+
+        <activity
+            android:name="com.gjjy.discoverylib.ui.activity.PopularVideosDetailsActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask">
+        </activity>
+
+        <activity
+            android:name="com.gjjy.discoverylib.ui.activity.TargetedLearningDetailsActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleTask"/>
+
+        <activity
+            android:name="com.gjjy.discoverylib.ui.activity.TargetedLearningMoreListActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
+    </application>
+</manifest>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_guide_front_bg"
+    android:gravity="center_horizontal|bottom"
+    android:paddingBottom="19dp">
+
+    <TextView
+        android:id="@+id/guide_front_tv_new_start_btn"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:text="@string/stringNewStartBtn"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/ic_guide_front_start_btn"
+        android:gravity="center"
+        android:layout_marginBottom="21dp"
+        android:focusable="true"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/guide_front_tv_login_btn"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:text="@string/stringOtherLoginBtn"
+        android:textColor="@color/colorMain"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/ic_guide_front_have_account_btn"
+        android:gravity="center"
+        android:focusable="true"
+        android:clickable="true"/>
+
+</LinearLayout>

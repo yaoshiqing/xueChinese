@@ -1,0 +1,6 @@
+<resources>
+    <style name="EditTextOfInvitation" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorMainBG</item>
+        <item name="colorControlActivated">@color/colorMainBG</item>
+    </style>
+</resources>

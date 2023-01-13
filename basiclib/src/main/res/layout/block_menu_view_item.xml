@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.RedDotLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_view_item_rdl_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/menu_view_item_iv_icon"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:src="@drawable/ic_toolbar_back"
+            android:contentDescription="@string/stringNull"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/menu_view_item_tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="TEXT"
+            android:includeFontPadding="false"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+</com.ybear.ybcomponent.widget.RedDotLayout>

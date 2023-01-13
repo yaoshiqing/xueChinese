@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/picture_viewer_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarOtherBtn="@string/stringPhotoAlbum" />
+
+    <ImageView
+        android:id="@+id/picture_viewer_iv_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/stringEmpty" />
+</LinearLayout>

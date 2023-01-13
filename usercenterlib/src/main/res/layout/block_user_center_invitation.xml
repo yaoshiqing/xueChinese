@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:paddingTop="25dp"
+    android:paddingBottom="20dp"
+    app:shape="roundRect"
+    app:shapeRadius="10dp">
+
+    <EditText
+        android:id="@+id/user_center_invitation_et_invite_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color33"
+        android:textSize="16sp"
+        android:hint="@string/stringInvitationEditHint"
+        android:textColorHint="@color/color99"
+        android:textStyle="bold"
+        android:inputType="text"
+        android:digits="0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+        android:maxLines="1"
+        android:maxLength="12"
+        android:importantForAutofill="no"
+        android:theme="@style/EditTextOfInvitation"
+        android:gravity="center"
+        android:enabled="false"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <TextView
+        android:id="@+id/user_center_invitation_tv_invite_friends_code_btn"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:text="@string/stringInvitationBtn"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:background="@drawable/ic_touch_btn_false"
+        android:gravity="center"
+        android:enabled="false"
+        android:focusable="true"
+        android:clickable="true" />
+
+</com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>

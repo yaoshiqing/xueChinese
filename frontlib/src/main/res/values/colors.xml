@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorBlack">#000</color>
+
+    <color name="color3000">#4D000000</color>
+
+    <color name="colorCheckBtnTextFalse">#8F8D8D</color>
+
+    <color name="colorOptBtnDefBgFalse">#81BCF7</color>
+    <color name="colorOptBtnImgBgFalse">#B3D465</color>
+
+    <color name="colorProgress_1">#0CD591</color>
+    <color name="colorProgress_2">#FFA52F</color>
+    <color name="colorProgress_3">#FDD64E</color>
+    <color name="colorProgressBG">#EFEFEF</color>
+
+    <color name="colorTestDisable">#8F8D8D</color>
+
+    <color name="colorCorrectBg">#E4F9F2</color>
+    <color name="colorErrorBg">#FFEEEE</color>
+    <color name="colorErrorBg2">#FFF6F6</color>
+
+    <color name="colorFrontBg">#F6F6F7</color>
+
+    <color name="colorFrontListChildTitle">#5C4B4641</color>
+    <color name="colorFrontTestButtonText">#FFFFDF</color>
+    <color name="colorAnswerTestRefreshScore">#FF7920</color>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">loginlib</string>
+    <string name="stringEmailLogIn">Log In</string>
+    <string name="stringEmailSignUp">Sign up</string>
+    <string name="stringEmailNotEmail">No account?</string>
+    <string name="stringEmailHaveEmail">Have an account?</string>
+    <string name="stringEmailForgetPwd">Forget password?</string>
+    <string name="stringEmailForgetPwdTitle">Forget Password</string>
+    <string name="stringEmailResetPwdTitle">Reset Password</string>
+    <string name="stringEmailForgetPwdTips">The email will receive a verification code.</string>
+    <string name="stringEmailResetPasswordTips">The verification code has been sent to email abc@163.com. If you do not receive it, please try again after 60 seconds. Please check the spam as well.</string>
+    <string name="stringEmailResetSuccessTips">Password successfully reset</string>
+    <string name="stringEmailResetFailureTips">Password failure reset</string>
+    <string name="stringEmailSignUpSuccessTips">Registration successfully!</string>
+    <string name="stringEmailSignUpErrorTips">Registration failed, please try again!</string>
+    <string name="stringEmailNotRegTips">The email address is not registered</string>
+    <string name="stringEmailSignUpAccExistTips">The email account already exists</string>
+    <string name="stringEmailLoginInfoErrorTips">Incorrect email address or password. Please try again.</string>
+    <string name="stringEmailLoginFailedTips">Login failed!</string>
+    <string name="stringEmailVerificationCodeAgainTips">You can get the verification code again after 60 seconds.</string>
+    <string name="stringEmailVerificationCodeSendErrorTips">Verification code sending failed.</string>
+    <string name="stringEmailVerificationCodeInvalidTips">Verification code is invalid.</string>
+    <string name="stringEmailVerificationCodeErrorTips">Verification code is error.</string>
+    <string name="stringEmailResendBtn">Resend</string>
+    <string name="stringEmailRegainBtn">Regain</string>
+    <string name="stringNameHint">Name</string>
+    <string name="stringEmailHint">Email</string>
+    <string name="stringEmailVerificationCodeHint">Verification code</string>
+    <string name="stringEmailOldPasswordHint">Old password</string>
+    <string name="stringEmailConfirmPasswordHint">Confirm password</string>
+    <string name="stringEmailMobileNumHint" tools:ignore="ExtraTranslation">Please enter mobile num</string>
+    <string name="stringEmailMobileVerifyCodeHint" tools:ignore="ExtraTranslation">Verification code</string>
+    <string name="stringEmailMobileVerifyCodeButton" tools:ignore="ExtraTranslation">send</string>
+    <string name="stringNameTips">25 characters or less</string>
+    <string name="stringEmailOldPasswordTips">Old password is not valid</string>
+    <string name="stringEmailNewPasswordTips">New password (at least 6 character)</string>
+    <string name="stringEmailPasswordTips">Password (at least 6 character)</string>
+    <string name="stringEmailConfirmPasswordTips">Password do not match</string>
+    <string name="stringLoginTips">Please Register / log in as soon as possible</string>
+    <string name="stringLoginErrorTips">Login failed, please try again</string>
+    <string name="stringRegOrLogin">REGISTER/LOGIN</string>
+    <string name="stringLoginPrivacyPolicy">Login to agree %s |%sPrivacy and Terms policy%s</string>
+    <string name="stringLoginPrivacyPolicyTips">Please read and check the privacy and Terms policy first!</string>
+    <string name="stringExitAppLoginTitle">Welcome back!</string>
+    <string name="stringExitAppLoginContent">Keep your learning now!</string>
+    <string name="stringExitAppLaterTitle">New friend?</string>
+    <string name="stringExitAppLaterContent">Start your learning now!</string>
+</resources>

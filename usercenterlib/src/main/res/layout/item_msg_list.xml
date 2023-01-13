@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    app:shapeRadius="10dp"
+    android:paddingStart="11dp"
+    android:paddingEnd="11dp"
+    android:paddingBottom="12dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/msg_notify_iv_img"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="23dp"/>
+
+    <TextView
+        android:id="@+id/msg_notify_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle"
+        android:textSize="15sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_toEndOf="@id/msg_notify_iv_img"
+        android:layout_alignTop="@id/msg_notify_iv_img" />
+
+    <com.ybear.ybcomponent.widget.RedDotView
+        android:id="@+id/msg_notify_rdl_red_dot"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:background="@color/colorRedDot"
+        app:redDotMinWidth="6dp"
+        app:redDotMinHeight="6dp"
+        android:layout_toStartOf="@id/msg_notify_tv_title"
+        android:layout_alignBottom="@id/msg_notify_tv_title"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/msg_notify_tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content"
+        android:textSize="14sp"
+        android:textColor="@color/color99"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.2"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/msg_notify_tv_title"
+        android:layout_alignStart="@id/msg_notify_tv_title"/>
+
+    <com.ybear.ybcomponent.widget.shape.ShapeTextView
+        android:id="@+id/msg_notify_stv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2020年6月20日11:41:42"
+        android:textColor="@color/colorNotifyTime"
+        android:background="@color/colorNotifyTimeBg"
+        app:shapeRadius="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/msg_notify_tv_content"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true" />
+</com.ybear.ybcomponent.widget.shape.ShapeRelativeLayout>

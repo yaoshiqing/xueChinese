@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">commonlib</string>
+
+    <!-- Facebook Id facebook account: xuechinese.official@gmail.com -->
+    <string name="facebook_app_id">523218062835807</string>
+    <string name="fb_login_protocol_scheme">fb523218062835807</string>
+    <string name="facebook_client_token">918459ea86c2311c8ba72111baefa169</string>
+
+    <!-- Google Login Id account: xuechinese2022@gmail.com-->
+    <string name="server_client_id">820530948963-ajs7uc238dvpit2p4qk51s738pklg8ec.apps.googleusercontent.com</string>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="52dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/integral_points_iv_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@drawable/ic_integral_invite_courteous"
+        android:contentDescription="@string/stringEmpty"
+        android:scaleType="center"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="18dp">
+        <TextView
+            android:id="@+id/integral_points_tv_points_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/stringIntegralPointsTitleInvite"
+            android:textColor="@color/color33"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="2dp"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:id="@+id/integral_points_tv_points_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="@string/stringIntegralPointsContentInvite"
+            android:textColor="@color/color66"
+            android:textSize="11sp"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/integral_points_tv_points_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/stringIntegralPointsBtnInvite"
+        android:background="@drawable/ic_integral_points_btn"
+        android:textColor="@color/colorWhite"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:paddingTop="0dp"
+        android:paddingBottom="6dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:focusable="true"
+        android:clickable="true"/>
+
+</LinearLayout>

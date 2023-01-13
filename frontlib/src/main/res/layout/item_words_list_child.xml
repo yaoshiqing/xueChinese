@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="60dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/item_words_list_child_tv_pinyin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="biao ti"
+                android:textSize="15sp"
+                android:textColor="@color/color66"
+                android:gravity="center_vertical"
+                android:visibility="visible"/>
+            <TextView
+                android:id="@+id/item_words_list_child_tv_chinese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="标题"
+                android:textSize="20sp"
+                android:textColor="@color/color66"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical" />
+            <TextView
+                android:id="@+id/item_words_list_child_tv_explain"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="Title"
+                android:textSize="14sp"
+                android:textColor="@color/color99"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_words_list_child_iv_play_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play_audio_btn_2"
+            android:contentDescription="@string/stringEmpty"
+            android:layout_marginTop="23dp"
+            android:focusable="true"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorMainBG" />
+</LinearLayout>

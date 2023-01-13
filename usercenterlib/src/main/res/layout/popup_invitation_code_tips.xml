@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/popup_invitation_code_iv_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_popup_arrow"
+        android:contentDescription="@string/stringEmpty"
+        android:translationY="1dp" />
+
+    <TextView
+        android:id="@+id/popup_invitation_code_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/stringMeInvitationCodeContent"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/ic_popup_bg"
+        android:layout_gravity="center_horizontal"
+        android:padding="20dp" />
+</LinearLayout>

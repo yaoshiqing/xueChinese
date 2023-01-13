@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="121dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_item_vouchers_unused_bg"
+    android:gravity="center_vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginStart="52dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp">
+            <ImageView
+                android:id="@+id/item_vouchers_iv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/stringEmpty"
+                android:layout_marginEnd="5dp"/>
+            <ImageView
+                android:id="@+id/item_vouchers_iv_day_vip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_item_vouchers_unused_dayvip"
+                android:contentDescription="@string/stringEmpty"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/item_vouchers_tv_rewards_stack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringVouchersUnusedRewardsStack"
+            android:textSize="12sp"
+            android:textColor="@color/color66"/>
+
+        <TextView
+            android:id="@+id/item_vouchers_tv_time_interval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="13/04/2021-13/07/2021"
+            android:textSize="9sp"
+            android:layout_marginTop="9dp"
+            android:visibility="gone"
+            tools:ignore="SmallSp" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/item_vouchers_tv_use_now_btn"
+            android:layout_width="70dp"
+            android:layout_height="78dp"
+            android:text="@string/stringVouchersUnusedUseNow"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:background="@drawable/ic_item_vouchers_unused_btn"
+            android:gravity="center"
+            android:layout_marginEnd="40dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/item_vouchers_ll_in_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginEnd="40dp"
+            android:visibility="visible">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringVouchersInUseValidTime"
+                android:textSize="14sp"
+                android:textColor="@color/colorVouchersMain"
+                android:layout_marginBottom="18dp"/>
+            <TextView
+                android:id="@+id/item_vouchers_tv_time_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="00:00:00"
+                android:textSize="20sp"
+                android:textColor="@color/colorVouchersMain"/>
+        </LinearLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

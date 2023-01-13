@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="335dp"
+    android:layout_height="227dp"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringIntegralLostTitle"
+        android:textColor="@color/color66"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:lineSpacingMultiplier="1.2"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:id="@+id/integral_lost_tv_ok_btn"
+        android:layout_width="242dp"
+        android:layout_height="51dp"
+        android:text="@string/stringOK"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:background="@drawable/ic_touch_btn_true"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

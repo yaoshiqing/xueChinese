@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/fast_review_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fast_review_rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/fast_review_tv_not_courses"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/stringFastReviewNotCourses"-->
+<!--        android:textSize="13sp"-->
+<!--        android:textColor="@color/colorError"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="48dp"-->
+<!--        android:visibility="gone"/>-->
+
+</LinearLayout>

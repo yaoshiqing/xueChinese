@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="72dp"
+    android:background="@drawable/ic_front_currency_popup_bg">
+
+    <ImageView
+        android:id="@+id/popup_front_currency_iv_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_front_currency_popup_arrow"
+        android:contentDescription="@string/stringEmpty"
+        android:translationX="140dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_small_lightning"
+            android:drawablePadding="15dp"
+            android:text="@string/stringRewardItemLightningContent"
+            android:textSize="14sp"
+            android:textColor="@color/color66"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+</FrameLayout>

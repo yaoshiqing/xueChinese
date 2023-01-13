@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.library'
+    id 'org.greenrobot.greendao'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        manifestPlaceholders = [
+                APPLICATION_ID : "com.gjjy.xuechinese",
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    //GreenDao数据库
+    //maven { url 'https://jitpack.io' }
+    //GreenDao Plugin -> classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+    greendao {
+        // 数据库版本号
+        schemaVersion = 1
+        //greenDao 自动生成的代码保存的包名
+        daoPackage = 'com.gjjy.basiclib.dao'
+//        自动生成的代码存储的路径，默认是 build/generated/source/greendao
+//        targetGenDir 'src/main/java'
+    }
+    ndkVersion '23.0.7599858'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    implementation externalPlayerFull
+    implementation externalAppcompat
+    testImplementation externalJunit
+    androidTestImplementation externalRunner
+    androidTestImplementation externalEspresso
+
+    //时间选择器
+    api externalPickerView
+    //基础框架
+    api project(path: ':baseframework')
+    //讯飞语音SDK
+    api project(path: ':speechsdk')
+    //OSS
+    api project(path: ':osslib')
+    //推送
+    api project(path: ':pushlib')
+    //Google Play订阅
+    api project(path: ':googlebillinglib')
+
+    //阿里ARouter
+    implementation externalArouter
+    annotationProcessor externalArouterCompiler
+
+    //GreenDao数据库
+    implementation externalGreenDao
+    //GreenDao升级助手
+    implementation externalGreenDaoUpgradeHelper
+
+    //make sure to use the latest SDK version: https://mvnrepository.com/artifact/com.appsflyer/af-android-sdk
+    implementation 'com.appsflyer:af-android-sdk:6.2.3'
+    //Android Install Referrer可提高归因准确性，防止安装欺诈等
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+
+    /*Adjust*/
+    implementation 'com.adjust.sdk:adjust-android:4.28.2'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+    // Add the following if you are using the Adjust SDK inside web views on your app
+    implementation 'com.adjust.sdk:adjust-android-webbridge:4.28.2'
+    //Google Play Ads
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.1'
+    //Google Play Referrer
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+}

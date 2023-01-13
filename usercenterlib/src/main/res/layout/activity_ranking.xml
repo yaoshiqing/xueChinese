@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_ranking_bg"
+    android:gravity="center_horizontal"
+    android:clipChildren="false">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/ranking_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarTitle="@string/stringRanking" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:clipChildren="false">
+        <TextView
+            android:id="@+id/ranking_tv_have_ranking_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringHaveRanking"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="31dp"
+            android:clipChildren="false">
+
+            <include layout="@layout/block_ranking_podium"/>
+
+            <com.ybear.ybcomponent.widget.shape.ShapeRecyclerView
+                android:id="@+id/ranking_srv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"
+                android:overScrollMode="never"
+                android:layout_marginTop="195dp"
+                app:shape="roundRect"
+                app:shapeRadius="15dp"
+                app:shapeShadowColor="@color/color91"
+                app:shapeShadowOffsetY="-5dp"
+                android:padding="20dp"
+                android:visibility="visible"/>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

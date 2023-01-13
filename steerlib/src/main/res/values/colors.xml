@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorObjectiveTitle">#1F448B</color>
+    <color name="colorObjectiveItem1">#C1EFFF</color>
+    <color name="colorObjectiveItem2">#DADDFE</color>
+    <color name="colorObjectiveItem3">#FFE1DF</color>
+</resources>

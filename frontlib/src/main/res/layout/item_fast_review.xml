@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="26dp">
+
+    <TextView
+        android:id="@+id/item_fast_review_tv_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tool:drawableStart="@drawable/ic_fast_review_1"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:drawablePadding="17dp"
+        tool:text="Text"
+        android:textSize="16sp"
+        android:textColor="@color/color66"
+        android:background="@drawable/ic_fast_review_item_bg"
+        android:gravity="center_vertical"
+        android:paddingStart="19dp"
+        android:paddingEnd="17dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+    <com.ybear.ybcomponent.widget.RedDotView
+        android:id="@+id/item_fast_review_rdv_red_dot"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:textColor="@color/colorWhite"
+        app:redDotTextSize="14sp"
+        app:redDotBackgroundColor="@color/colorRedDot"
+        android:translationX="-28dp"
+        android:translationY="2dp"
+        android:layout_gravity="top|end"/>
+</FrameLayout>

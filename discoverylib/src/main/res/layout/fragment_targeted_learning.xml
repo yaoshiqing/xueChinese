@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:paddingStart="20dp"
+    android:paddingEnd="0dp">
+
+    <LinearLayout
+        android:id="@+id/targeted_learning_ll_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/menuImmerse"
+            android:textSize="20sp"
+            android:textColor="@color/color33"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/targeted_learning_tv_more_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableEnd="@drawable/ic_discovery_right_arrow"
+            android:drawablePadding="11dp"
+            android:text="@string/stringMainMore"
+            android:textSize="17sp"
+            android:textColor="@color/color99"
+            android:gravity="center_vertical|end"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:focusable="true"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_targeted_learning_load_wait_bg"
+            android:contentDescription="@string/stringEmpty"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/targeted_learning_rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:background="@color/colorWhite"
+            app:fastScrollEnabled="false"
+            android:visibility="gone"/>
+    </FrameLayout>
+</LinearLayout>

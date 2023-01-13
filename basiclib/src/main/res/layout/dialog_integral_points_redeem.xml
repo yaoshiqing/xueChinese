@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="335dp"
+    android:layout_height="437dp"
+    android:background="@drawable/ic_dialog_integral_points_redeem_bg"
+    android:gravity="center_horizontal"
+    android:clipChildren="false">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringPointsRedeemTitle"
+        android:textSize="16sp"
+        android:textColor="@color/color33"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="5dp"
+        android:includeFontPadding="false"/>
+
+    <TextView
+        android:id="@+id/dialog_integral_points_redeem_tv_integral_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringZero"
+        android:textSize="20sp"
+        android:textColor="@color/colorIntegralRedeemCount"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="54dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringPointsRedeemLightningNum"
+        android:textSize="16sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:layout_marginBottom="11dp"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:clipChildren="false">
+        <EditText
+            android:id="@+id/dialog_integral_points_redeem_et_lightning_num"
+            android:layout_width="209dp"
+            android:layout_height="40dp"
+            android:text="@string/stringZero"
+            android:textSize="20sp"
+            android:textColor="@color/colorIntegralRedeemNum"
+            android:textStyle="bold"
+            android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:background="@drawable/shape_integral_redeem_num_bg"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_dialog_integral_points_redeem_lightning"
+            android:contentDescription="@string/stringEmpty"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:translationX="-20dp"/>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringPointsRedeemIntegralNum"
+        android:textSize="16sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="11dp"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:clipChildren="false">
+        <TextView
+            android:id="@+id/dialog_integral_points_redeem_tv_integral_num"
+            android:layout_width="209dp"
+            android:layout_height="40dp"
+            android:text="@string/stringZero"
+            android:textSize="20sp"
+            android:textColor="@color/colorIntegralRedeemNum"
+            android:textStyle="bold"
+            android:background="@drawable/shape_integral_redeem_num_bg"
+            android:maxLines="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_dialog_integral_points_redeem_integral"
+            android:contentDescription="@string/stringEmpty"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:translationX="-20dp"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/dialog_integral_points_redeem_tv_insufficient_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringInsufficientPoints"
+        android:textSize="11sp"
+        android:textColor="@color/colorError"
+        android:visibility="invisible"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/dialog_integral_points_redeem_tv_now_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringPointsRedeemNowBtn"
+        android:textSize="19sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/ic_touch_btn_true"
+        android:layout_marginBottom="40dp"
+        android:focusable="true"
+        android:clickable="true"/>
+
+</LinearLayout>

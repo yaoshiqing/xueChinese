@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.gjjy.basiclib.widget.Toolbar
+            android:id="@+id/skip_test_lightning_consume_tb_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/skip_test_lightning_consume_tv_lightning_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_progress_lightning"
+            android:drawablePadding="5dp"
+            android:text="@string/stringZero"
+            android:textSize="15sp"
+            android:textColor="@color/color99"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:gravity="center"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="11dp"/>
+    </FrameLayout>
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringSkipTestLightningConsumeContent"
+        android:textColor="@color/color66"
+        android:textSize="17sp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/skip_test_lightning_consume_tv_buy_vip_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringLockTipsBtnOfNotVip"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/ic_skip_test_lightning_consume_buy_vip_btn"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:focusable="true"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/skip_test_lightning_consume_tv_start_test_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/stringUseStartTest"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_skip_test_lightning_consume_start_btn"
+        android:layout_marginTop="21dp"
+        android:includeFontPadding="false"
+        android:focusable="true"
+        android:clickable="true"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/skip_test_lightning_consume_fl_start_test_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/ic_skip_test_lightning_consume_start_btn"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="21dp"-->
+<!--        android:focusable="true"-->
+<!--        android:clickable="true">-->
+
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:src="@drawable/ic_progress_lightning"-->
+<!--            android:contentDescription="@string/stringEmpty"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:translationX="-30dp"/>-->
+<!--    </TextView>-->
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/shape_bottom_gradient"
+    android:layout_alignParentBottom="true"
+    android:paddingTop="20dp">
+    <ImageView
+        android:id="@+id/seek_iv_play_btn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_play"
+        android:contentDescription="@string/stringNull"
+        android:layout_marginStart="10dp"
+        android:tag="0"
+        android:focusable="true"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/seek_tv_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"
+        android:layout_margin="10dp"/>
+
+    <SeekBar
+        android:id="@+id/seek_sb_seek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/SeekBarStyle" />
+
+    <TextView
+        android:id="@+id/seek_tv_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"
+        android:layout_margin="10dp"/>
+
+    <ImageView
+        android:id="@+id/seek_iv_flip_btn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_flip_landscape"
+        android:contentDescription="@string/stringNull"
+        android:layout_marginEnd="10dp"
+        android:tag="1"
+        android:focusable="true"
+        android:clickable="true"/>
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.ybear.ybcomponent.widget.FragmentViewPager
+            android:id="@+id/answer_fvp_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never" />
+        <com.gjjy.frontlib.widget.WrongQuestionSetOperationView
+            android:id="@+id/answer_emo_err_map_operation"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:background="@color/colorWhite"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.gjjy.frontlib.widget.AnswerBar
+            android:id="@+id/answer_ab_answer_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.gjjy.frontlib.widget.AnswerComboView
+            android:id="@+id/answer_acv_combo_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+</FrameLayout>

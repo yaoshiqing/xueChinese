@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="dialogAnim" parent="android:Animation">
+        <!--//进入时的动画-->
+        <item name="android:windowEnterAnimation">@anim/anim_bottom_in</item>
+        <!--//退出时的动画-->
+        <item name="android:windowExitAnimation">@anim/anim_right_out</item>
+    </style>
+
+    <style name="EmailEditStyle">
+        <item name="android:layout_width">312dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="MobileEditStyle">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="CommentsDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowSoftInputMode">stateHidden|adjustPan</item>
+    </style>
+
+    <style name="SeekBarStyle">
+        <item name="android:minHeight">4dp</item>
+        <item name="android:maxHeight">4dp</item>
+        <item name="android:progressDrawable">@drawable/layer_seek_progress</item>
+        <item name="android:thumb">@drawable/shape_seek_thumb</item>
+        <item name="android:indeterminateOnly">false</item>
+    </style>
+
+    <style name="SpecialOfferStyle">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/shape_special_offer_bg</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SpecialOfferColonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/stringColon</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorError</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+    </style>
+</resources>

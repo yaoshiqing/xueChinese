@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_check_tv_check_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:text="CHECK"
+    android:textSize="22sp"
+    android:textColor="@color/colorWhite"
+    android:textStyle="bold"
+    android:background="@drawable/ic_touch_btn_true"
+    android:gravity="center"
+    android:focusable="true"
+    android:clickable="true" />

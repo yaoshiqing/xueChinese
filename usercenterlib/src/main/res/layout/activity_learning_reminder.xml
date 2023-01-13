@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Space
+            android:id="@+id/toolbar_height_space"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.gjjy.basiclib.widget.Toolbar
+            android:id="@+id/learning_reminder_tb_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:toolbarTitle="@string/stringSetUpLearningReminder"/>
+
+        <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            app:shapeRadius="10dp"
+            app:shapeBorderSize="2dp"
+            app:shapeBorderColor="@color/colorEF"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="21dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/stringSetUpLearningReminder"
+                android:textSize="16sp"
+                android:textColor="@color/color66"
+                android:maxLines="1"
+                android:layout_gravity="center_vertical" />
+
+            <include
+                android:id="@+id/learning_reminder_swi_reminder_status"
+                layout="@layout/switch_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+            </include>
+        </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+        <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+            android:id="@+id/learning_reminder_sll_week_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:shapeRadius="10dp"
+            app:shapeBorderSize="2dp"
+            app:shapeBorderColor="@color/colorEF"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="25dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringSelectWeek"
+                android:textSize="16sp"
+                android:textColor="@color/color66"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/learning_reminder_rv_select_week_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+        <include
+            layout="@layout/block_time_packer"
+            android:id="@+id/learning_reminder_sll_time_packer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginEnd="21dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</ScrollView>

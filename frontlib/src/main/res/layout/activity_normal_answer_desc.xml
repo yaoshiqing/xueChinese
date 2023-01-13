@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+            <com.gjjy.basiclib.widget.Toolbar
+                android:id="@+id/normal_answer_desc_tb_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.gjjy.basiclib.widget.ContentWebView
+            android:id="@+id/normal_answer_desc_cwv_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <LinearLayout
+        android:id="@+id/normal_answer_desc_ll_operation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ic_dialog_def_bg"
+        android:gravity="center_horizontal"
+        android:layout_gravity="bottom"
+        android:focusable="true"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/normal_answer_desc_iv_hide_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_answer_desc_operation_hide_icon_btn"
+            android:contentDescription="@string/stringEmpty"
+            android:layout_marginTop="6dp"
+            android:visibility="gone"/>
+
+        <com.gjjy.frontlib.widget.CheckButton
+            android:id="@+id/normal_answer_desc_cb_start_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <com.gjjy.frontlib.widget.CheckButton
+            android:id="@+id/normal_answer_desc_cb_skip_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp" />
+    </LinearLayout>
+
+</LinearLayout>

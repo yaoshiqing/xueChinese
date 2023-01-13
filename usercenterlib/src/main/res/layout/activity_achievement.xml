@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/achievement_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarTitle="@string/stringReward"/>
+
+    <include
+        android:id="@+id/achievement_stv_not_logged_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/block_not_logged_tips"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:visibility="gone">
+    </include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringAchievementTitleOfLearning"
+                android:textSize="19sp"
+                android:textColor="@color/color66"
+                android:textStyle="bold"
+                android:layout_marginTop="22dp"
+                android:layout_marginStart="21dp"/>
+
+            <com.gjjy.usercenterlib.widget.RewardItemView
+                android:id="@+id/achievement_riv_heart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginEnd="21dp"
+                app:rivType="heart"
+                android:visibility="gone"/>
+
+            <com.gjjy.usercenterlib.widget.RewardItemView
+                android:id="@+id/achievement_riv_lightning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginEnd="21dp"
+                app:rivType="lightning"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringAchievementTitleOfXP"
+                android:textSize="19sp"
+                android:textColor="@color/color66"
+                android:textStyle="bold"
+                android:layout_marginTop="42dp"
+                android:layout_marginStart="21dp"/>
+
+            <com.gjjy.usercenterlib.widget.RewardItemView
+                android:id="@+id/achievement_riv_xp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginEnd="21dp"
+                app:rivType="xp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

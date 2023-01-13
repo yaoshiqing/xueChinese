@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:paddingBottom="19dp">
+
+    <TextView
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_need_login_icon"
+        android:drawablePadding="18dp"
+        android:text="@string/stringNeedLoginTitle"
+        android:textColor="@color/colorMain"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:layout_marginTop="130dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/need_login_tv_login_btn"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:text="@string/stringLoginBtn"
+        android:textColor="@color/colorWhite"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/ic_guide_front_start_btn"
+        android:layout_marginBottom="22dp"
+        android:focusable="true"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/need_login_tv_talk_later_btn"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:text="@string/stringTalkLaterBtn"
+        android:textColor="@color/colorMain"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/ic_guide_front_have_account_btn"
+        android:focusable="true"
+        android:clickable="true" />
+
+</LinearLayout>

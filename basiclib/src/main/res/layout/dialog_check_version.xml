@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="302dp"
+    android:layout_height="374dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_dialog_check_version_title_icon"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/stringEmpty"/>
+
+        <ImageView
+            android:id="@+id/dialog_check_version_iv_close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_dialog_check_version_close_btn"
+            android:contentDescription="@string/stringEmpty"
+            android:paddingTop="22dp"
+            android:paddingBottom="22dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_gravity="end"
+            android:focusable="true"
+            android:clickable="true"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        android:gravity="center_horizontal"
+        app:shapeRadius="10dp"
+        android:translationY="-10dp">
+        <TextView
+            android:id="@+id/dialog_check_version_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Title"
+            android:textSize="17sp"
+            android:textColor="@color/color33"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/dialog_check_version_tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:text="Content"
+            android:textSize="15sp"
+            android:textColor="@color/color66"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.2"
+            android:scrollbars="vertical"
+            android:layout_marginTop="31dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp" />
+
+        <TextView
+            android:id="@+id/dialog_check_version_tv_update_btn"
+            android:layout_width="170dp"
+            android:layout_height="57dp"
+            android:text="@string/stringUpdate"
+            android:textColor="@color/colorWhite"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:background="@drawable/ic_touch_btn_true"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:focusable="true"
+            android:clickable="true"/>
+    </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+</LinearLayout>

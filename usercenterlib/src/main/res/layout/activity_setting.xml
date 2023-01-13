@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/setting_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarTitle="@string/stringSetUp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="21dp"
+            android:gravity="center_horizontal"
+            android:clipChildren="false">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <com.gjjy.basiclib.widget.PhotoView
+                android:id="@+id/setting_pv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.ybear.ybcomponent.widget.shape.ShapeTextView
+                android:id="@+id/setting_stv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringSignature"
+                android:textColor="@color/color33"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:maxLength="25"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="30dp"
+                android:focusable="true"
+                android:clickable="true" />
+
+            <TextView
+                android:id="@+id/setting_tv_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="ID:12553288"
+                android:textSize="13sp"
+                android:textColor="@color/color99"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stringUserPlanOfLearnt"
+                    android:textSize="14sp"
+                    android:textColor="@color/color66"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/setting_tv_plan_words_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/colorBuyVipMain"
+                    android:textSize="18sp"
+                    tools:text="100" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stringUserPlanOfWords"
+                    android:textSize="14sp"
+                    android:textColor="@color/color66"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/setting_tv_plan_days_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="150"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorBuyVipMain"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stringUserPlanOfDays"
+                    android:textSize="14sp"
+                    android:textColor="@color/color66"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/setting_ll_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="21dp"
+                android:layout_marginEnd="21dp">
+
+                <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    app:shapeRadius="10dp"
+                    app:shapeBorderSize="1.5dp"
+                    app:shapeBorderColor="@color/colorEF"
+                    android:gravity="center_vertical"
+                    android:paddingStart="21dp"
+                    android:paddingEnd="21dp"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_setting_alarm"
+                        android:drawablePadding="16dp"
+                        tools:text="Title"
+                        android:textSize="16sp"
+                        android:textColor="@color/color66"
+                        android:textStyle="bold"
+                        android:maxLines="1"/>
+                    <TextView
+                        android:id="@+id/setting_tv_remind_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_right_arrow"
+                        android:drawablePadding="9dp"
+                        tools:text="ON"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorMain"
+                        android:textStyle="bold"
+                        android:gravity="center"/>
+                </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+                <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:shapeRadius="10dp"
+                    app:shapeBorderSize="1.5dp"
+                    app:shapeBorderColor="@color/colorEF"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginBottom="19dp">
+
+                    <include
+                        layout="@layout/item_set_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical">
+                    </include>
+
+                    <include
+                        layout="@layout/item_set_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical">
+                    </include>
+
+                    <include
+                        layout="@layout/item_set_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical">
+                    </include>
+                </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+                <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:shapeRadius="10dp"
+                    app:shapeBorderSize="1.5dp"
+                    app:shapeBorderColor="@color/colorEF"
+                    android:layout_marginBottom="19dp">
+
+                    <include
+                        layout="@layout/item_set_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical">
+                    </include>
+
+                    <include
+                        layout="@layout/item_set_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical">
+                    </include>
+
+                </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+                <com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:shapeRadius="10dp"
+                    app:shapeBorderSize="1.5dp"
+                    app:shapeBorderColor="@color/colorEF"
+                    android:layout_marginBottom="50dp">
+
+                    <TextView
+                        android:id="@+id/setting_tv_reset_pwd_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="55dp"
+                        android:drawableStart="@drawable/ic_answer_setting_reset_pwd"
+                        android:drawableEnd="@drawable/ic_right_arrow"
+                        android:drawablePadding="16dp"
+                        android:text="@string/stringSetUpResetPwd"
+                        android:textSize="16sp"
+                        android:textColor="@color/color66"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:gravity="center_vertical"
+                        android:paddingStart="21dp"
+                        android:paddingEnd="21dp"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:visibility="gone"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorMeBg"/>
+
+                    <TextView
+                        android:id="@+id/setting_tv_terms_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="55dp"
+                        android:drawableStart="@drawable/ic_user_center_terms"
+                        android:drawableEnd="@drawable/ic_right_arrow"
+                        android:drawablePadding="16dp"
+                        android:text="@string/stringTerms"
+                        android:textSize="16sp"
+                        android:textColor="@color/color66"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:gravity="center_vertical"
+                        android:paddingStart="21dp"
+                        android:paddingEnd="21dp"
+                        android:focusable="true"
+                        android:clickable="true" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorMeBg"/>
+
+                    <TextView
+                        android:id="@+id/setting_tv_evaluation_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="55dp"
+                        android:drawableStart="@drawable/ic_user_center_evaluation"
+                        android:drawableEnd="@drawable/ic_right_arrow"
+                        android:drawablePadding="16dp"
+                        android:text="@string/stringEvaluation"
+                        android:textSize="16sp"
+                        android:textColor="@color/color66"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:gravity="center_vertical"
+                        android:paddingStart="21dp"
+                        android:paddingEnd="21dp"
+                        android:focusable="true"
+                        android:clickable="true" />
+
+                </com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>
+
+                <TextView
+                    android:id="@+id/setting_tv_log_out_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    tools:text="LOG OUT"
+                    android:textColor="@color/colorMain"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/ic_setting_sign_out_bg"
+                    android:gravity="center"
+                    android:layout_marginBottom="43dp"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/setting_tv_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="version:1.0.0"
+                    android:textSize="12sp"
+                    android:textColor="@color/color99"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

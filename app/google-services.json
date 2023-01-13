@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "820530948963",
+    "project_id": "chictalk-f90bb",
+    "storage_bucket": "chictalk-f90bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820530948963:android:35f25f7dd08ca1a6530156",
+        "android_client_info": {
+          "package_name": "com.gjjy.xuechinese"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820530948963-ajs7uc238dvpit2p4qk51s738pklg8ec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gjjy.xuechinese",
+            "certificate_hash": "f7bc461592718fb96dfe254544d3bc65c312cbc0"
+          }
+        },
+        {
+          "client_id": "820530948963-2p2l0apla7716npfjsbrrqn8c7a3v9ej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrFVCrI0BOxEBFAu_4ZtY0KS3IyoVu6eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820530948963-2p2l0apla7716npfjsbrrqn8c7a3v9ej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

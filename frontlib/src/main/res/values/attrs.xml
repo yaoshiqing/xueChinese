@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="damEnablePullDown" format="boolean"/>
+    <attr name="damEnablePullUp" format="boolean"/>
+    <attr name="damDampingValue" format="float"/>
+    <attr name="damRecoverAnimationDuration" format="integer"/>
+    <attr name="damOrientation" format="enum">
+        <enum name="horizontal" value="0"/>
+        <enum name="vertical" value="1"/>
+    </attr>
+
+
+    <declare-styleable name="DampingLinearLayout">
+        <attr name="damEnablePullDown"/>
+        <attr name="damEnablePullUp"/>
+        <attr name="damDampingValue"/>
+        <attr name="damRecoverAnimationDuration"/>
+        <attr name="damOrientation"/>
+    </declare-styleable>
+
+    <declare-styleable name="DampingScrollView">
+        <attr name="damEnablePullDown"/>
+        <attr name="damEnablePullUp"/>
+        <attr name="damDampingValue"/>
+        <attr name="damRecoverAnimationDuration"/>
+        <attr name="damOrientation"/>
+    </declare-styleable>
+
+    <declare-styleable name="DampingHorizontalScrollView">
+        <attr name="damEnablePullDown"/>
+        <attr name="damEnablePullUp"/>
+        <attr name="damDampingValue"/>
+        <attr name="damRecoverAnimationDuration"/>
+        <attr name="damOrientation"/>
+    </declare-styleable>
+</resources>

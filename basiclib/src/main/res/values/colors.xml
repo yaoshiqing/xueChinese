@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorMain">#F5A422</color>
+    <color name="colorMain10">#1AF5A422</color>
+    <color name="colorMainBG">#F2F2F4</color>
+    <color name="colorMain50">#80F5A422</color>
+
+    <color name="colorShadow">#8FA1A0A1</color>
+    <color name="colorDialogCorrect">#0CD591</color>
+    <color name="colorDialogError">#FF5555</color>
+
+    <color name="colorError">#FF5555</color>
+
+    <color name="colorSuccessToastText">#0DD692</color>
+    <color name="colorFailureToastText">#FF5656</color>
+    <color name="colorFailureToastBg">#DFCEE2</color>
+    <color name="colorSuccessToastBg">#CEF7E9</color>
+
+    <color name="colorWhite">#fff</color>
+    <color name="colorWhite90">#E6FFFFFF</color>
+    <color name="colorWhite80">#CCFFFFFF</color>
+    <color name="colorWhite60">#99FFFFFF</color>
+    <color name="colorWhite20">#33FFFFFF</color>
+    <color name="colorBlack60">#99000000</color>
+    <color name="colorBlack30">#4D000000</color>
+    <color name="colorBlack20">#33000000</color>
+    <color name="colorBlack10">#1A000000</color>
+    <color name="colorSearchBg">#F4F4F5</color>
+    <color name="colorSearchLine">#C7C6CB</color>
+    <color name="colorWheelOut">#C7C6CB</color>
+
+    <color name="colorEF">#EFEFEF</color>
+    <color name="colorEE">#EEEEEE</color>
+    <color name="colorE5">#E5E5E5</color>
+    <color name="colorDC">#DCDCDC</color>
+    <color name="colorCA">#CACACA</color>
+    <color name="colorBF">#BFBFBF</color>
+    <color name="colorB3">#B3B3B3</color>
+    <color name="colorB2">#B2B2B2</color>
+    <color name="colorF5">#F5F5F5</color>
+    <color name="colorE7">#E7E7E7</color>
+    <color name="colorE6">#E6E6E6</color>
+    <color name="colorD5">#D5D5D5</color>
+    <color name="colorD8">#D8D8D8</color>
+    <color name="colorA0">#A0A0A0</color>
+    <color name="color9A">#9A9A9A</color>
+    <color name="color99">#999999</color>
+    <color name="color95">#959595</color>
+    <color name="color91">#919191</color>
+    <color name="color85">#858585</color>
+    <color name="color77">#777777</color>
+    <color name="color66">#666666</color>
+    <color name="color65">#656565</color>
+    <color name="color64">#646464</color>
+    <color name="color34">#343434</color>
+    <color name="color33">#333333</color>
+
+    <color name="colorF56">#FF5656</color>
+
+    <color name="color9133">#33919191</color>
+
+    <color name="colorPreset1">#57BBB6</color>
+    <color name="colorPreset2">#EEA97F</color>
+    <color name="colorPreset3">#C490BF</color>
+    <color name="colorPreset4">#4FBFE5</color>
+    <color name="colorPreset5">#49CFAE</color>
+    <color name="colorPreset6">#A2D070</color>
+    <color name="colorPreset7">#FFCF56</color>
+    <color name="colorPreset8">#EC5463</color>
+    <color name="colorPreset9">#EC6941</color>
+    <color name="colorPreset10">#C3272B</color>
+    <color name="colorPreset11">#B36D63</color>
+    <color name="colorPreset12">#494168</color>
+    <color name="colorPreset13">#4D92CC</color>
+
+    <color name="colorSwitchOffBgStart">#80C7C6CB</color>
+    <color name="colorSwitchOffBgEnd">#C7C6CB</color>
+
+    <color name="colorCheckBtnStartTrue">#1896D4</color>
+    <color name="colorCheckBtnEndTrue">#6ACAEB</color>
+    <color name="colorCheckBtnStartFalse">#C4C4C4</color>
+    <color name="colorCheckBtnEndFalse">#ECECEC</color>
+
+    <color name="colorRedDot">#FF5555</color>
+
+    <color name="colorAnswerSetMenuLine">#F4F4F5</color>
+
+    <color name="colorBuyVipMain">#FFAF23</color>
+
+    <color name="colorSeekProgressFore">#80F5A422</color>
+    <color name="colorCourseProgress">#FFC611</color>
+
+    <color name="colorDivider">#F2F2F4</color>
+
+    <color name="colorCommentsEditBg">#F8F8F9</color>
+
+    <color name="colorIntegralRedeemNum">#FF9523</color>
+    <color name="colorIntegralRedeemNumBg">#33DB7424</color>
+    <color name="colorIntegralRedeemCount">#DB7424</color>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layout_marginStart="11dp"
+    android:layout_marginEnd="11dp">
+
+    <TextView
+        android:id="@+id/listen_daily_progress_bar_tv_current_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="03:55"
+        android:textSize="12sp"
+        android:textColor="@color/color99"
+        android:gravity="center"/>
+
+    <SeekBar
+        android:id="@+id/listen_daily_progress_bar_sb_seek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:thumb="@drawable/shape_seek_progress_thumb"
+        android:progressDrawable="@drawable/layer_voice_seek_progress"
+        android:progress="0"
+        android:splitTrack="false"
+        android:layout_marginStart="19sp"
+        android:layout_marginEnd="19sp"
+        android:paddingTop="23dp"
+        android:paddingBottom="23dp"/>
+
+    <TextView
+        android:id="@+id/listen_daily_progress_bar_tv_total_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="10:00"
+        android:textSize="12sp"
+        android:textColor="@color/color99"
+        android:gravity="center"/>
+</LinearLayout>

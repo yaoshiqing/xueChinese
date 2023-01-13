@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="62dp"
+    android:orientation="vertical"
+    android:background="@drawable/ic_words_list_item_bg"
+    android:layout_marginBottom="18dp"
+    android:paddingStart="21dp"
+    android:paddingEnd="21dp"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        tool:ignore="UseCompoundDrawables">
+        <ImageView
+            android:id="@+id/item_words_list_tv_img"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/stringEmpty"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/item_words_list_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableEnd="@drawable/ic_words_list_item_open"
+            tool:text="Text"
+            android:textSize="16sp"
+            android:textColor="@color/color66"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/item_words_list_v_div"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorMainBG"
+        android:visibility="gone"/>
+
+    <com.gjjy.frontlib.widget.WordsListRecyclerView
+        android:id="@+id/item_words_list_rv_child_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="horizontal"
+        android:visibility="gone"/>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="309dp"
+    android:minHeight="334dp"
+    android:layout_gravity="center">
+
+    <com.gjjy.frontlib.widget.AnswerOptions
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:minHeight="149dp" />
+
+    <com.gjjy.frontlib.widget.AnswerOptions
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:minHeight="149dp"
+        android:layout_gravity="end" />
+
+    <com.gjjy.frontlib.widget.AnswerOptions
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:minHeight="149dp"
+        android:layout_gravity="bottom" />
+
+    <com.gjjy.frontlib.widget.AnswerOptions
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:minHeight="149dp"
+        android:layout_gravity="bottom|end" />
+</FrameLayout>

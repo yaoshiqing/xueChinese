@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:id="@+id/item_targeted_learning_details_dialogue_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Lin Chen :"
+        android:textSize="18sp"
+        android:textColor="@color/color33"
+        android:textStyle="bold"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="20dp"
+        tools:ignore="UseCompoundDrawables">
+        <ImageView
+            android:id="@+id/item_targeted_learning_details_dialogue_iv_audio_play_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_play_audio_small_btn_2"
+            android:contentDescription="@string/stringEmpty"
+            android:scaleType="centerInside"
+            android:layout_marginStart="4dp"
+            android:focusable="true"
+            android:clickable="true"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/item_targeted_learning_details_dialogue_rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_targeted_learning_details_dialogue_tv_transl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Hi, I am Lin Chen, 19 years old, I am Chinese too. I am a student and her brother."
+        android:textSize="18sp"
+        android:textColor="@color/color99"
+        android:layout_marginTop="9dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="visible"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="20dp"/>
+
+</LinearLayout>

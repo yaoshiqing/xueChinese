@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/item_user_photo_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="MiWi"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:maxLength="12"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.ybear.ybcomponent.widget.shape.ShapeImageView
+            android:id="@+id/item_user_photo_siv_img"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:src="@drawable/ic_photo_user"
+            android:scaleType="centerCrop"
+            app:shape="oval"
+            app:shapeBorderSize="2dp"
+            app:shapeBorderColor="@color/colorWhite"/>
+        <ImageView
+            android:id="@+id/item_user_photo_iv_vip_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_photo_user_vip_icon"
+            android:contentDescription="@string/stringNull"
+            android:layout_gravity="end|bottom"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EditView">
+        <attr name="evIcon" format="reference"/>
+        <attr name="evDeleteButton" format="reference"/>
+        <attr name="evCheckButtonVisible" format="reference"/>
+        <attr name="evCheckButtonInvisible" format="reference"/>
+        <attr name="evEnableCheckButton" format="boolean"/>
+        <attr name="evEnableDeleteButton" format="boolean"/>
+        <attr name="evEnableVerificationCodeButton" format="boolean"/>
+        <attr name="evText" format="string"/>
+        <attr name="evTextColor" format="reference"/>
+        <attr name="evTextSize" format="dimension"/>
+        <attr name="evMaxLength" format="integer"/>
+        <attr name="evHint" format="string"/>
+        <attr name="evTextColorHint" format="color"/>
+        <attr name="evTipsText" format="string"/>
+        <attr name="evVerificationCodeText" format="string"/>
+        <attr name="evVerificationCodeRegainText" format="string"/>
+        <attr name="evVerificationCodeColor" format="color"/>
+        <attr name="evVerificationMillisInFuture" format="integer"/>
+        <attr name="evVerificationCountDownInterval" format="integer"/>
+    </declare-styleable>
+</resources>

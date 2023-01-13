@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/friends_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarTitle="@string/stringFriends" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_no_friends_icon"
+                android:drawablePadding="30dp"
+                android:text="@string/stringNotFriends"
+                android:textColor="@color/color66"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginTop="65dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/friends_tv_invite_friends_btn"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:text="@string/stringInviteBtnOfFriends"
+                android:textSize="18sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@drawable/ic_touch_btn_true"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                android:focusable="true"
+                android:clickable="true"/>
+
+        </LinearLayout>
+        <com.gjjy.basiclib.widget.PubRefreshLayout
+            android:id="@+id/friends_prl_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:paddingTop="10dp"
+            android:visibility="visible">
+            <com.scwang.smart.refresh.header.MaterialHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/friends_rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:padding="20dp" />
+            <com.scwang.smart.refresh.footer.BallPulseFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.gjjy.basiclib.widget.PubRefreshLayout>
+    </FrameLayout>
+
+</LinearLayout>

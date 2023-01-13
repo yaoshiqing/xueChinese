@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="320dp"
+    android:layout_height="167dp"
+    tools:ignore="MissingDefaultResource,UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/popup_front_lock_iv_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_popup_arrow"
+        android:contentDescription="@string/stringEmpty"
+        android:translationY="1dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ic_popup_bg"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="12dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+
+        <TextView
+            android:id="@+id/popup_front_lock_model_tv_count_down"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/stringModelKeepLeaning"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/stringOr"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:id="@+id/popup_front_lock_model_tv_start_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stringLockTipsBtnOfNotVip"
+            android:textColor="@color/colorMain"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:background="@drawable/ic_touch_skip_btn"
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true" />
+    </LinearLayout>
+</LinearLayout>

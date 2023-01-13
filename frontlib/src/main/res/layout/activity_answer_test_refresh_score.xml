@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMain"
+    android:gravity="center_horizontal">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/answer_test_refresh_score_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+        <TextView
+            android:id="@+id/answer_test_refresh_score_tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="100%"
+            android:textSize="38sp"
+            android:textColor="@color/colorAnswerTestRefreshScore"
+            android:textStyle="bold"
+            android:background="@drawable/ic_answer_test_refresh_score_icon"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_answer_test_refresh_score_title"
+            android:contentDescription="@string/stringEmpty"
+            android:layout_gravity="center_horizontal"/>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/stringAnswerTestRefreshScoreOfTitle"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/answer_test_refresh_score_tv_refresh_btn"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:text="@string/stringAnswerTestRefreshScoreOfRefreshBtn"
+        android:textSize="20sp"
+        android:textColor="@color/colorMain"
+        android:textStyle="bold"
+        android:background="@drawable/ic_touch_skip_btn"
+        android:gravity="center"
+        android:paddingBottom="6dp"
+        android:layout_marginBottom="90dp"
+        android:focusable="true"
+        android:clickable="true"/>
+
+</LinearLayout>

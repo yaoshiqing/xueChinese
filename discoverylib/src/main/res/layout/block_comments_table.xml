@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="25dp"
+    android:layout_marginStart="10dp">
+    <RadioButton
+        android:id="@+id/targeted_learning_details_comments_rb_trending_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/stringTrendingTable"
+        android:textSize="14sp"
+        android:textColor="@drawable/selector_comments_table_menu_text_color"
+        android:textStyle="bold"
+        android:background="@drawable/selector_comments_table_menu_bg"
+        android:button="@null"
+        android:gravity="center"
+        android:checked="true"/>
+    <RadioButton
+        android:id="@+id/targeted_learning_details_comments_rb_new_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/stringNewTable"
+        android:textSize="14sp"
+        android:textColor="@drawable/selector_comments_table_menu_text_color"
+        android:textStyle="bold"
+        android:background="@drawable/selector_comments_table_menu_bg"
+        android:button="@null"
+        android:gravity="center"
+        android:layout_marginStart="10dp"/>
+</RadioGroup>

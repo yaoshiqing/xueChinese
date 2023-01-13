@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:paddingTop="45dp">
+
+    <!-- 拖拽布局需要添加一个ImageView控件，直接用LinearLayout当父布局会挤压其他控件 -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        tools:ignore="UselessParent">
+        <TextView
+            android:id="@+id/label_translate_tv_title"
+            style="@style/TextViewAnswerTitle"
+            android:text="@string/stringLabelTranslateTitle"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/label_translate_tv_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="你听到了什么狗东西？"
+            android:textColor="@color/color33"
+            android:textSize="19sp"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="25dp"/>
+
+        <com.gjjy.basiclib.widget.drag.DragRecyclerView
+            android:id="@+id/label_translate_drv_answer_pool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="160dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <com.gjjy.basiclib.widget.drag.DragRecyclerView
+            android:id="@+id/label_translate_drv_options_pool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="200dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <com.gjjy.frontlib.widget.CheckButton
+            android:id="@+id/label_translate_cb_check_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="27dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"/>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="464dp"
+    android:layout_height="50dp"
+    android:background="@color/colorBlack30"
+    android:gravity="center_vertical"
+    android:paddingStart="35dp"
+    android:paddingEnd="35dp"
+    app:shapeRadius="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringVideoSpeedText"
+        android:textSize="14sp"
+        android:textColor="@color/colorWhite" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/video_speed_ll_speed_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/stringVideoSpeedX08"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:focusable="true"
+                android:clickable="true"
+                android:tag="0.8"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/stringVideoSpeedX10"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:focusable="true"
+                android:clickable="true"
+                android:tag="1.0"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/stringVideoSpeedX125"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:focusable="true"
+                android:clickable="true"
+                android:tag="1.25"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/stringVideoSpeedX15"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:focusable="true"
+                android:clickable="true"
+                android:tag="1.5"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/video_speed_iv_speed_selected_div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_video_speed_selected_line"
+            android:contentDescription="@string/stringEmpty"
+            android:layout_gravity="bottom" />
+    </FrameLayout>
+
+</com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>

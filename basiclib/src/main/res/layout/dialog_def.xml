@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_def_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/ic_dialog_def_bg"
+    android:gravity="center_horizontal|bottom"
+    android:layout_gravity="bottom">
+
+    <Space
+        android:id="@+id/dialog_def_s_space"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/dialog_def_iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_dialog_correct_icon"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/dialog_check_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Title"
+        android:textSize="17sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp" />
+
+    <TextView
+        android:id="@+id/dialog_check_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Content\nContent\nContent"
+        android:textSize="17sp"
+        android:textColor="@color/colorWhite"
+        android:lineSpacingMultiplier="1.2"
+        android:gravity="center"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="20dp">
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/btn_dialog_check"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"/>
+
+        <include
+            android:id="@+id/dialog_def_ll_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/block_dialog_tips"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
+</LinearLayout>

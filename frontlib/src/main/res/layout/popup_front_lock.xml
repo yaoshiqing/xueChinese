@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/popup_front_lock_iv_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_popup_arrow"
+        android:contentDescription="@string/stringEmpty"
+        android:translationY="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ic_popup_bg"
+        android:paddingTop="12dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+
+        <TextView
+            android:id="@+id/popup_front_lock_tv_content"
+            android:layout_width="295dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/popup_front_lock_tv_or_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/stringOr"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_marginTop="19dp"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/popup_front_lock_tv_start_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMain"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:background="@drawable/ic_touch_skip_btn"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true" />
+    </LinearLayout>
+</LinearLayout>

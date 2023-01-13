@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XueChineseBase</string>
+    <string name="stringNetworkServiceTitle">%s service is running</string>
+    <string name="stringColon">:</string>
+    <string name="stringZero">0</string>
+    <string name="stringEmpty"> </string>
+    <string name="stringOK">OK</string>
+    <string name="stringError">Error!</string>
+    <string name="stringStartNow">START NOW</string>
+    <string name="stringEmailTips">Incorrect email address format</string>
+    <string name="menuFront">Learn</string>
+    <string name="menuDiscovery">Explore</string>
+    <string name="menuImmerse">Immerse</string>
+    <string name="menuUserCenter">Me</string>
+    <string name="stringMsgCenterSystemNotify">System notification</string>
+    <string name="stringMsgCenterVipNotify">Vip notification</string>
+    <string name="stringMainMore">More</string>
+    <string name="stringUpdate">INSTALL NOW</string>
+    <string name="stringUpdateTitle">New version V%s found</string>
+    <string name="stringNeedLoginTitle">Save your learning process and continue learning right where you left out，please Log in / Register to save it now.</string>
+    <string name="stringNeedLoginTips">For better learning</string>
+    <string name="stringDialogError">Wrong answer</string>
+    <string name="stringDialogCorrect">Correct answer</string>
+    <string name="stringDialogEndLearning">Are you sure you want to end study?</string>
+    <string name="stringDialogEndTest">Are you sure you want to exit the test?</string>
+    <string name="stringDialogEndFastReView">Are you sure you want to exit the fast review?</string>
+    <string name="stringDialogRemoveQuestion">Whether to remove this question?</string>
+    <string name="stringDialogEndWrongQuestionSet">Are you sure you want to close the error map?</string>
+    <string name="stringDialogMarkNotifyMsg">Are all marked as read?</string>
+    <string name="stringRemindOfLogin">After logging in, you can turn on the learning reminder</string>
+    <string name="stringDialogLogOut">Are you sure you want to log out?</string>
+    <string name="stringNotLoggedTips">Premium rights could be lost, please Sign up/Login at once.</string>
+    <string name="stringNetworkError">The network is abnormal, try refreshing！</string>
+    <string name="contentDialogEndLearning">Exit now will be emptied The progress of this section.Victory comes from the effort to persevere!</string>
+    <string name="contentDialogEndTest">After the exam schedule will not be saved</string>
+    <string name="contentDialogEndFastReView">Now exiting will clear the progress of the review in this section, the review will help to keep in mind the knowledge learned</string>
+    <string name="contentDialogEndWrongQuestionSet">Learn the wrong questions a few times and you won\'t be wrong next time</string>
+    <string name="contentDialogSkipTest">Unfortunately, you are not passing Advanced Placement exam. Keep practicing!</string>
+    <string name="contentDialogFastTest">Quick learning mode contains all vocabularies in current module, start the mode and earn rewards!</string>
+    <string name="contentDialogSkipTestOfFewerLightningTitle">Fewer than 4 lighting</string>
+    <string name="contentDialogSkipTestOfFewerLightning">Experience Advanced Placement exam,no lightning required.</string>
+    <string name="stringFewerLightningGoPracticeBtn">GO PRACTICE</string>
+    <string name="stringCheck">CHECK</string>
+    <string name="stringContinue">CONTINUE</string>
+    <string name="stringStart">START</string>
+    <string name="stringDialogKeep">KEEP</string>
+    <string name="stringDialogClose">CLOSE</string>
+    <string name="stringDialogRemove">REMOVE</string>
+    <string name="stringTryAgain">TRY AGAIN</string>
+    <string name="stringOtherLogin">USE ANOTHER WAY</string>
+    <string name="stringYes">Yes</string>
+    <string name="stringNo">No</string>
+    <string name="stringCancelA">CANCEL</string>
+    <string name="stringConfirm">CONFIRM</string>
+    <string name="stringSignature">Guest</string>
+    <string name="stringMsgCenter">Information center</string>
+    <string name="stringMsgList">Information list</string>
+    <string name="stringReward">Achievement</string>
+    <string name="stringRanking">Weekly Race</string>
+    <string name="stringFriends">Friends</string>
+    <string name="stringVouchers">Vouchers</string>
+    <string name="stringSetUp">Setting</string>
+    <string name="stringFeedback">Feedback</string>
+    <string name="stringEvaluation">Evaluation</string>
+    <string name="stringTerms">Privacy and Terms policy</string>
+    <string name="stringIntegral">Point Record</string>
+    <string name="stringRules">Rules</string>
+    <string name="stringLoginBtn">LOG IN</string>
+    <string name="stringSignUpBtn">SIGN UP</string>
+    <string name="stringTalkLaterBtn">LATER</string>
+    <string name="stringSaveBtn">SAVE</string>
+    <string name="stringRefreshBtn">REFRESH</string>
+    <string name="stringSelectWeek">Select Weekdays</string>
+    <string name="stringSelectTime">Select Time</string>
+    <string name="stringDefaultTime">20:00</string>
+    <string name="stringNotMessage">No Information</string>
+    <string name="stringChangeUserName">Edit name</string>
+    <string name="stringUserNameMaxLength">Nickname cannot exceed 25 characters</string>
+    <string name="stringHearing">Listening</string>
+    <string name="stringVoice">Speaking</string>
+    <string name="stringTranslate">Translating</string>
+    <string name="stringSound">Sound</string>
+    <string name="stringSlowAudio">Slow audio</string>
+    <string name="stringHot">HOT</string>
+    <string name="stringRewardItemHeartContent">Pass the quiz to get Red heart rewards.</string>
+    <string name="stringRewardItemLightningContent">Complete the module to win Lightning rewards.</string>
+    <string name="stringRewardItemXPContent">Learning more to get higher XP and higher ranking.</string>
+    <string name="stringBuyVipTitle">VIP RIGHTS</string>
+    <string name="stringBuyVipContent">VIP students will be three times more efficient than regular students</string>
+    <string name="stringBuyVipAuthText1">Unlimited time to all courses!</string>
+    <string name="stringBuyVipAuthText2">Unlimited access to all Advanced Placement exam!</string>
+    <string name="stringBuyVipAuthText3">Unlimited access to all stage of lessons!</string>
+    <string name="stringBuyVipAuthText4">Free access to all entertaining videos!</string>
+    <string name="stringBuyVipAuthText5">Free access to all entertaining audios!</string>
+    <string name="stringBuyVipAuthText6">Refresh the records to get higher results!</string>
+    <string name="stringBuyVipAuthText7">Points doubled!</string>
+    <string name="stringBuyVipInfo">Plan will automatically renew upon expiration, it can be cancelled at anytime.</string>
+    <string name="stringBuyVipBtn">BUY NOW</string>
+    <string name="stringBuyVipSpecialOffer">Special offer</string>
+    <string name="stringBuyVipOtherList">Other plans:</string>
+    <string name="stringUnlockVip">UNLOCK</string>
+    <string name="stringVideoSpeedText">Play Speed</string>
+    <string name="stringVideoSpeedX08">0.8x</string>
+    <string name="stringVideoSpeedX10">1.0x</string>
+    <string name="stringVideoSpeedX125">1.25x</string>
+    <string name="stringVideoSpeedX15">1.5x</string>
+    <string name="stringCollectSuccess">You\'ve added to your Favourite, please check it in Playlist!</string>
+    <string name="stringCollectCancel">You\'ve removed Favourite.</string>
+    <string name="stringShareSuccess">Share success!</string>
+    <string name="stringShareFailure">Share failure!</string>
+    <string name="stringFreeVouchersTitleOfSent">Your friend sent you a voucher of VIP free trial, you can experience VIP exclusive rights!(ﾉ´▽｀)ﾉ♪</string>
+    <string name="stringFreeVouchersTitleOfInvited">You are rewarded a free voucher of membership as you have successfully invited a friend!</string>
+    <string name="stringFreeVouchersTipsOfBeginClose">You can view it at the welfare center.</string>
+    <string name="stringFreeVouchersTipsOfBeginSuccess">" The trial has been successfully launched!"</string>
+    <string name="stringFreeVouchersTipsOfBeginFailed">Member trial failed, please try again during the activity.</string>
+    <string name="stringFreeVouchersTipsOfEndClose">You can continue the trial on the open membership page of the individual center.</string>
+    <string name="stringVipEndTitle">End of VIP free trial!</string>
+    <string name="stringVouchersUnusedUseNow">USE IT NOW</string>
+    <string name="stringIntegralLostTitle">Your gains might be lost, please log in now.</string>
+    <string name="stringVipEndOkBtn">CONTINUE TO USE</string>
+    <string name="stringCommentTimeOfDayAgo">&#160;days ago</string>
+    <string name="stringCommentTimeOfYesterday">Yesterday</string>
+    <string name="stringCommentTimeOfHoursAgo">&#160;hours ago</string>
+    <string name="stringCommentTimeOfMinutesAgo">&#160;minutes ago</string>
+    <string name="stringCommentTimeOfRecently">Recently</string>
+    <string name="stringVoucherOfBuyVipTicketOfVip">You are already a full member!</string>
+    <string name="stringVoucherOfBuyVipTicketOfFreeVip">You are already a trial member!</string>
+    <string name="stringVoucherOfBuyVipTicketOfSuccess">Member trial has been successfully opened!</string>
+    <string name="stringVoucherOfBuyVipTicketOfFailure">Member trial failed, please try again!</string>
+    <string name="stringCommentsEditHint">I\'d like to say…</string>
+    <string name="stringPhotoAlbum">Photo album</string>
+    <string name="stringPointsRedeemTitle">Remaining points</string>
+    <string name="stringPointsRedeemLightningNum">Number of exchanges</string>
+    <string name="stringPointsRedeemIntegralNum">Required points</string>
+    <string name="stringPointsRedeemNowBtn">REDEEM NOW</string>
+    <string name="stringInsufficientPoints">Insufficient points</string>
+    <string name="stringLoginOfTestTips">Learning data could be lost, please Login to save process and finish the test.</string>
+    <string name="stringLoginOrRegister">LOG IN/REGISTER</string>
+    <string name="stringPriceRebate">%OFF</string>
+    <string name="stringFirstDiscountOfYear">restore at 2nd year</string>
+    <string name="stringFirstDiscountOfMonth">restore at %s month</string>
+    <string name="stringFirstDiscountOfWeek">restore at 2nd week</string>
+    <string-array name="stringBuyVipEvalUserNameArray">
+        <item>Rowena</item>
+        <item>Regan</item>
+        <item>Tiffany</item>
+    </string-array>
+    <string-array name="stringBuyVipEvalLearnedDaysArray">
+        <item>Learned 87 days</item>
+        <item>Learned 54 days</item>
+        <item>Learned 26 days</item>
+    </string-array>
+    <string-array name="stringBuyVipEvalContentArray">
+        <item>It\'s nice to be able to learn Chinese with the app at home. It\'s good because the content is diverse and fun~</item>
+        <item>I took part in the test and the video and audio are so fun~ I keep holding it repeatedly and I think it will be really helpful. It\'s a good app.</item>
+        <item>The screen is pretty and the content is very practical.</item>
+    </string-array>
+</resources>

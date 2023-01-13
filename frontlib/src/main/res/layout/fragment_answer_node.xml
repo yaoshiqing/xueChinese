@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:id="@+id/answer_node_ll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="192dp"
+        android:background="@color/colorWhite"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="90dp">
+
+        <com.gjjy.frontlib.widget.RatingView
+            android:id="@+id/answer_node_rb_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/answer_node_tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/color99"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.4"
+            android:layout_marginBottom="35dp"/>
+
+        <TextView
+            android:id="@+id/answer_node_tv_progress_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.4"
+            android:textColor="@color/color99"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            tools:text="@string/stringNode" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <com.gjjy.frontlib.widget.CheckButton
+            android:id="@+id/answer_node_cb_check_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="30dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/answer_node_iv_icon"
+        android:layout_width="180dp"
+        android:layout_height="169dp"
+        tools:src="@drawable/ic_answer_node_icon"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"/>
+
+    <ImageView
+        android:id="@+id/answer_node_iv_rating_anim"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/stringEmpty"
+        android:visibility="invisible"/>
+</FrameLayout>

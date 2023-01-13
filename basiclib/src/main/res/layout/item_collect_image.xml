@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.ybear.ybcomponent.widget.shape.ShapeImageView
+        android:id="@+id/item_collect_image_siv_img"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/stringEmpty"
+        app:shapeRadius="10dp"
+        android:layout_margin="6dp"/>
+
+    <ImageView
+        android:id="@+id/item_collect_image_iv_delete_btn"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:src="@drawable/ic_collect_image_delete"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_gravity="top|end" />
+</FrameLayout>

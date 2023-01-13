@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ybear.baseframework">
+    <application>
+<!--        android:resizeableActivity="false"-->
+<!--        tools:targetApi="n">-->
+        <activity android:name=".BaseFragmentActivity"/>
+        <activity android:name=".BaseAppCompatActivity"/>
+        <activity android:name=".BaseActivity"/>
+
+        <!-- Render on full screen up to screen aspect ratio of 2.4 -->
+        <!-- Use a letterbox on screens larger than 2.4 -->
+<!--        <meta-data android:name="android.max_aspect" android:value="2.4" />-->
+        <!-- 全面屏 -->
+        <meta-data android:name="android.max_aspect" android:value="2.4" />
+        <!-- HuaWei 刘海屏 -->
+        <meta-data android:name="android.notch_support" android:value="true" />
+        <!-- XiaoMi 刘海屏 -->
+        <meta-data android:name="notch.config" android:value="portrait|landscape" />
+
+    </application>
+</manifest>

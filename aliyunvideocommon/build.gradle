@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation externalPlayerFull
+
+    implementation externalPlayerFull
+    implementation externalGlide
+    implementation externalAppcompat
+    implementation externalConstraintLayout
+    implementation externalOkHttp
+    implementation externalGson
+    implementation externalRecyclerview
+}

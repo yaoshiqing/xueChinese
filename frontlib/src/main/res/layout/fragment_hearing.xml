@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:paddingTop="45dp">
+
+    <TextView
+        android:id="@+id/hearing_tv_title"
+        style="@style/TextViewAnswerTitle"
+        android:text="@string/stringHearingTitle"
+        android:gravity="center"/>
+
+    <com.gjjy.frontlib.widget.AudioPlayButton
+        android:id="@+id/hearing_apb_audio_btn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="-8dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp">
+        <com.gjjy.frontlib.widget.AnswerOptionsLayout
+            android:id="@+id/hearing_aol_opt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <com.gjjy.frontlib.widget.CheckButton
+        android:id="@+id/hearing_cb_check_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"/>
+</LinearLayout>

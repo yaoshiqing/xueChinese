@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPlate">#FFD33C</color>
+
+    <color name="colorItemAchievementNumberBg">#0D000000</color>
+
+    <color name="colorMeBg">#F2F2F4</color>
+    <color name="colorNotifyBg">#F2F2F4</color>
+    <color name="colorNotifyTime">#B0B0B6</color>
+    <color name="colorNotifyTimeBg">#F2F2F4</color>
+
+    <color name="colorWhite24">#3DFFFFFF</color>
+
+    <color name="colorSignOrLogBg">#1EDD9C</color>
+
+    <color name="colorBtnDisable">#C7C6CB</color>
+
+    <color name="colorMsgCenterTips">#DCF9EF</color>
+
+    <color name="colorNotLogin">#F8F8F9</color>
+
+    <color name="colorTopRankingXP">#A6532E</color>
+
+    <color name="colorRankingCurrentIndex">#9191FF</color>
+
+    <color name="colorVouchersMain">#FF9523</color>
+    <color name="colorVouchersExpired">#D8D7D7</color>
+
+    <color name="colorCanTouch">#559BFD</color>
+
+    <color name="colorTips">#5B2828</color>
+</resources>

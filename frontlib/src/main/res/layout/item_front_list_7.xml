@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="684dp"
+    tools:background="@drawable/ic_front_list_4567">
+
+    <include
+        layout="@layout/item_front_list_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="41dp"
+        android:layout_marginBottom="3dp">
+    </include>
+
+    <include
+        layout="@layout/item_front_list_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="19dp">
+    </include>
+
+    <include
+        layout="@layout/item_front_list_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="180dp">
+    </include>
+
+    <include
+        layout="@layout/item_front_list_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="90dp">
+    </include>
+
+    <include
+        layout="@layout/item_front_list_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="41dp"
+        android:layout_marginBottom="60dp">
+    </include>
+
+    <include
+        layout="@layout/item_front_list_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="41dp"
+        android:layout_marginTop="209dp">
+    </include>
+
+    <include
+        layout="@layout/item_front_list_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="41dp"
+        android:layout_marginTop="48dp">
+    </include>
+
+    <com.gjjy.frontlib.widget.FrontTestButton
+        android:id="@+id/item_front_list_htb_test_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="33dp"/>
+</FrameLayout>

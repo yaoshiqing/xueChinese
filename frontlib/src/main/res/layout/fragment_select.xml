@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:paddingTop="45dp">
+    <TextView
+        android:id="@+id/select_tv_title"
+        style="@style/TextViewAnswerTitle"
+        tools:text="Title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp">
+        <com.gjjy.frontlib.widget.AnswerOptionsLayout
+            android:id="@+id/select_aol_opt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+
+    <com.gjjy.frontlib.widget.CheckButton
+        android:id="@+id/select_cb_check_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"/>
+</LinearLayout>

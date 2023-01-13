@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/answer_encourage_iv_icon"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:src="@drawable/ic_answer_encourage"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_marginTop="130dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/stringEncourage"
+        android:textColor="@color/colorMain"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:lineSpacingMultiplier="1.4"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp" />
+
+    <com.gjjy.frontlib.widget.CheckButton
+        android:id="@+id/answer_encourage_cb_check_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"/>
+</LinearLayout>

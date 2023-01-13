@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:paddingStart="16dp"
+    android:paddingEnd="15dp"
+    app:shape="roundRect"
+    app:shapeRadius="15dp"
+    app:shapeBorderSize="2dp"
+    app:shapeBorderColor="@color/colorEF">
+
+    <TextView
+        android:id="@+id/buy_vip_button_tv_date"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:text="1 YEAR"
+        android:textSize="16sp"
+        android:textColor="@color/color33"
+        android:textStyle="bold"
+        android:gravity="center_vertical" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical|end">
+
+        <TextView
+            android:id="@+id/buy_vip_button_tv_price_per_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="VND₫ 134,205.75"
+            android:textSize="11sp"
+            android:textColor="@color/color33"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/buy_vip_button_tv_price_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="VND₫ "
+                android:textSize="16sp"
+                android:textColor="@color/colorBuyVipMain"
+                android:layout_marginEnd="5dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/buy_vip_button_tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1610496,00"
+                android:textSize="20sp"
+                android:textColor="@color/colorBuyVipMain"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/buy_vip_button_tv_original_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="VND₫ 134,205.75/MONTH"
+            android:textSize="13sp"
+            android:textColor="@color/color33"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+</com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>

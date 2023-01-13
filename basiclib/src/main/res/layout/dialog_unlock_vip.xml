@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="335dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:paddingTop="0dp"
+    android:paddingBottom="20dp"
+    android:gravity="center">
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/unlock_vip_iv_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="130dp"
+            android:contentDescription="@string/stringEmpty"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_unlock_vip_img_shadow"
+            android:contentDescription="@string/stringEmpty"
+            android:layout_gravity="center_horizontal|bottom"/>
+        <TextView
+            android:id="@+id/unlock_vip_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal|bottom"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="12dp"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/unlock_vip_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="@color/color66"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="start|top"
+        android:maxLines="6"
+        android:lineSpacingMultiplier="1.2"
+        android:ellipsize="end"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+
+    <TextView
+        android:id="@+id/unlock_vip_tv_unlock_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/stringUnlockVip"
+        android:textColor="@color/colorWhite"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:background="@drawable/ic_touch_btn_true"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
+        android:focusable="true"
+        android:clickable="true" />
+
+</LinearLayout>

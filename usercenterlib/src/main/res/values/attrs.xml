@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RewardItemView">
+        <attr format="enum" name="rivType">
+            <enum name="heart" value="0"/>
+            <enum name="lightning" value="1"/>
+            <enum name="xp" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

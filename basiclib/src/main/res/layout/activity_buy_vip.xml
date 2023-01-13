@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/buy_vip_nsv_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color33"
+            android:orientation="vertical">
+
+            <Space
+                android:id="@+id/toolbar_height_space"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/ic_buy_vip_top_bg">
+
+                    <ImageView
+                        android:id="@+id/buy_vip_iv_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="21dp"
+                        android:layout_marginTop="27dp"
+                        android:contentDescription="@string/stringEmpty"
+                        android:src="@drawable/ic_buy_vip_icon" />
+
+                    <TextView
+                        android:id="@+id/buy_vip_tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/buy_vip_iv_icon"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginEnd="22dp"
+                        android:layout_marginBottom="11dp"
+                        android:layout_toEndOf="@id/buy_vip_iv_icon"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/stringBuyVipTitle"
+                        android:textColor="@color/color33"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/buy_vip_tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/buy_vip_tv_title"
+                        android:layout_alignStart="@id/buy_vip_tv_title"
+                        android:layout_marginEnd="25dp"
+                        android:layout_toEndOf="@id/buy_vip_iv_icon"
+                        android:includeFontPadding="false"
+                        android:text="@string/stringBuyVipContent"
+                        android:textColor="@color/color33"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/buy_vip_close_img"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_collect_image_delete" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/ic_buy_vip_desc_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="38dp"
+            android:paddingEnd="38dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_buy_vip_desc_1"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/stringBuyVipAuthText1"
+                android:textColor="@color/color33"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_buy_vip_desc_2"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/stringBuyVipAuthText2"
+                android:textColor="@color/color33"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_buy_vip_desc_3"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/stringBuyVipAuthText3"
+                android:textColor="@color/color33"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_buy_vip_desc_4"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/stringBuyVipAuthText4"
+                android:textColor="@color/color33"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_buy_vip_desc_5"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/stringBuyVipAuthText5"
+                android:textColor="@color/color33"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_buy_vip_desc_6"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/stringBuyVipAuthText6"
+                android:textColor="@color/color33"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_buy_vip_desc_7"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/stringBuyVipAuthText7"
+                android:textColor="@color/color33"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorF5" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/buy_vip_rv_normal_vip_option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:overScrollMode="never"
+            android:paddingBottom="20dp" />
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="@string/stringBuyVipInfo"
+            android:textColor="@color/color66"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/buy_vip_tv_buy_btn"
+            android:layout_width="310dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_buy_vip_buy_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/stringBuyVipBtn"
+            android:textColor="@color/colorWhite"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/buy_vip_ll_eval_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="37dp"
+                android:background="@color/colorF5" />
+
+            <com.ybear.ybcomponent.widget.ViewPager
+                android:id="@+id/buy_vip_vp_eval_list"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

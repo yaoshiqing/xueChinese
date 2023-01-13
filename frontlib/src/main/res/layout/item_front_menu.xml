@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="36dp"
+    android:minWidth="200dp"
+    android:orientation="horizontal"
+    android:background="@color/colorWhite"
+    app:shapeRadius="12dp"
+    android:layout_marginTop="14dp"
+    android:layout_marginBottom="14dp">
+
+    <ImageView
+        android:id="@+id/item_front_menu_tv_img"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/stringEmpty"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"/>
+
+    <TextView
+        android:id="@+id/item_front_menu_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tool:text="Text"
+        android:textSize="18sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"/>
+
+</com.ybear.ybcomponent.widget.shape.ShapeLinearLayout>

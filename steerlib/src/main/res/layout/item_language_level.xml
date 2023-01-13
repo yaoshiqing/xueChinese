@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ybear.ybcomponent.widget.shape.ShapeTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="333dp"
+    android:layout_height="80dp"
+    app:shapeRadius="20dp"
+    android:drawableStart="@drawable/ic_language_level_item_icon_1"
+    android:drawablePadding="45dp"
+    android:text="@string/stringLanguageLevelItemTitle1"
+    android:textColor="@color/colorWhite"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:background="@color/colorObjectiveItem1"
+    android:gravity="center_vertical"
+    android:paddingTop="11dp"
+    android:paddingBottom="11dp"
+    android:paddingStart="23dp"
+    android:paddingEnd="23dp"
+    android:layout_marginBottom="30dp">
+
+</com.ybear.ybcomponent.widget.shape.ShapeTextView>

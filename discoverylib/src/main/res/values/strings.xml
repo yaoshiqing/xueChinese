@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">discoverylib</string>
+    <string name="stringEllipsis">…</string>
+    <string name="stringListenDailyMainTitle">Daily listening</string>
+    <string name="stringPopularVideosMainTitle">Popular videos</string>
+    <string name="stringMyCoursesMainTitle">Playlist</string>
+    <string name="stringMyCoursesCollectTable">Favorite</string>
+    <string name="stringMyCoursesHaveReadTable">History</string>
+    <string name="stringMyCourseNotDataOfCollect">There is no favorite content.</string>
+    <string name="stringMyCourseNotDataOfHistory">There is no history content.</string>
+    <string name="stringIntroTable">Intro</string>
+    <string name="stringCommentsTable">Comments</string>
+    <string name="stringDialogueTable">Dialogue</string>
+    <string name="stringGrammarTable">Grammar</string>
+    <string name="stringTrendingTable">Trending</string>
+    <string name="stringNewTable">New</string>
+    <string name="stringSwitchTransl">Display translation</string>
+    <string name="stringExample">For example:</string>
+    <string name="stringCommentMoreContent">See more</string>
+    <string name="stringViewComments">View comments</string>
+</resources>

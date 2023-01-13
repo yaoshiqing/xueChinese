@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">steerlib</string>
+    <string name="stringLanguageLevelTitle">중국어는 어느정도 아세요?</string>
+    <string name="stringLanguageLevelItemTitle1">왕초보</string>
+    <string name="stringObjectiveTitle">중국어를 왜 배우세요?</string>
+    <string name="stringLanguageLevelItemTitle2">중급</string>
+    <string name="stringLanguageLevelItemTitle3">고급</string>
+    <string name="stringObjectiveItemTitle1">취미</string>
+    <string name="stringObjectiveItemTitle2">여행</string>
+    <string name="stringObjectiveItemTitle3">친구 사귀기</string>
+    <string name="stringObjectiveItemTitle4">학교</string>
+    <string name="stringObjectiveItemTitle5">작장</string>
+    <string name="stringObjectiveItemTitle6">기능 향상</string>
+    <string name="stringObjectiveItemTitle7">기타</string>
+    <string name="stringNewStartBtn">시작</string>
+    <string name="stringOtherLoginBtn">계정 보유</string>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="335dp"
+    android:layout_height="wrap_content"
+    android:minHeight="227dp"
+    android:layout_gravity="center"
+    android:paddingStart="28dp"
+    android:paddingEnd="28dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringChangeUserName"
+        android:textSize="17sp"
+        android:textColor="@color/color66"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"/>
+
+    <com.ybear.ybcomponent.widget.shape.ShapeFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:shapeRadius="10dp"
+        app:shapeBorderSize="2dp"
+        app:shapeBorderColor="@color/colorEF"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:id="@+id/dialog_edit_user_name_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="Edit name"
+            android:textColor="@color/color33"
+            android:hint="@string/stringChangeUserName"
+            android:background="@color/colorWhite"
+            android:inputType="text"
+            android:paddingStart="11dp"
+            android:paddingEnd="11dp"
+            android:importantForAutofill="no" />
+    </com.ybear.ybcomponent.widget.shape.ShapeFrameLayout>
+
+    <TextView
+        android:id="@+id/dialog_edit_user_name_tv_max_len_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringUserNameMaxLength"
+        android:textSize="13sp"
+        android:textColor="@color/colorDialogError"
+        android:layout_marginTop="12dp"
+        android:visibility="invisible"/>
+
+    <include
+        android:id="@+id/dialog_edit_user_name_ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/block_dialog_edit_name"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="21dp">
+    </include>
+
+</LinearLayout>

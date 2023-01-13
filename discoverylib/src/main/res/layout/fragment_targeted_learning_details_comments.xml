@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="61dp">
+        <ImageView
+            android:id="@+id/targeted_learning_details_comments_iv_not_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_my_course_collect_not_data"
+            android:layout_gravity="center"
+            android:contentDescription="@string/stringEmpty"
+            android:visibility="gone"/>
+
+        <com.gjjy.basiclib.widget.PubRefreshLayout
+            android:id="@+id/targeted_learning_details_comments_prl_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/targeted_learning_details_comments_rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+            </androidx.recyclerview.widget.RecyclerView>
+            <com.scwang.smart.refresh.footer.BallPulseFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.gjjy.basiclib.widget.PubRefreshLayout>
+    </FrameLayout>
+
+    <include layout="@layout/block_comments_edit"/>
+
+</FrameLayout>

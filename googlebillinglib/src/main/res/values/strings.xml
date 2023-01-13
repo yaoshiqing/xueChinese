@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="stringYears">Years</string>
+    <string name="stringYear">Year</string>
+    <string name="stringMonths">Months</string>
+    <string name="stringMonth">Month</string>
+    <string name="stringWeeks">Weeks</string>
+    <string name="stringWeek">Week</string>
+    <string name="stringDays">Days</string>
+    <string name="stringDay">Day</string>
+    <string name="stringYearsOfCaps">YEARS</string>
+    <string name="stringYearOfCaps">YEAR</string>
+    <string name="stringMonthsOfCaps">MONTHS</string>
+    <string name="stringMonthOfCaps">MONTH</string>
+    <string name="stringWeeksOfCaps">WEEKS</string>
+    <string name="stringWeekOfCaps">WEEK</string>
+    <string name="stringDaysOfCaps">DAYS</string>
+    <string name="stringDayOfCaps">DAY</string>
+</resources>

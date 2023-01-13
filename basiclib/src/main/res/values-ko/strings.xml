@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XueChineseBase</string>
+    <string name="stringNetworkServiceTitle">%s 서비스가 실행 중입니다</string>
+    <string name="stringColon">:</string>
+    <string name="stringZero">0</string>
+    <string name="stringEmpty">" "</string>
+    <string name="stringOK">오키</string>
+    <string name="stringError">실수!</string>
+    <string name="stringStartNow">지금 시작</string>
+    <string name="stringEmailTips">잘못된 전자 메일 주소 형식</string>
+    <string name="menuFront">학습</string>
+    <string name="menuDiscovery">발견</string>
+    <string name="menuImmerse">몰입식</string>
+    <string name="menuUserCenter">나</string>
+    <string name="stringMsgCenterSystemNotify">시스템 알림</string>
+    <string name="stringMsgCenterVipNotify">회원 알림</string>
+    <string name="stringMainMore">더 보기</string>
+    <string name="stringUpdate">지금 설치</string>
+    <string name="stringUpdateTitle">새 버전 V%s 발견</string>
+    <string name="stringNeedLoginTitle">학습 진도가 잃어버릴 수도 있어요! 지금 로그인하여 저장하는거 추천!!</string>
+    <string name="stringNeedLoginTips">더 나은 학습을 위해</string>
+    <string name="stringDialogError">오답</string>
+    <string name="stringDialogCorrect">정답</string>
+    <string name="stringDialogEndLearning">정말 학습 종료 할까요?</string>
+    <string name="stringDialogEndTest">정말 시험 종료 할까요?</string>
+    <string name="stringDialogEndFastReView">정말 빠른 복습 종료 할까요?</string>
+    <string name="stringDialogRemoveQuestion">이 질문을 지울까요?</string>
+    <string name="stringDialogEndWrongQuestionSet">정말 오답집 덮을까요 ?</string>
+    <string name="stringDialogMarkNotifyMsg">디 읽음으로 표시</string>
+    <string name="stringRemindOfLogin">로그인 하면, 학습 알림 켤수 있어요!</string>
+    <string name="stringDialogLogOut">정말 종료 할까요?</string>
+    <string name="stringNotLoggedTips">프리미엄 권익 잃어버릴 수도 있어요, 지금 로그인/등록 하는거 추천!</string>
+    <string name="stringNetworkError">인터넷 접속이 안 돼요，새로 고쳐보세요！</string>
+    <string name="contentDialogEndLearning">지금 나가면 이 섹션의 진도 잃어 보릴수 있어요. 끝까지 견지하는 것이 바로 승리하는 것이다 !</string>
+    <string name="contentDialogEndTest">시험 종료하면 진도가 저장되지 않아요</string>
+    <string name="contentDialogEndFastReView">지금 종료하면 복습지도가 저장되지않을거에요. 복습 내용이 배운 것을 기억하기에 도움 됩니다~</string>
+    <string name="contentDialogEndWrongQuestionSet">틀린 것을 복습하면 나중에 다시 틀리지 않다는 거 알시지오!</string>
+    <string name="contentDialogSkipTest">안타깝게도 Advanced Placement 시험에 합격하지 못했습니다. 계속 연습하세요.</string>
+    <string name="contentDialogFastTest">빠른 학습 모드에는 현재 수업의 모든 단어가 포함되어 있습니다. 모드를 시작하여 보상을 받으십시오!!</string>
+    <string name="contentDialogSkipTestOfFewerLightningTitle">번개가 4개도 안 됩니다</string>
+    <string name="contentDialogSkipTestOfFewerLightning">Advanced Placement 시험 체험해보세요 , 번개 필요 없이.</string>
+    <string name="stringFewerLightningGoPracticeBtn">연습하러 </string>
+    <string name="stringCheck">확인</string>
+    <string name="stringContinue">계속</string>
+    <string name="stringStart">시작</string>
+    <string name="stringDialogKeep">취소</string>
+    <string name="stringDialogClose">닫기</string>
+    <string name="stringDialogRemove">지우기</string>
+    <string name="stringTryAgain">다시 시도</string>
+    <string name="stringOtherLogin">다른 방법 사용</string>
+    <string name="stringYes">예</string>
+    <string name="stringNo">아니요</string>
+    <string name="stringCancelA">취소</string>
+    <string name="stringConfirm">확인</string>
+    <string name="stringSignature">게스트</string>
+    <string name="stringMsgCenter">정보 센터</string>
+    <string name="stringMsgList">정보 목록</string>
+    <string name="stringReward">성취하다</string>
+    <string name="stringRanking">주간 차트</string>
+    <string name="stringFriends">좋은 친구</string>
+    <string name="stringVouchers">바우처</string>
+    <string name="stringSetUp">설정</string>
+    <string name="stringFeedback">피드백</string>
+    <string name="stringEvaluation">평가하기</string>
+    <string name="stringTerms">개인정보 보호 및 이용약관 정책</string>
+    <string name="stringIntegral">포인트 레코드</string>
+    <string name="stringRules">규칙</string>
+    <string name="stringLoginBtn">로그인</string>
+    <string name="stringSignUpBtn">등록</string>
+    <string name="stringTalkLaterBtn">나중에</string>
+    <string name="stringSaveBtn">저장</string>
+    <string name="stringRefreshBtn">새로 고침</string>
+    <string name="stringSelectWeek">요일 선택</string>
+    <string name="stringSelectTime">시간 선택</string>
+    <string name="stringDefaultTime">20:00</string>
+    <string name="stringNotMessage">정보 없음</string>
+    <string name="stringChangeUserName">이름 편집</string>
+    <string name="stringUserNameMaxLength">이름 25자 초과하면 안됩니다</string>
+    <string name="stringHearing">듣기</string>
+    <string name="stringVoice">말하기</string>
+    <string name="stringTranslate">번역</string>
+    <string name="stringSound">소리</string>
+    <string name="stringSlowAudio">저속 모드</string>
+    <string name="stringHot">HOT</string>
+    <string name="stringRewardItemHeartContent">퀴즈를 통과하면 레드하트 보상을 받을 수 있습니다.</string>
+    <string name="stringRewardItemLightningContent">수업 완성하여 번개보상을 받으십시오.</string>
+    <string name="stringRewardItemXPContent">더 많은 경험치와 더 높은 랭킹을 얻기 위해 지금 공부 시작 합시다 !</string>
+    <string name="stringBuyVipTitle">VIP 귄익</string>
+    <string name="stringBuyVipContent">VIP 학생들은 일반 학생들보다 더욱 더 효율적이라고 합니다.</string>
+    <string name="stringBuyVipAuthText1">시간 제한 없이 모든 수업 공부할수 있습니다</string>
+    <string name="stringBuyVipAuthText2">제한 없이 모든 Advanced Placement 시험 볼 수있습니다</string>
+    <string name="stringBuyVipAuthText3">제한 없이 모든 단계의 수업 공부 할 수있습니다.</string>
+    <string name="stringBuyVipAuthText4">무료로 모든 동영상 볼 수있습니다.</string>
+    <string name="stringBuyVipAuthText5">무료로 모든 오디오 들을 수있습니다.</string>
+    <string name="stringBuyVipAuthText6">기록을 경신 더 높은 점수를 얻으십시오.</string>
+    <string name="stringBuyVipAuthText7">포인트 2배</string>
+    <string name="stringBuyVipBtn">지금 구매</string>
+    <string name="stringBuyVipSpecialOffer">스페셜 할인</string>
+    <string name="stringBuyVipOtherList">기타 계획:</string>
+    <string name="stringBuyVipInfo">만기후 자동 연장, 언제든 취소가능</string>
+    <string name="stringUnlockVip">해제</string>
+    <string name="stringVideoSpeedText">변속</string>
+    <string name="stringVideoSpeedX08">0.8x</string>
+    <string name="stringVideoSpeedX10">1.0x</string>
+    <string name="stringVideoSpeedX125">1.25x</string>
+    <string name="stringVideoSpeedX15">1.5x</string>
+    <string name="stringCollectSuccess">즐겨찾기에 추가했어요~!재생목록에서 확인 하세요</string>
+    <string name="stringLoginOrRegister">등록/로그인</string>
+    <string name="stringLoginOfTestTips">학습 데이터가 손실될 수 있습니다. 로그인하여 프로세스를 저장하고 테스트를 완료하십시오.</string>
+    <string name="stringInsufficientPoints">포인트가 부족합니다.</string>
+    <string name="stringPointsRedeemNowBtn">지금 상환</string>
+    <string name="stringPointsRedeemIntegralNum">필수 포인트</string>
+    <string name="stringPointsRedeemLightningNum">교환수</string>
+    <string name="stringPointsRedeemTitle">나머지 점</string>
+    <string name="stringPhotoAlbum">사진 앨범</string>
+    <string name="stringCommentsEditHint">내가 말하고 싶은건…</string>
+    <string name="stringVoucherOfBuyVipTicketOfVip">정식 회원 이미 되었습니다`!</string>
+    <string name="stringVoucherOfBuyVipTicketOfFreeVip">무료 회원 이미 되었습니다!</string>
+    <string name="stringVoucherOfBuyVipTicketOfSuccess">무료 회원 체험이 !</string>
+    <string name="stringVoucherOfBuyVipTicketOfFailure">무료 회원 체험이 실패했습니다. 다시 시도하십시오!</string>
+    <string name="stringCommentTimeOfDayAgo">&#160;일 전</string>
+    <string name="stringCommentTimeOfYesterday">어제</string>
+    <string name="stringCommentTimeOfHoursAgo">&#160;시간 전</string>
+    <string name="stringCommentTimeOfMinutesAgo">&#160;분 전</string>
+    <string name="stringCommentTimeOfRecently">방금</string>
+    <string name="stringVipEndOkBtn">계속 사용</string>
+    <string name="stringIntegralLostTitle">포인트 손실될 수 있습니다. 지금 로그인하십시오..</string>
+    <string name="stringVipEndTitle">무료 회원 만료 되었습니다</string>
+    <string name="stringVouchersUnusedUseNow">지금 사용하세요.</string>
+    <string name="stringFreeVouchersTipsOfEndClose"> 회원님 개인 페이지에서  멤버십 연장 할수있습니다.</string>
+    <string name="stringFreeVouchersTipsOfBeginFailed">무료회원 실패했습니다. 다시 시도하십시오..</string>
+    <string name="stringFreeVouchersTipsOfBeginSuccess">"무료회원 자격이 성공적으로 시작되었습니다!"</string>
+    <string name="stringFreeVouchersTipsOfBeginClose">보너스에서 보실 수 있습니다.</string>
+    <string name="stringFreeVouchersTitleOfInvited">친구를 성공적으로 초대하여 무료 멤버십 상품권을 드립니다!</string>
+    <string name="stringFreeVouchersTitleOfSent">친구가 VIP 무료 체험권을 보내드렸습니다. VIP을 체험하실 수 있습니다!!(ﾉ´▽｀)ﾉ♪</string>
+    <string name="stringShareFailure">공유 실패</string>
+    <string name="stringShareSuccess">공유 성공!</string>
+    <string name="stringCollectCancel">즐겨찾기에서 제거 했습니다</string>
+    <string name="stringPriceRebate">%OFF</string>
+    <string name="stringFirstDiscountOfYear">내년 가격회복</string>
+    <string name="stringFirstDiscountOfMonth">%s달 후 가격회복 </string>
+    <string name="stringFirstDiscountOfWeek">다음주 가격회복</string>
+
+    <string-array name="stringBuyVipEvalUserNameArray">
+        <item>로웨나</item>
+        <item>리건</item>
+        <item>티파니</item>
+    </string-array>
+    <string-array name="stringBuyVipEvalLearnedDaysArray">
+        <item>배운 87 일</item>
+        <item>배운 54 일</item>
+        <item>배운 26 일</item>
+    </string-array>
+    <string-array name="stringBuyVipEvalContentArray">
+        <item>집에서 앱으로 중국어를 배울 수 있으니 좋네요. 컨테츠가  다양하고 재밌어서도 좋아요~</item>
+        <item>테스트 참여했는데 영상와 오디오가 너무 재밌어요~반복적으로 들고 있고  정말 도움이 될거같아요. 괜찮은 앱이에요.</item>
+        <item>화면 예쁘고 콘텐츠가 아주 실용적이라 괜찮네요 ~</item>
+    </string-array>
+</resources>

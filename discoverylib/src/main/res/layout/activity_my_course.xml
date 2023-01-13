@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <Space
+        android:id="@+id/toolbar_height_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.gjjy.basiclib.widget.Toolbar
+        android:id="@+id/my_course_list_tb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:id="@+id/my_course_list_rg_table"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/my_course_list_rb_collect_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/stringMyCoursesCollectTable"
+            android:textSize="18sp"
+            android:textColor="@drawable/selector_table_menu_text_color"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:button="@null"
+            android:gravity="center"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/my_course_list_rb_have_read_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/stringMyCoursesHaveReadTable"
+            android:textSize="18sp"
+            android:textColor="@drawable/selector_table_menu_text_color"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:button="@null"
+            android:gravity="center"
+            android:checked="false"/>
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/my_course_list_iv_table_div"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_course_menu_selected"
+        android:contentDescription="@string/stringEmpty"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorMainBG">
+        <TextView
+            android:id="@+id/my_course_list_tv_not_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:drawableTop="@drawable/ic_my_course_collect_not_data"
+            android:drawablePadding="40dp"
+            tools:text="@string/stringMyCourseNotDataOfCollect"
+            android:textSize="15sp"
+            android:textColor="@color/color66"
+            android:textStyle="bold"
+            android:contentDescription="@string/stringEmpty"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="52dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:visibility="gone"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/my_course_list_vp_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+    </FrameLayout>
+
+</LinearLayout>

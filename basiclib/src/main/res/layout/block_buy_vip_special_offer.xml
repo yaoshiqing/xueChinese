@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_buy_vip_special_icon"
+        android:drawablePadding="5dp"
+        android:text="@string/stringBuyVipSpecialOffer"
+        android:textSize="14sp"
+        android:textColor="@color/colorError"
+        android:layout_marginEnd="5dp"/>
+
+    <TextView
+        android:id="@+id/buy_vip_tv_hour"
+        tools:text="00"
+        style="@style/SpecialOfferStyle"/>
+
+    <TextView style="@style/SpecialOfferColonStyle"/>
+
+    <TextView
+        android:id="@+id/buy_vip_tv_minute"
+        tools:text="00"
+        style="@style/SpecialOfferStyle"/>
+
+    <TextView style="@style/SpecialOfferColonStyle"/>
+
+    <TextView
+        android:id="@+id/buy_vip_tv_second"
+        tools:text="00"
+        style="@style/SpecialOfferStyle"/>
+</LinearLayout>
