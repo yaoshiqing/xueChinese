@@ -91,7 +91,6 @@
                     android:id="@+id/mobile_num_pre"
                     android:layout_width="60dp"
                     android:layout_height="42dp"
-                    android:text="+82"
                     android:textColor="#b75134"
                     android:textSize="20dp"
                     android:gravity="center"
@@ -104,7 +103,6 @@
                     android:layout_marginStart="10dp"
                     app:evEnableCheckButton="false"
                     app:evHint="@string/stringEmailMobileNumHint"
-                    app:evText="18676287610"
                     app:evMaxLength="25" />
 
             </LinearLayout>

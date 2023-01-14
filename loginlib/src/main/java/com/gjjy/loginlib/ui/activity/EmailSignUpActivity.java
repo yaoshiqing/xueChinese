@@ -1,8 +1,11 @@
 package com.gjjy.loginlib.ui.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextWatcher;
@@ -26,10 +29,6 @@ import com.ybear.mvp.annotations.Presenter;
 import com.ybear.ybutils.utils.Utils;
 import com.ybear.ybutils.utils.toast.Build;
 
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
 /**
  * 邮箱登录注册
  */
@@ -47,12 +46,14 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
     private EditView evVerifyCode;
     private TextView tvLoginBtn;
     private TextView txtCountryCode;
+    // 单选框
+    private AlertDialog alertDialogCountryCode;
+    private TimeCount mTimeCount;
 
     private Build mToastBuild;
     private TextView btnSend;
     // 发送短信倒计时 60s
-    private int index = 60;
-    private String selectedCountryCode = "+86";
+    private int countTime = 60;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
         initView();
         initData();
         initListener();
-        //清除透明状态栏
+        // 清除透明状态栏
         clearTranslucentStatus();
     }
 
@@ -93,6 +94,10 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
         mToastBuild = new Build();
         mToastBuild.setGravity(Gravity.BOTTOM);
         mToastBuild.setYOffset(Utils.dp2Px(this, 30));
+        // 初始化 countryCode
+        txtCountryCode.setText(getResources().getStringArray(R.array.mobile_num_pre)[0]);
+        // 第一个参数表示总时间，第二个参数表示时间间隔
+        mTimeCount = new TimeCount(countTime * 1000, 1000);
     }
 
 
@@ -100,7 +105,24 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
         txtCountryCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
+                alertBuilder.setTitle("Please Select Country Code");
+                String[] countryCodes = getResources().getStringArray(R.array.mobile_num_pre);
+                int checkedItem = 0;
+                for (int i = 0; i < countryCodes.length; i++) {
+                    if (countryCodes[i].equals(txtCountryCode.getText().toString().trim())) {
+                        checkedItem = i;
+                    }
+                }
+                alertBuilder.setSingleChoiceItems(R.array.mobile_num_pre, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        txtCountryCode.setText(countryCodes[i]);
+                        alertDialogCountryCode.dismiss();
+                    }
+                });
+                alertDialogCountryCode = alertBuilder.create();
+                alertDialogCountryCode.show();
             }
         });
 
@@ -108,42 +130,17 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                index--;
-                                btnSend.setText(index + "s");
-                                btnSend.setEnabled(false);
-                                if (index == 2) {
-                                    Random random = new Random();
-                                    int i = random.nextInt(899999);
-                                    int random_ed = i + 100000;
-                                    btnSend.setText(random_ed + "");
-                                }
-                                if (index <= 0) {
-                                    btnSend.setEnabled(true);
-                                    btnSend.setText(getResources().getString(R.string.stringEmailMobileVerifyCodeButton));
-                                    timer.cancel();
-                                    index = 5;
-                                }
-                            }
-                        });
-                    }
-                }, 0, 1000);
-
+                mTimeCount.start();
+                // 发送地区号 + 手机号
                 String phone = evMobileNum.getTextString();
-                String countryCode = selectedCountryCode.substring(1);
+                String countryCode = txtCountryCode.getText().toString().trim().substring(1);
                 mPresenter.sendSmsCode(phone, countryCode);
             }
         });
 
         tbToolbar.setOnClickBackBtnListener(v -> onBackPressed());
 
-        //登录
+        // 登录
         tvLoginBtn.setOnClickListener(v -> {
             if (getStackManage().isHaveExistActivity(EmailLoginActivity.class)) {
                 finish();
@@ -233,6 +230,37 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
             );
         });
 
+        EditText etMobileNum = evMobileNum.getView();
+        etMobileNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mPresenter.checkPhone(etMobileNum.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        EditText etVerifyCode = evVerifyCode.getView();
+        etVerifyCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mPresenter.checkVerifyCode(etVerifyCode.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
         //注册
 //        tvSignUpBtn.setOnClickListener(v -> mPresenter.signUp(
 //                evName.getTextString(),
@@ -261,6 +289,31 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
         intent.putExtra(Constant.PASSWORD, pwd);
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+    // 创建一个倒计时功能类
+    private class TimeCount extends CountDownTimer {
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        // 每次间隔时间的回调，millisUntilFinished剩余的时间，单位是毫秒
+        @Override
+        public void onTick(long millisUntilFinished) {
+            btnSend.setClickable(false);
+            btnSend.setEnabled(false);
+            btnSend.setTextSize(13);
+            btnSend.setText(millisUntilFinished / 1000 + "s");
+        }
+
+        //倒计时结束时的回调
+        @Override
+        public void onFinish() {
+            btnSend.setClickable(true);
+            btnSend.setEnabled(true);
+            btnSend.setTextSize(13);
+            btnSend.setText(getResources().getString(R.string.stringEmailMobileVerifyCodeButton));
+        }
     }
 
     @Override

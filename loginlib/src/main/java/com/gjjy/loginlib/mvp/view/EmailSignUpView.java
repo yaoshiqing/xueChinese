@@ -20,7 +20,7 @@ public interface EmailSignUpView extends MvpViewable {
 
     void onCallUserRegisterResult(String id, String pwd, String phone, boolean isSuccess, String errMsg);
 
-    void onCallSendSmsCodeResult(String phone,int errCode,String errMsg);
+    void onCallSendSmsCodeResult(String phone, int errCode, String errMsg);
 
     void onCallAuthSignUp(boolean isAuth);
 }

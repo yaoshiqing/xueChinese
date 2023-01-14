@@ -39,7 +39,9 @@ public class EmailSignUpPresenter extends MvpPresenter<EmailSignUpView> {
     }
 
     private void checkIsNull() {
-        viewCall(v -> v.onCallAuthSignUp(!mNameIsNull && !mEmailIsNull && !mPwdIsNull && !mPwd2IsNull && !mPhoneIsNull && !mSmsCodeIsNull));
+        viewCall(v -> v.onCallAuthSignUp(
+                !mNameIsNull && !mEmailIsNull && !mPwdIsNull
+                        && !mPwd2IsNull && !mPhoneIsNull && !mSmsCodeIsNull));
     }
 
     public void startEmailLoginActivity() {
@@ -74,9 +76,9 @@ public class EmailSignUpPresenter extends MvpPresenter<EmailSignUpView> {
                 && checkEqPassword(pwd1, pwd2);
     }
 
-    private boolean check(String name, String account, String pwd1, String pwd2, String phone, String verifyCode) {
+    private boolean checkValid(String name, String account, String pwd1, String pwd2, String phone, String verifyCode) {
         boolean checkResult = check(name, account, pwd1, pwd2);
-        return checkResult && checkPhone(phone) && checkSmsCode(verifyCode);
+        return checkResult && checkPhone(phone) && checkVerifyCode(verifyCode);
     }
 
     public boolean checkName(@NonNull String name) {
@@ -116,14 +118,13 @@ public class EmailSignUpPresenter extends MvpPresenter<EmailSignUpView> {
     }
 
     public boolean checkPhone(@NonNull String phone) {
-        boolean checkPhone = mLoginModel.checkPassword(phone.trim());
         mPhoneIsNull = TextUtils.isEmpty(phone);
         checkIsNull();
-        return checkPhone;
+        return mPhoneIsNull;
     }
 
-    public boolean checkSmsCode(@NonNull String smsCode) {
-        boolean checkSmsCode = mLoginModel.checkPassword(smsCode.trim());
+    public boolean checkVerifyCode(@NonNull String smsCode) {
+        boolean checkSmsCode = mLoginModel.checkVerifyCode(smsCode.trim());
         mSmsCodeIsNull = TextUtils.isEmpty(smsCode);
         checkIsNull();
         return checkSmsCode;
@@ -151,7 +152,7 @@ public class EmailSignUpPresenter extends MvpPresenter<EmailSignUpView> {
             return;
         }
         //数据检查
-        if (!check(nickname, email, password, checkPassword, phone, smsCode)) {
+        if (!checkValid(nickname, email, password, checkPassword, phone, smsCode)) {
             return;
         }
         UserRegisterReq req = new UserRegisterReq();

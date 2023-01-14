@@ -24,12 +24,12 @@
     <string name="stringEmailVerificationCodeErrorTips">Verification code is error.</string>
     <string name="stringEmailResendBtn">Resend</string>
     <string name="stringEmailRegainBtn">Regain</string>
-    <string name="stringNameHint">Name</string>
+    <string name="stringNameHint">Nickname</string>
     <string name="stringEmailHint">Email</string>
     <string name="stringEmailVerificationCodeHint">Verification code</string>
     <string name="stringEmailOldPasswordHint">Old password</string>
     <string name="stringEmailConfirmPasswordHint">Confirm password</string>
-    <string name="stringEmailMobileNumHint" tools:ignore="ExtraTranslation">Please enter mobile num</string>
+    <string name="stringEmailMobileNumHint" tools:ignore="ExtraTranslation">Please enter mobile number</string>
     <string name="stringEmailMobileVerifyCodeHint" tools:ignore="ExtraTranslation">Verification code</string>
     <string name="stringEmailMobileVerifyCodeButton" tools:ignore="ExtraTranslation">send</string>
     <string name="stringNameTips">25 characters or less</string>
