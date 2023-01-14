@@ -12,8 +12,8 @@ public class OSSInfoEntity extends BaseReqEntity {
     private int expiration;             // sts token过期时间
     private String bucketName;          // 存储空间
     private String region;              // 区域名称
-    private String endPoint;
-    private String url;                 //
+    private String endpointUrl;         // bucket endpoint
+    private String rootUrl;             // 访问根域名
 
     @NonNull
     @Override
@@ -25,8 +25,8 @@ public class OSSInfoEntity extends BaseReqEntity {
                 ", expiration='" + expiration + '\'' +
                 ", bucketName='" + bucketName + '\'' +
                 ", region='" + region + '\'' +
-                ", endPoint='" + endPoint + '\'' +
-                ", url='" + url + '\'' +
+                ", endpointUrl='" + endpointUrl + '\'' +
+                ", rootUrl='" + rootUrl + '\'' +
                 '}';
     }
 
@@ -70,19 +70,19 @@ public class OSSInfoEntity extends BaseReqEntity {
         this.region = region;
     }
 
-    public String getEndPoint() {
-        return endPoint;
+    public String getEndpointUrl() {
+        return endpointUrl;
     }
 
-    public void setEndPoint(String endPoint) {
-        this.endPoint = endPoint;
+    public void setEndpointUrl(String endpointUrl) {
+        this.endpointUrl = endpointUrl;
     }
 
-    public String getUrl() {
-        return url;
+    public String getRootUrl() {
+        return rootUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setRootUrl(String rootUrl) {
+        this.rootUrl = rootUrl;
     }
 }
