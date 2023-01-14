@@ -1266,6 +1266,8 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
             pause();
         } else if (mPlayerState == IPlayer.paused || mPlayerState == IPlayer.prepared || mPlayerState == IPlayer.stopped) {
             start();
+        } else if(mPlayerState == IPlayer.completion){
+            rePlay();
         }
 
         if (onPlayStateBtnClickListener != null) {
