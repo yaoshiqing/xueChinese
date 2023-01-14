@@ -35,12 +35,12 @@ public class OtherModel extends MvpModel {
      */
     private void initOssInfo(Application app) {
         OSS.get().setEnableLog(LogUtil.isDebug());
-        mReqOther.reqOssInfo(data -> OSS.get().init(
+        mReqOther.reqOSSUploadToken(data -> OSS.get().init(
                 app,
                 data.getAccessKeyId(),
                 data.getAccessKeySecret(),
-                data.getEndpoint(),
-                data.getBucket(),
+                data.getEndPoint(),
+                data.getBucketName(),
                 data.getUrl()
         ));
         LogUtil.e("OtherModel -> initOssInfo");
@@ -64,7 +64,6 @@ public class OtherModel extends MvpModel {
     private final List<String> urls = new ArrayList<>();
 
     public void feedback(String content, String email, List<File> imgFiles, Comparable<Boolean> call) {
-
         //没有图片时
         if (imgFiles.size() == 0) {
             mReqOther.reqFeedback(content, email, urls, result1 -> {

@@ -6,11 +6,14 @@ import androidx.annotation.NonNull;
  * 上传图片
  */
 public class OSSInfoEntity extends BaseReqEntity {
-    private String accessKeyId;         //ID
-    private String accessKeySecret;     //秘钥
-    private String endpoint;            //访问域名
-    private String bucket;              //存储空间
-    private String url;
+    private String accessKeyId;         // ID
+    private String accessKeySecret;     // 秘钥
+    private String securityToken;       // 安全令牌
+    private int expiration;             // sts token过期时间
+    private String bucketName;          // 存储空间
+    private String region;              // 区域名称
+    private String endPoint;
+    private String url;                 //
 
     @NonNull
     @Override
@@ -18,8 +21,11 @@ public class OSSInfoEntity extends BaseReqEntity {
         return "OSSInfoEntity{" +
                 "accessKeyId='" + accessKeyId + '\'' +
                 ", accessKeySecret='" + accessKeySecret + '\'' +
-                ", endpoint='" + endpoint + '\'' +
-                ", bucket='" + bucket + '\'' +
+                ", securityToken='" + securityToken + '\'' +
+                ", expiration='" + expiration + '\'' +
+                ", bucketName='" + bucketName + '\'' +
+                ", region='" + region + '\'' +
+                ", endPoint='" + endPoint + '\'' +
                 ", url='" + url + '\'' +
                 '}';
     }
@@ -32,12 +38,51 @@ public class OSSInfoEntity extends BaseReqEntity {
         this.accessKeySecret = accessKeySecret;
     }
 
-    public String getEndpoint() { return endpoint; }
-    public void setEndpoint(String endpoint) { this.endpoint = endpoint; }
+    public String getSecurityToken() {
+        return securityToken;
+    }
 
-    public String getBucket() { return bucket; }
-    public void setBucket(String bucket) { this.bucket = bucket; }
+    public void setSecurityToken(String securityToken) {
+        this.securityToken = securityToken;
+    }
 
-    public String getUrl() { return url; }
-    public void setUrl(String url) { this.url = url; }
+    public int getExpiration() {
+        return expiration;
+    }
+
+    public void setExpiration(int expiration) {
+        this.expiration = expiration;
+    }
+
+    public String getBucketName() {
+        return bucketName;
+    }
+
+    public void setBucketName(String bucketName) {
+        this.bucketName = bucketName;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getEndPoint() {
+        return endPoint;
+    }
+
+    public void setEndPoint(String endPoint) {
+        this.endPoint = endPoint;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

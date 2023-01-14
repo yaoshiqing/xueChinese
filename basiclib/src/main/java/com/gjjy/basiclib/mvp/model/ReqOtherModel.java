@@ -6,10 +6,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.gjjy.basiclib.api.apiOther.BuyListApi;
 import com.gjjy.basiclib.api.apiOther.CreateOrderApi;
 import com.gjjy.basiclib.api.apiOther.FeedbackApi;
-import com.gjjy.basiclib.api.apiOther.GetOssInfoApi;
 import com.gjjy.basiclib.api.apiOther.GoogleBuyListApi;
 import com.gjjy.basiclib.api.apiOther.NewSubApi;
 import com.gjjy.basiclib.api.apiOther.RecordKeywordApi;
+import com.gjjy.basiclib.api.apiOther.UploadTokenApi;
 import com.gjjy.basiclib.api.apiPopupNotice.PopupNoticeApi;
 import com.gjjy.basiclib.api.apiStudyDiscover.GetVodPlayAuthApi;
 import com.gjjy.basiclib.api.apiVersion.UpdateCheckApi;
@@ -70,21 +70,6 @@ public class ReqOtherModel extends BasicGlobalReqModel {
         api.addParam("email", email);
         api.addParam("img_url", JSONObject.toJSONString(imgUrls));
         callbackSuccess(api, call);
-        reqApi(api);
-    }
-
-    /**
-     * 获取阿里云OSS图片上传信息
-     *
-     * @param call 请求结果
-     */
-    public void reqOssInfo(Consumer<OSSInfoEntity> call) {
-        GetOssInfoApi api = new GetOssInfoApi();
-        api.setCallbackString((s, isResponse) -> {
-            if (call == null) return;
-            OSSInfoEntity data = toReqEntity(s, OSSInfoEntity.class);
-            call.accept(data == null ? new OSSInfoEntity() : data);
-        });
         reqApi(api);
     }
 
@@ -202,6 +187,20 @@ public class ReqOtherModel extends BasicGlobalReqModel {
             if (call != null) {
                 call.accept(toReqEntityOfList(s, GoogleBuySubEntity.class));
             }
+        });
+        reqApi(api);
+    }
+
+    /**
+     * STS-token文件上传
+     * @param call 请求结果
+     */
+    public void reqOSSUploadToken(Consumer<OSSInfoEntity> call) {
+        UploadTokenApi api = new UploadTokenApi();
+        api.setCallbackString((s, isResponse) -> {
+            if (call == null) return;
+            OSSInfoEntity data = toReqEntity(s, OSSInfoEntity.class);
+            call.accept(data == null ? new OSSInfoEntity() : data);
         });
         reqApi(api);
     }
