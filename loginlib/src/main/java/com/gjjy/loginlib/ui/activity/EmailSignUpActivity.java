@@ -106,7 +106,7 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
-                alertBuilder.setTitle("Please Select Country Code");
+                alertBuilder.setTitle(getResources().getString( R.string.stringIntegralCountryCode));
                 String[] countryCodes = getResources().getStringArray(R.array.mobile_num_pre);
                 int checkedItem = 0;
                 for (int i = 0; i < countryCodes.length; i++) {
@@ -366,6 +366,11 @@ public class EmailSignUpActivity extends BaseActivity implements EmailSignUpView
 
             if (errMsg != null) {
                 showToast(errMsg, mToastBuild);
+                // 发送按钮重新恢复
+                btnSend.setClickable(true);
+                btnSend.setEnabled(true);
+                btnSend.setTextSize(13);
+                btnSend.setText(getResources().getString(R.string.stringEmailMobileVerifyCodeButton));
             }
         }
     }

@@ -101,6 +101,7 @@
                     android:id="@+id/email_sign_up_ev_mobile"
                     style="@style/MobileEditStyle"
                     android:layout_marginStart="10dp"
+                    android:inputType="phone"
                     app:evEnableCheckButton="false"
                     app:evHint="@string/stringEmailMobileNumHint"
                     app:evMaxLength="25" />

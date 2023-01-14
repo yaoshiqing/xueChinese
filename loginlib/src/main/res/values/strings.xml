@@ -46,4 +46,10 @@
     <string name="stringExitAppLoginContent">Keep your learning now!</string>
     <string name="stringExitAppLaterTitle">New friend?</string>
     <string name="stringExitAppLaterContent">Start your learning now!</string>
+    <string name="stringIntegralCountryCode">Please select the country code</string>
+    <string-array name="mobile_num_pre">
+        <item>+82</item>
+        <item>+1</item>
+        <item>+86</item>
+    </string-array>
 </resources>

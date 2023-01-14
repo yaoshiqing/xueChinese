@@ -46,4 +46,10 @@
     <string name="stringExitAppLaterContent">지금 바로 학습을 시작하십시오!</string>
     <string name="stringEmailVerificationCodeInvalidTips">확인 코드가 잘못되었습니다.</string>
     <string name="stringEmailVerificationCodeErrorTips">확인코드가오류입니다.</string>
+    <string name="stringIntegralCountryCode">국가 코드를 선택하십시오.</string>
+    <string-array name="mobile_num_pre">
+        <item>+82</item>
+        <item>+1</item>
+        <item>+86</item>
+    </string-array>
 </resources>
