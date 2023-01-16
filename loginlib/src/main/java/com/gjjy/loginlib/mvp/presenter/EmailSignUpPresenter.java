@@ -120,7 +120,7 @@ public class EmailSignUpPresenter extends MvpPresenter<EmailSignUpView> {
     public boolean checkPhone(@NonNull String phone) {
         mPhoneIsNull = TextUtils.isEmpty(phone);
         checkIsNull();
-        return mPhoneIsNull;
+        return !mPhoneIsNull;
     }
 
     public boolean checkVerifyCode(@NonNull String smsCode) {

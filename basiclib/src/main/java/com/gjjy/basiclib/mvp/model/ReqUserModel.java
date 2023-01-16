@@ -4,6 +4,7 @@ import androidx.annotation.IntRange;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 
+import com.gjjy.basiclib.Config;
 import com.gjjy.basiclib.api.apiFcm.PushBindApi;
 import com.gjjy.basiclib.api.apiFcm.PushUnBindApi;
 import com.gjjy.basiclib.api.apiOther.RankingListApi;
@@ -356,6 +357,7 @@ public class ReqUserModel extends BasicGlobalReqModel {
         SendSmsCodeApi api = new SendSmsCodeApi();
         api.addParam("phone", phone);
         api.addParam("countryCode", countryCode);
+        api.addParam("lang", Config.getLang());
         api.setCallbackString((s, isResponse) -> {
             if (call == null) return;
             BaseReqEntity data = toReqEntityOfBase(s, BaseReqEntity.class);

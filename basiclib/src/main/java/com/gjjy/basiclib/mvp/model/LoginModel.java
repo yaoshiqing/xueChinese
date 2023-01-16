@@ -71,17 +71,17 @@ public class LoginModel extends MvpModel {
     }
 
     public boolean checkVerifyCode(@NonNull String verifyCode) {
-        boolean isValid = false;
+        boolean isCodeValid = false;
         // 如果长度是6，则可能是6位数字，否则不可能6位的
-        if (verifyCode.length() == 6) {
+        if (verifyCode != null && verifyCode.length() == 6) {
             try {
                 // 转换成数字，如果不是数字，则会抛出异常，进入catch中
                 int verfiyNumber = Integer.valueOf(verifyCode);
-                isValid = true;
+                isCodeValid = true;
             } catch (Exception ex) {
-                isValid = false;
+                isCodeValid = false;
             }
         }
-        return isValid;
+        return isCodeValid;
     }
 }
