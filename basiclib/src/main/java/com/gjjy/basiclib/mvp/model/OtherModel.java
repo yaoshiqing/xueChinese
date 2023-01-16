@@ -41,7 +41,8 @@ public class OtherModel extends MvpModel {
                 data.getAccessKeySecret(),
                 data.getEndpointUrl(),
                 data.getBucketName(),
-                data.getRootUrl()
+                data.getRootUrl(),
+                data.getSecurityToken()
         ));
         LogUtil.e("OtherModel -> initOssInfo");
     }

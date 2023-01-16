@@ -31,5 +31,5 @@ ext {
     externalBillingClient = 'com.android.billingclient:billing:4.0.0'
 
     // aliyun
-    externalAliyundpaOss = 'com.aliyun.dpa:oss-android-sdk:2.9.4'
+    externalAliyundpaOss = 'com.aliyun.dpa:oss-android-sdk:+'
 }
