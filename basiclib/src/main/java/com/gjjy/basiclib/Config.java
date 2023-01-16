@@ -28,7 +28,7 @@ public class Config {
     public static final String URL_MSG_DETAILS = URL_API + "/api/content/index?type=message&id=";
 
     //官网页 - FB渠道
-    public static final String mFacebookUrl = "https://www.facebook.com/Chic-Talk-189072083199751";
+    public static final String mFacebookUrl = "https://www.facebook.com/profile.php?id=100082885885324";
     //公告页
     public static final String mAnnouncementUrl = URL_H5 + "notice.html?" + getHtmlLangArg();
     //条款页https://play.google.com/apps/internaltest/4698621584117754273https://play.google.com/apps/internaltest/4698621584117754273
