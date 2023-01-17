@@ -275,7 +275,7 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
     private OnStoppedListener mOnStoppedListener;
     //打点信息点击事件
     private ControlView.OnDotViewClickListener mOnDotViewClickListener;
-    //ControView隐藏事件
+    //ControlView隐藏事件
     private ControlView.OnControlViewHideListener mOnControlViewHideListener;
     //投屏时,视频播放完成回调事件
     private OnScreenCostingVideoCompletionListener mOnScreenCostingVideoCompletionListener;
@@ -981,7 +981,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                 if(mThumbnailPrepareSuccess){
                     showThumbnailView();
                 }
-
             }
 
             @Override
@@ -991,7 +990,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
         });
         //清晰度按钮点击
         mControlView.setOnQualityBtnClickListener(new ControlView.OnQualityBtnClickListener() {
-
             @Override
             public void onQualityBtnClick(View v, List<TrackInfo> qualities, String currentQuality) {
                 //显示清晰度列表
@@ -1285,7 +1283,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
 
         //设置手势监听
         mGestureView.setOnGestureListener(new GestureView.GestureListener() {
-
             @Override
             public void onHorizontalDistance(float downX, float nowX) {
                 if (mIsScreenCosting) {
@@ -1406,7 +1403,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                             mControlView.hide(ControlView.HideType.Normal);
                         }
                     }
-
                 }
             }
 
@@ -1417,7 +1413,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                     //投屏状态下或者试看结束时双击不做任何操作
                 } else if (GlobalPlayerConfig.IS_TRAILER && mAdvVideoPlayerState == IPlayer.started) {
                     //如果是视频广告,并且视频广告在播放中,那么不做任何操作
-
                 } else {
                     switchPlayerState();
                 }
@@ -1448,7 +1443,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
         mAdvVideoView.setOutOnRenderingStartListener(new VideoPlayerRenderingStartListener(this, true));
         //设置广告返回按钮点击事件
         mAdvVideoView.setOnBackImageViewClickListener(new VideoPlayerAdvBackImageViewListener(this));
-
     }
 
     /**
@@ -1675,7 +1669,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
     }
 
     private void hideErrorTipView() {
-
         if (mTipsView != null) {
             //隐藏其他的动作,防止点击界面去进行其他操作
             mTipsView.hideErrorTipView();
@@ -1940,7 +1933,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                 }
                 showDanmakuAndMarquee();
             } else if (finalScreenMode == AliyunScreenMode.Small) {
-
                 if (getLockPortraitMode() == null) {
                     //不是固定竖屏播放。
                     ((Activity) context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -2272,7 +2264,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
 
     /**
      * 设置播放源
-     *
      */
     public void setLocalSource(UrlSource aliyunLocalSource) {
         if (mAliyunRenderView == null) {
@@ -2752,7 +2743,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
             mAdvVideoView.setAutoPlay(false);
             mAdvVideoView.optionPrepare();
         }
-
     }
 
     /**
@@ -2780,9 +2770,7 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                         mAliyunRenderView.pause();
                     }
                     if (mControlView != null) {
-                        /*
-                            由于关键帧的问题,seek到sourceDuration / 2时间点会导致进度条和广告时间对应不上,导致在播放原视频的时候进度条还在广告进度条范围内
-                        */
+                        // 由于关键帧的问题,seek到sourceDuration / 2时间点会导致进度条和广告时间对应不上,导致在播放原视频的时候进度条还在广告进度条范围内
                         mControlView.setAdvVideoPosition((int) (mSourceDuration + mAdvDuration * 2), (int) mCurrentPosition);
                     }
                     if (mAdvVideoView != null) {
@@ -2794,7 +2782,6 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                     advVideoPlayer4gTips();
                 }
             }
-
         }
         if (mControlView != null) {
             mControlView.setTotalPosition(mAdvTotalPosition);

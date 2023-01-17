@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.aliyun.player.alivcplayerexpand.constants.GlobalPlayerConfig;
 import com.aliyun.player.alivcplayerexpand.widget.AliyunVodPlayerView;
+import com.aliyun.player.aliyunplayerbase.util.AliyunScreenMode;
 import com.aliyun.player.source.VidAuth;
 import com.gjjy.basiclib.entity.GetVodPlayAuthEntity;
 import com.gjjy.basiclib.mvp.model.ReqOtherModel;
@@ -93,6 +94,13 @@ public class TargetedLearningDetailsActivity extends BaseActivity
 //            vvVideo.exitLandscapeScreen();
 //            return;
 //        }
+
+        // 横盘的情况下，变成竖屏，不退出
+        if(mAliyunVodPlayerView != null && mAliyunVodPlayerView.getScreenMode() == AliyunScreenMode.Full){
+            mAliyunVodPlayerView.changeScreenMode(AliyunScreenMode.Small, false);
+            return;
+        }
+
         if(mAliyunVodPlayerView != null){
             mAliyunVodPlayerView.onDestroy();
         }
@@ -103,8 +111,6 @@ public class TargetedLearningDetailsActivity extends BaseActivity
     protected void onResume() {
         super.onResume();
 //        vvVideo.seekTo( vvVideo.getCurrentProgress() );
-
-
 //        vvVideo.play();
 //        post( () -> vvVideo.pause() );
         if (mAliyunVodPlayerView != null) {

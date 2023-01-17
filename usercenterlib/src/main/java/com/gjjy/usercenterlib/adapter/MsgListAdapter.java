@@ -25,12 +25,11 @@ import java.util.List;
 /**
  * 消息通知列表适配器
  */
-public class MsgListAdapter
-        extends BaseRecyclerViewAdapter<MsgListAdapter.ItemData, BaseViewHolder> {
+public class MsgListAdapter extends BaseRecyclerViewAdapter<MsgListAdapter.ItemData, BaseViewHolder> {
     private final int mMsgType;
     private final RequestManager mGlide;
-    public MsgListAdapter(@NonNull RequestManager glide,
-                          @NonNull List<ItemData> list, @MsgCenterAdapter.Type int type) {
+
+    public MsgListAdapter(@NonNull RequestManager glide, @NonNull List<ItemData> list, @MsgCenterAdapter.Type int type) {
         super(list);
         mGlide = glide;
         mMsgType = type;
@@ -40,10 +39,10 @@ public class MsgListAdapter
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if( mMsgType == MsgCenterAdapter.Type.MESSAGE ) {
-            return new MsgListOfInteractiveHolder( parent, R.layout.item_msg_list_of_interactive );
+        if (mMsgType == MsgCenterAdapter.Type.MESSAGE) {
+            return new MsgListOfInteractiveHolder(parent, R.layout.item_msg_list_of_interactive);
         }
-        return new MsgListHolder( parent, R.layout.item_msg_list);
+        return new MsgListHolder(parent, R.layout.item_msg_list);
     }
 
     @Override
@@ -52,61 +51,57 @@ public class MsgListAdapter
         ItemData data = getItemData(position);
         if (data == null) return;
 
-        //互动消息
-        if( holder instanceof MsgListOfInteractiveHolder ) {
-            bindMsgListOfInteractive( (MsgListOfInteractiveHolder) holder, data );
+        // 互动消息
+        if (holder instanceof MsgListOfInteractiveHolder) {
+            bindMsgListOfInteractive((MsgListOfInteractiveHolder) holder, data);
             return;
         }
-        //常规消息
-        bindMsgList( (MsgListHolder) holder, data );
+        // 常规消息
+        bindMsgList((MsgListHolder) holder, data);
     }
 
     private String mUserName;
+
     public void setUserName(String mUserName) {
         this.mUserName = mUserName;
     }
 
     /**
-     互动消息
-     @param holder      互动消息Holder
-     @param data        某一条数据
+     * 互动消息
+     *
+     * @param holder 互动消息Holder
+     * @param data   某一条数据
      */
     private void bindMsgListOfInteractive(MsgListOfInteractiveHolder holder, ItemData data) {
         TextView tvInteractContent = holder.getInteractContent();
         int interactiveIcon = 0;
         int interactiveTypeface = Typeface.NORMAL;
-        switch( data.getInteractType() ) {
+        switch (data.getInteractType()) {
             case 1:         //点赞
                 interactiveIcon = R.drawable.ic_msg_interactive_like_icon;
-                tvInteractContent.setText( R.string.stringInteractiveLike );
+                tvInteractContent.setText(R.string.stringInteractiveLike);
                 interactiveTypeface = Typeface.BOLD;
                 break;
             case 2:         //回复
-                tvInteractContent.setText( Html.fromHtml(
-                        getTargetContent( mUserName, data.getContent(), true )
-                ) );
+                tvInteractContent.setText(Html.fromHtml(getTargetContent(mUserName, data.getContent(), true)));
                 break;
         }
-        tvInteractContent.setCompoundDrawablesWithIntrinsicBounds(
-                interactiveIcon, 0, 0, 0
-        );
-        tvInteractContent.setTypeface( Typeface.defaultFromStyle( interactiveTypeface ) );
+        tvInteractContent.setCompoundDrawablesWithIntrinsicBounds(interactiveIcon, 0, 0, 0);
+        tvInteractContent.setTypeface(Typeface.defaultFromStyle(interactiveTypeface));
 
         //我的评论
-        holder.getMyContent().setText( Html.fromHtml(
-                getTargetContent( mUserName, data.getMyContent(), false )
-        ));
-        mGlide.load( data.getImgUrl() ).into( holder.getMyImg() );
+        holder.getMyContent().setText(Html.fromHtml(getTargetContent(mUserName, data.getMyContent(), false)));
+        mGlide.load(data.getImgUrl()).into(holder.getMyImg());
         String photoUrl = data.getAvatarUrl();
-        if( TextUtils.isEmpty( photoUrl ) ) {
-            holder.getPhoto().setImageResource( R.drawable.ic_photo_user );
-        }else {
-            mGlide.load( photoUrl ).into( holder.getPhoto() );
+        if (TextUtils.isEmpty(photoUrl)) {
+            holder.getPhoto().setImageResource(R.drawable.ic_photo_user);
+        } else {
+            mGlide.load(photoUrl).into(holder.getPhoto());
         }
         //时间
         holder.getTime().setText(
-                DateTime.toMessageTime( data.getDate(), new MessageTimeStyle(
-                        getResources( holder ),
+                DateTime.toMessageTime(data.getDate(), new MessageTimeStyle(
+                        getResources(holder),
                         R.string.stringCommentTimeOfRecently,
                         R.string.stringCommentTimeOfMinutesAgo,
                         R.string.stringCommentTimeOfHoursAgo,
@@ -114,31 +109,33 @@ public class MsgListAdapter
                         R.string.stringCommentTimeOfDayAgo
                 ))
         );
-        holder.getVipIcon().setVisibility( data.isVip() ? View.VISIBLE : View.GONE );
-        holder.getUserName().setText( data.getNickname() );
+        holder.getVipIcon().setVisibility(data.isVip() ? View.VISIBLE : View.GONE);
+        holder.getUserName().setText(data.getNickname());
     }
+
     private String getTargetContent(@Nullable String name, String content, boolean isAtUser) {
         return String.format(
                 "<b><font color='#333333'>%s%s</font></b>%s",
                 isAtUser ? "@" : "",
-                TextUtils.isEmpty( name ) ? "" : ( name + ": " ),
+                TextUtils.isEmpty(name) ? "" : (name + ": "),
                 content
         );
     }
 
     /**
-     常规消息
-     @param holder      常规消息Holder
-     @param data        某一条消息
+     * 常规消息
+     *
+     * @param holder 常规消息Holder
+     * @param data   某一条消息
      */
     private void bindMsgList(MsgListHolder holder, ItemData data) {
-        holder.getTitle().setText( data.getTitle() );
-        holder.getContent().setText( data.getContent() );
-        holder.getDate().setText( DateTime.parse( data.getDate() ) );
-        holder.getRedDot().setVisibility( data.isNews() ? View.VISIBLE : View.GONE );
+        holder.getTitle().setText(data.getTitle());
+        holder.getContent().setText(data.getContent());
+        holder.getDate().setText(DateTime.parse(data.getDate()));
+        holder.getRedDot().setVisibility(data.isNews() ? View.VISIBLE : View.GONE);
 
         int imgRes = R.drawable.ic_msg_list_other_icon;
-        switch ( data.getType() ) {
+        switch (data.getType()) {
             case Type.SYSTEM:       //系统
                 imgRes = R.drawable.ic_msg_list_system_icon;
                 break;
@@ -149,7 +146,7 @@ public class MsgListAdapter
                 imgRes = R.drawable.ic_msg_list_feedback_icon;
                 break;
         }
-        holder.getImg().setImageResource( imgRes );
+        holder.getImg().setImageResource(imgRes);
     }
 
     public @interface Type {
@@ -158,6 +155,7 @@ public class MsgListAdapter
         int FEEDBACK = 2;
         int OTHER = 3;
     }
+
     public static class ItemData implements IItemData {
         private int id;
         private int msgType;
@@ -200,30 +198,70 @@ public class MsgListAdapter
                     '}';
         }
 
-        public int getId() { return id; }
-        public void setId(int id) { this.id = id; }
+        public int getId() {
+            return id;
+        }
 
-        public String getTitle() { return title; }
-        public void setTitle(String title) { this.title = title; }
+        public void setId(int id) {
+            this.id = id;
+        }
 
-        public String getContent() { return content; }
-        public void setContent(String content) { this.content = content; }
+        public String getTitle() {
+            return title;
+        }
 
-        public String getUrl() { return url; }
-        public void setUrl(String url) { this.url = url; }
+        public void setTitle(String title) {
+            this.title = title;
+        }
 
-        public int getMsgType() { return msgType; }
-        public void setMsgType(int msgType) { this.msgType = msgType; }
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getMsgType() {
+            return msgType;
+        }
+
+        public void setMsgType(int msgType) {
+            this.msgType = msgType;
+        }
 
         @Type
-        public int getType() { return type; }
-        public void setType(@Type int type) { this.type = type; }
+        public int getType() {
+            return type;
+        }
 
-        public long getDate() { return date; }
-        public void setDate(long date) { this.date = date; }
+        public void setType(@Type int type) {
+            this.type = type;
+        }
 
-        public boolean isNews() { return isNews; }
-        public void setNews(boolean news) { isNews = news; }
+        public long getDate() {
+            return date;
+        }
+
+        public void setDate(long date) {
+            this.date = date;
+        }
+
+        public boolean isNews() {
+            return isNews;
+        }
+
+        public void setNews(boolean news) {
+            isNews = news;
+        }
 
         public String getImgUrl() {
             return imgUrl;
