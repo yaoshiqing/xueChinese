@@ -154,7 +154,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             mGoogleBuySubList.clear();
             mGoogleBuySubList.addAll(norList);
             try {
-                mGoogleBuySubList.clear();
+                // mGoogleBuySubList.clear();
                 googlebuySubList.addAll(mGoogleBuySubList);
                 //开始查询
                 startGoogleProduct(toSkuArr(googlebuySubList));
@@ -214,7 +214,6 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             mSkuList.sort(skuArr);
         }
         List<BuyVipOptionEntity> skuList = toBuyVipOptionEntityArr(mSkuList);
-        List<BuyVipOptionEntity> disList = new ArrayList<>();
         List<BuyVipOptionEntity> norList = new ArrayList<>();
 
         for (BuyVipOptionEntity skuData : skuList) {
@@ -227,7 +226,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
         viewCall(v -> {
             Context context = v.getContext();
-            if (context != null && disList.size() == 0 && norList.size() == 0) {
+            if (context != null && norList.size() == 0) {
                 ToastManage.get().showToast(context, R.string.stringError);
                 finish();
                 return;
