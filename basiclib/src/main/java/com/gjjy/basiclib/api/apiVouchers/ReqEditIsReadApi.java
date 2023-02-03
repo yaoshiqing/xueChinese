@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class ReqEditIsReadApi extends BaseApiServer {
     @Override
-    public String api() { return "user_popup/editIsRead"; }
+    public String api() { return "study-user/user_popup/editIsRead"; }
 }

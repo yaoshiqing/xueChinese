@@ -7,7 +7,7 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class UpdateCheckApi extends BaseApiServer {
     @Override
-    public String url() { return super.url() + "/version/"; }
+    public String url() { return super.url() + "/study-core/version/"; }
 
     @Override
     public String api() { return "check"; }

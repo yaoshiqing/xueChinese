@@ -7,7 +7,7 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class PushBindApi extends BaseApiServer {
     @Override
-    public String url() { return super.url() + "/fcm/"; }
+    public String url() { return super.url() + "/study-core/fcm/"; }
 
     @Override
     public String api() { return "bind"; }

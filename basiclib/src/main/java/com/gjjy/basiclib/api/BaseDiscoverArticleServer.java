@@ -6,6 +6,6 @@ package com.gjjy.basiclib.api;
 public abstract class BaseDiscoverArticleServer extends BaseApiServer {
     @Override
     public String url() {
-        return super.url() + "/discover_article/";
+        return super.url() + "/study-discover/discover_article/";
     }
 }

@@ -1,11 +1,11 @@
 package com.gjjy.basiclib.api;
 
 /**
- 评论
+ 发现页评论
  */
 public abstract class BaseUserDiscoverArticleTalkServer extends BaseApiServer {
     @Override
     public String url() {
-        return super.url() + "/user_discover_article_talk/";
+        return super.url() + "/study-discover/user_discover_article_talk/";
     }
 }

@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class GetOssInfoApi extends BaseApiServer {
     @Override
-    public String api() { return "upload/getOssInfo"; }
+    public String api() { return "study-core/upload/getOssInfo"; }
 }

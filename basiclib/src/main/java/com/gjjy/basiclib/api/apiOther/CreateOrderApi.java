@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class CreateOrderApi extends BaseApiServer {
     @Override
-    public String api() { return "order/createOrder"; }
+    public String api() { return "study-core/order/createOrder"; }
 }

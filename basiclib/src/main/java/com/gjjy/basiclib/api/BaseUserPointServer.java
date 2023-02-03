@@ -6,6 +6,6 @@ package com.gjjy.basiclib.api;
 public abstract class BaseUserPointServer extends BaseApiServer {
     @Override
     public String url() {
-        return super.url() + "/user_point/";
+        return super.url() + "/study-user/user_point/";
     }
 }

@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class UploadImgApi extends BaseApiServer {
     @Override
-    public String api() { return "upload/uploadImg"; }
+    public String api() { return "study-core/upload/uploadImg"; }
 }

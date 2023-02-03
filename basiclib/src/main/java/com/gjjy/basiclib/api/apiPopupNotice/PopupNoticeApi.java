@@ -7,7 +7,7 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class PopupNoticeApi extends BaseApiServer {
     @Override
-    public String url() { return super.url() + "/popup_notice/"; }
+    public String url() { return super.url() + "/study-core/popup_notice/"; }
 
     @Override
     public String api() { return "detail"; }

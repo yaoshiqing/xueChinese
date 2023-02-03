@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class ReqVouchersListApi extends BaseApiServer {
     @Override
-    public String api() { return "user_ticket/lists"; }
+    public String api() { return "study-user/user_ticket/lists"; }
 }

@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class ReqVouchersPopupApi extends BaseApiServer {
     @Override
-    public String api() { return "user_popup/lists"; }
+    public String api() { return "study-user/user_popup/lists"; }
 }

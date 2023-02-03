@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class NewSubApi extends BaseApiServer {
     @Override
-    public String api() { return "google_pay/newSub"; }
+    public String api() { return "study-core/google_pay/newSub"; }
 }

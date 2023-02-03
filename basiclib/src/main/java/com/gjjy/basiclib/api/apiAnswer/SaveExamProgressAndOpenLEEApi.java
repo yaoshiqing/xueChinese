@@ -7,7 +7,7 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class SaveExamProgressAndOpenLEEApi extends BaseApiServer {
 //    @Override
-//    public String api() { return "user_unit/saveExamProgressAndOpenLE"; }
+//    public String api() { return "study-home/user_unit/saveExamProgressAndOpenLE"; }
     @Override
-    public String api() { return "user_unit/saveExamProgressAndOpenAwards"; }
+    public String api() { return "study-home/user_unit/saveExamProgressAndOpenAwards"; }
 }

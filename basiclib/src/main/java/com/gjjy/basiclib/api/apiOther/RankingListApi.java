@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class RankingListApi extends BaseApiServer {
     @Override
-    public String api() { return "user_exp/rankingLists"; }
+    public String api() { return "study-user/user_exp/rankingLists"; }
 }

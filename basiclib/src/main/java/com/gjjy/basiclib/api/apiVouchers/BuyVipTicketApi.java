@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class BuyVipTicketApi extends BaseApiServer {
     @Override
-    public String api() { return "user_ticket/BuyVipTicket"; }
+    public String api() { return "study-user/user_ticket/BuyVipTicket"; }
 }

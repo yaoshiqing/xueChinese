@@ -24,8 +24,8 @@ public class Config {
 
     public static final String URL_H5 = String.format( "%s/%s/", URL_API, mUpdatedChannel );
 
-    //https://www.chineseadventure.net/api/content/index?type=message&id=121
-    public static final String URL_MSG_DETAILS = URL_API + "/api/content/index?type=message&id=";
+    //https://www.chineseadventure.net/api/study-core/content/index?type=message&id=121
+    public static final String URL_MSG_DETAILS = URL_API + "/api/study-core/content/index?type=message&id=";
 
     //官网页 - FB渠道
     public static final String mFacebookUrl = "https://www.facebook.com/profile.php?id=100082885885324";

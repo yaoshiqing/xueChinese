@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class AnswerOpenLightningApi extends BaseApiServer {
     @Override
-    public String api() { return "user_unit/openLightning"; }
+    public String api() { return "study-home/user_unit/openLightning"; }
 }

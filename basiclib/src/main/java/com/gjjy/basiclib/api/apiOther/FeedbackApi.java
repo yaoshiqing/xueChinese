@@ -7,5 +7,5 @@ import com.gjjy.basiclib.api.BaseApiServer;
  */
 public class FeedbackApi extends BaseApiServer {
     @Override
-    public String api() { return "feedback/add"; }
+    public String api() { return "study-user/feedback/add"; }
 }
