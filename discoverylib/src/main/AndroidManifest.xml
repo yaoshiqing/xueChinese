@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gjjy.discoverylib">
 
-    <application>
+    <application
+        android:exported="false">
 
         <activity
             android:name="com.gjjy.discoverylib.ui.activity.MyCourseActivity"

@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gjjy.usercenterlib" >
 
-    <application>
+    <application
+        android:exported="false">
 
         <activity
             android:name=".ui.activity.MsgCenterActivity"

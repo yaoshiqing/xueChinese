@@ -2,6 +2,7 @@
     package="com.gjjy.frontlib" >
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:exported="false"
         android:requestLegacyExternalStorage="true">
         <activity
             android:name=".ui.activity.AnswerActivity"

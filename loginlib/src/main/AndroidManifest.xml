@@ -1,45 +1,46 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gjjy.loginlib">
 
-    <application>
+    <application
+        android:exported="false">
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.LoginErrorActivity"
+            android:name=".ui.activity.LoginErrorActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.NeedLoginActivity"
+            android:name=".ui.activity.NeedLoginActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.ExitAppLoginActivity"
+            android:name=".ui.activity.ExitAppLoginActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.EmailLoginActivity"
+            android:name=".ui.activity.EmailLoginActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.EmailSignUpActivity"
+            android:name=".ui.activity.EmailSignUpActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.EmailForgetPasswordActivity"
+            android:name=".ui.activity.EmailForgetPasswordActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.EmailResetPasswordActivity"
+            android:name=".ui.activity.EmailResetPasswordActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
-            android:name="com.gjjy.loginlib.ui.activity.EmailUpdatePasswordActivity"
+            android:name=".ui.activity.EmailUpdatePasswordActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden|adjustResize"/>

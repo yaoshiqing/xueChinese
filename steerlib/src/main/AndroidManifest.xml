@@ -5,6 +5,7 @@
         <activity
             android:name="com.gjjy.steerlib.ui.activity.GuideActivity"
             android:screenOrientation="portrait"
+            android:exported="false"
             android:launchMode="singleTask">
         </activity>
     </application>

@@ -32,6 +32,7 @@
     <application
         android:name="com.gjjy.basiclib.XueChineseApplication"
         android:requestLegacyExternalStorage="true"
+        android:exported="false"
         tools:targetApi="q">
         <activity android:name="com.gjjy.basiclib.ui.activity.BaseActivity"/>
 
