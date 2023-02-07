@@ -441,7 +441,10 @@ public class FrontFragment extends BaseFragment implements FrontView, OnVisibleC
     @Override
     public void onResult(int id, Object data) {
         super.onResult(id, data);
-        boolean isHaveData = mAdapter.getItemCount() > 0;
+        boolean isHaveData = false;
+        if (mAdapter != null) {
+            isHaveData = mAdapter.getItemCount() > 0;
+        }
         switch ( id ) {
             case DOMConstant.NOTIFY_FRONT_LIST:
                 boolean isNorRef = ObjUtils.parseInt( data ) == 0;
