@@ -13,15 +13,16 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- Sku详细信息
+ * Sku详细信息
  */
 public class SkuList extends ResultEntity {
     private List<SkuDetails> skuDetailsList;
 
-    public SkuList() { }
+    public SkuList() {
+    }
 
     public SkuList(BillingResult result, List<SkuDetails> skuDetailsList) {
-        super( result );
+        super(result);
         this.skuDetailsList = skuDetailsList;
     }
 
@@ -29,15 +30,15 @@ public class SkuList extends ResultEntity {
     @Override
     public String toString() {
         return "SkuList{" +
-                "code=" + getCode() +
+                "code = " + getCode() +
                 ", debugMessage='" + getDebugMessage() + '\'' +
                 ", skuDetailsList=" + toSkuDetailsListString() +
                 '}';
     }
 
     @NonNull
-    public String  toSkuDetailsListString() {
-        return isEmptyList() ? "" : Arrays.toString( skuDetailsList.toArray( new SkuDetails[ 0 ] ) );
+    public String toSkuDetailsListString() {
+        return isEmptyList() ? "" : Arrays.toString(skuDetailsList.toArray(new SkuDetails[0]));
     }
 
     public boolean isEmptyList() {
@@ -46,15 +47,19 @@ public class SkuList extends ResultEntity {
 
     @NonNull
     public List<SkuDetails> getSkuDetailsList(String... sku) {
-        if( skuDetailsList == null ) return new ArrayList<>();
-        if( sku == null || sku.length == 0 ) return skuDetailsList;
+        if (skuDetailsList == null) {
+            return new ArrayList<>();
+        }
+        if (sku == null || sku.length == 0) {
+            return skuDetailsList;
+        }
 
         List<SkuDetails> retList = new ArrayList<>();
-        for( String s : sku ) {
-            if( TextUtils.isEmpty( s ) ) continue;
-            for( SkuDetails item : skuDetailsList ) {
-                if( item == null || !s.equals( item.getSku() ) ) continue;
-                retList.add( item );
+        for (String s : sku) {
+            if (TextUtils.isEmpty(s)) continue;
+            for (SkuDetails item : skuDetailsList) {
+                if (item == null || !s.equals(item.getSku())) continue;
+                retList.add(item);
                 break;
             }
         }
@@ -63,8 +68,8 @@ public class SkuList extends ResultEntity {
 
     @Nullable
     public SkuDetails getSkuDetails(String sku) {
-        List<SkuDetails> list = getSkuDetailsList( sku );
-        return list.size() > 0 ? list.get( 0 ) : null;
+        List<SkuDetails> list = getSkuDetailsList(sku);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
     public SkuList setSkuDetailsList(List<SkuDetails> skuDetailsList) {
@@ -72,14 +77,14 @@ public class SkuList extends ResultEntity {
         return this;
     }
 
-    public void sort(String[] sku) {
-        if( sku == null || sku.length != skuDetailsList.size() ) return;
-        List<SkuDetails> newList = new ArrayList<>( skuDetailsList );
+    public void sort(List<String> sku) {
+        if (sku == null || sku.size() != skuDetailsList.size()) return;
+        List<SkuDetails> newList = new ArrayList<>(skuDetailsList);
         skuDetailsList.clear();
-        for( String s : sku ) {
-            for( SkuDetails skuDetail : newList ) {
-                if( !s.equals( skuDetail.getSku() ) ) continue;
-                skuDetailsList.add( skuDetail );
+        for (String s : sku) {
+            for (SkuDetails skuDetail : newList) {
+                if (!s.equals(skuDetail.getSku())) continue;
+                skuDetailsList.add(skuDetail);
                 break;
             }
         }

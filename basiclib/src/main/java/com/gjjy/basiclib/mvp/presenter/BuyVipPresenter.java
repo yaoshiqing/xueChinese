@@ -99,7 +99,9 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
     }
 
     public boolean checkIsLogin() {
-        if (getActivity() == null) return false;
+        if (getActivity() == null) {
+            return false;
+        }
         boolean isLoginResult = mUserModel.isLoginResult();
         if (!isLoginResult) {
             StartUtil.startLoginActivity(getActivity(), PageName.BUY_VIP);
@@ -142,11 +144,11 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
     public void queryBuySubList() {
         //查询所有订阅
-        List<GoogleBuySubEntity> googlebuySubList = new ArrayList<GoogleBuySubEntity>();
-        googlebuySubList.addAll(mGoogleBuySubList);
+        List<GoogleBuySubEntity> googleBuySubList = new ArrayList<GoogleBuySubEntity>();
+        googleBuySubList.addAll(mGoogleBuySubList);
 
-        if (googlebuySubList.size() > 0) {
-            startGoogleProduct(toSkuArr(googlebuySubList));
+        if (googleBuySubList.size() > 0) {
+            startGoogleProduct(toSkuArr(googleBuySubList));
             return;
         }
         //正常列表
@@ -155,16 +157,16 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             mGoogleBuySubList.addAll(norList);
             try {
                 // mGoogleBuySubList.clear();
-                googlebuySubList.addAll(mGoogleBuySubList);
+                googleBuySubList.addAll(mGoogleBuySubList);
                 //开始查询
-                startGoogleProduct(toSkuArr(googlebuySubList));
+                startGoogleProduct(toSkuArr(googleBuySubList));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
 
-    public void startGoogleProduct(String[] skuArr) {
+    public void startGoogleProduct(List<String> skuArr) {
         if (mGoogleProductClient == null) {
             mGoogleProductClient = GooglePlayProduct.get().create(getContext());
         }
@@ -174,7 +176,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         mGoogleProductClient.setOnClientDaoListener(dao -> {
             mGoogleProductDao = dao;
             //查询sku列表
-            dao.querySkuDetailsOfSubs(data -> callQuerySkuDetailsOfSubs(skuArr, data), skuArr);
+            dao.querySkuDetailsOfInApp(data -> callQuerySkuDetailsOfSubs(skuArr, data), skuArr);
         });
 
         //购买结果
@@ -208,7 +210,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         });
     }
 
-    private void callQuerySkuDetailsOfSubs(String[] skuArr, SkuList data) {
+    private void callQuerySkuDetailsOfSubs(List<String> skuArr, SkuList data) {
         mSkuList = data;
         if (mSkuList != null) {
             mSkuList.sort(skuArr);
@@ -242,7 +244,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             return false;
         }
         //展示热门
-        skuData.setHotPrice(true);
+        skuData.setHotPrice(false);
         //展示折扣
         skuData.setDiscount(false);
         //是否显示原价
@@ -257,14 +259,19 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
     /**
      * 设置new_sub
+     *
      * @param data 处理结果
      */
     private void sendNewSub(PurchaseResultEntity data) {
         mOtherModel.sendNewSub(mOrderId, data.getPurchaseToken(), r -> {
             buriedPointBuyVip(r, mCurrentSubscriptionPeriod);
-            if (!r) data.setPurchaseState(PurchaseState.PENDING);
+            if (!r) {
+                data.setPurchaseState(PurchaseState.PENDING);
+            }
             mUserModel.setVip(r);
-            if (r) mUserModel.setVipStatus(2);
+            if (r) {
+                mUserModel.setVipStatus(2);
+            }
             viewCall(v -> v.onCallBuyVipResult(data.getPurchaseState(), mUserModel.isVip(), "newSub result:" + r));
             Log.e("GooglePlaySub", "onResult -> data:" + data + " | result:" + r);
         });
@@ -272,7 +279,9 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
     public void queryBuyVipEvalList() {
         Resources res = getResources();
-        if (res == null) return;
+        if (res == null) {
+            return;
+        }
 
         List<BuyVipEvaluationEntity> list = new ArrayList<>();
         int[] userPhotoArr = {
@@ -300,7 +309,9 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
     }
 
     private void buriedPointBuyVip(boolean result, String subscriptionPeriod) {
-        if (getActivity() == null || TextUtils.isEmpty(subscriptionPeriod)) return;
+        if (getActivity() == null || TextUtils.isEmpty(subscriptionPeriod)) {
+            return;
+        }
         //埋点转换
         String time = SkuUtils.toSubscriptionPeriod(getActivity().getResources(), subscriptionPeriod)
                 .toLowerCase()
@@ -346,7 +357,9 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         for (int i = 0; i < list.size(); i++) {
             SkuDetails sku = list.get(i);
             String price = sku.getPrice();
-            if (TextUtils.isEmpty(price)) continue;
+            if (TextUtils.isEmpty(price)) {
+                continue;
+            }
 
             BuyVipOptionEntity entity = new BuyVipOptionEntity();
             String priceUnit = SkuUtils.getPriceSymbol(price);
@@ -397,12 +410,15 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         return retList;
     }
 
-    private String[] toSkuArr(List<GoogleBuySubEntity> list) {
-        String[] skuArr = new String[list.size()];
+    private List<String> toSkuArr(List<GoogleBuySubEntity> list) {
+        List<String> skuList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             GoogleBuySubEntity data = list.get(i);
-            skuArr[i] = data.getTpGoodsId();
+            String tpGoodsId = data.getTpGoodsId();
+            if (!tpGoodsId.isEmpty()) {
+                skuList.add(tpGoodsId);
+            }
         }
-        return skuArr;
+        return skuList;
     }
 }
