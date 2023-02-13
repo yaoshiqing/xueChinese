@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.alibaba.fastjson.JSONObject;
+import com.gjjy.basiclib.Config;
 import com.gjjy.basiclib.api.entity.BaseReqEntity;
 import com.gjjy.basiclib.entity.BaseResp;
 import com.gjjy.basiclib.utils.DOMConstant;
@@ -90,7 +91,11 @@ public class BaseReqModel extends MvpModel {
         api.addParam("random_str", getRandomStr());
         api.addParam("sign", DigestUtil.toMD5(api.getParam().toParamString().toLowerCase() + mSignKey));
         // 加密请求参数
-        api.setParam(AESUtil.encrypt(JSONObject.toJSONString(api.getParam().getMap()), mAESKey));
+        if (Config.isDebugOfURL) {
+            api.setParam(JSONObject.toJSONString(api.getParam().getMap()));
+        } else {
+            api.setParam(AESUtil.encrypt(JSONObject.toJSONString(api.getParam().getMap()), mAESKey));
+        }
         return mReq.req(api).mediaTypeJson().requestBody();
     }
 
@@ -270,7 +275,12 @@ public class BaseReqModel extends MvpModel {
         if (data.getErrCode() == 0) {
             // 解密
             if (data.getData() != null) {
-                data.setData(AESUtil.decrypt(data.getData(), mAESKey));
+                // 测试环境没有加密，所以不需要加密处理
+                if (Config.isDebugOfURL) {
+                    data.setData(data.getData());
+                } else {
+                    data.setData(AESUtil.decrypt(data.getData(), mAESKey));
+                }
             }
         } else {
             BaseResp baseResp = toReqEntityOfBase(s, BaseResp.class);
@@ -286,7 +296,11 @@ public class BaseReqModel extends MvpModel {
         } else {
             // 解密
             if (data.getData() != null) {
-                data.setData(AESUtil.decrypt(data.getData(), mAESKey));
+                if (Config.isDebugOfURL) {
+                    data.setData(data.getData());
+                } else {
+                    data.setData(AESUtil.decrypt(data.getData(), mAESKey));
+                }
             }
         }
         return data;
