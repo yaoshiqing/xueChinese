@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- 探索 - 每日聆听
+ * 探索 - 每日聆听
  */
 public class ListenDailyFragment extends BaseFragment implements ListenDailyView {
     @Presenter
@@ -44,7 +44,7 @@ public class ListenDailyFragment extends BaseFragment implements ListenDailyView
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate( R.layout.fragment_listen_daily, container, false );
+        return inflater.inflate(R.layout.fragment_listen_daily, container, false);
     }
 
     @Override
@@ -58,20 +58,20 @@ public class ListenDailyFragment extends BaseFragment implements ListenDailyView
     @Override
     public void onResult(int id, Object data) {
         super.onResult(id, data);
-        if( id == DOMConstant.NOTIFY_DISCOVERY_LIST && data != null && (int)data == 1 ) {
-            post( () -> mPresenter.queryDataList( false ), 400 );
+        if (id == DOMConstant.NOTIFY_DISCOVERY_LIST && data != null && (int) data == 1) {
+            post(() -> mPresenter.queryDataList(false), 400);
         }
     }
 
     private void initView() {
-        rvList = findViewById( R.id.listen_daily_rv_list );
-        tvMoreBtn = findViewById( R.id.listen_daily_tv_more_btn );
+        rvList = findViewById(R.id.listen_daily_rv_list);
+        tvMoreBtn = findViewById(R.id.listen_daily_tv_more_btn);
     }
 
     private void initData() {
         mAdapter = new DiscoveryListAdapter(
-                (BaseActivity)getActivity(),
-                Glide.with( this ),
+                (BaseActivity) getActivity(),
+                Glide.with(this),
                 DiscoveryListAdapter.ListType.MAIN_LIST,
                 new ArrayList<>(),
                 mPresenter.getUid(),
@@ -79,55 +79,55 @@ public class ListenDailyFragment extends BaseFragment implements ListenDailyView
         );
 
         rvList.setLayoutManager(new LinearLayoutManager(
-                getContext(), RecyclerView.HORIZONTAL, false )
+                getContext(), RecyclerView.HORIZONTAL, false)
         );
-        rvList.setAdapter( mAdapter );
+        rvList.setAdapter(mAdapter);
     }
 
     private void initListener() {
-        tvMoreBtn.setOnClickListener( view -> {
+        tvMoreBtn.setOnClickListener(view -> {
             StartUtil.startListenDailyMoreListActivity();
             mPresenter.buriedPointOpenMore();
         });
 
         mAdapter.setOnItemClickListener((adapter, view, itemData, i) ->
-                mPresenter.buriedPointOpenItem( itemData.getId(), itemData.getTitle() )
+                mPresenter.buriedPointOpenItem(itemData.getId(), itemData.getTitle())
         );
 
         //数据发生改变
-        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver(){
+        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
                 super.onChanged();
                 FragmentActivity activity = getActivity();
-                if( activity == null ) return;
+                if (activity == null) return;
 
                 FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
                 boolean isNotData = mAdapter.getItemCount() == 0;
-                if( isNotData ) {
-                    ft.hide( getThis() );
-                }else {
-                    ft.show( getThis() );
+                if (isNotData) {
+                    ft.hide(getThis());
+                } else {
+                    ft.show(getThis());
                 }
                 ft.commitAllowingStateLoss();
-                rvList.setVisibility( isNotData ? View.GONE : View.VISIBLE );
+                rvList.setVisibility(isNotData ? View.GONE : View.VISIBLE);
             }
         });
     }
 
     public void notifyUpdatedData() {
-        mPresenter.queryDataList( false );
+        mPresenter.queryDataList(false);
     }
 
     @Override
     public void onCallDataList(List<DiscoveryListAdapter.ItemData> list) {
         mAdapter.clearItemData();
-        mAdapter.addItemData( list );
+        mAdapter.addItemData(list);
         mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onCallIsVip(boolean isVip) {
-        mAdapter.setVip( isVip );
+        mAdapter.setVip(isVip);
     }
 }

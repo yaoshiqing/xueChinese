@@ -19,7 +19,7 @@ public class Config {
     public static int mVipStatus = 0;
     //后台api地址
     public static final String URL_API = isDebugOfURL ?
-            /*测试*/ "https://www.chineseadventure.net" :
+            /*测试*/ "http://8.213.133.241" :
             /*正式*/ "https://www.chineseadventure.net";
 
     public static final String URL_H5 = String.format( "%s/%s/", URL_API, mUpdatedChannel );

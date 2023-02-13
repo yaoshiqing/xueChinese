@@ -25,7 +25,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public class ListenDailyPlayerView extends LinearLayout {
-    public interface OnCurrentProgressListener { void onProgress(int progress); }
+    public interface OnCurrentProgressListener {
+        void onProgress(int progress);
+    }
 
     @Retention(RetentionPolicy.SOURCE)
     public @interface Speed {
@@ -70,33 +72,27 @@ public class ListenDailyPlayerView extends LinearLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(
-                getMeasuredWidth(),
-                Utils.dp2Px( getContext(), 126 )
-        );
+        setMeasuredDimension(getMeasuredWidth(), Utils.dp2Px(getContext(), 126));
     }
 
     private void init() {
-        setOrientation( VERTICAL );
-        setGravity( Gravity.CENTER );
+        setOrientation(VERTICAL);
+        setGravity(Gravity.CENTER);
 
-        mMediaX = new MediaX( getContext() );
+        mMediaX = new MediaX(getContext());
 
         initView();
         initListener();
-        switchPlayBtnStatus( false );
-        switchSpeedBtnStatus( 0 );
-        ivPlayerSpeedBtn.setTag( 1 );
+        switchPlayBtnStatus(false);
+        switchSpeedBtnStatus(0);
+        ivPlayerSpeedBtn.setTag(1);
     }
 
     private void initView() {
-        View div = new View( getContext() );
-        div.setLayoutParams( new LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                Utils.dp2Px( getContext(), 1 )
-        ));
-        div.setBackgroundColor( getResources().getColor( R.color.colorMainBG ) );
-        addView( div );
+        View div = new View(getContext());
+        div.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dp2Px(getContext(), 1)));
+        div.setBackgroundColor(getResources().getColor(R.color.colorMainBG));
+        addView(div);
 
         ViewGroup vgPlayerSeekBar = createSeekBar();
         ViewGroup vgPlayControlView = createPlayControlView();
@@ -134,37 +130,39 @@ public class ListenDailyPlayerView extends LinearLayout {
         //播放/暂停
         ivPlayerPlayBtn.setOnClickListener(v -> {
             boolean isPlay = (Boolean) v.getTag();
-            playStatus( isPlay );
+            playStatus(isPlay);
         });
 
         //倒退
         ivPlayerFallBackBtn.setOnClickListener(
-                v -> seekTo( mCurrentProgress - 15000 )
+                v -> seekTo(mCurrentProgress - 15000)
         );
 
         //前进
         ivPlayerGoAheadBtn.setOnClickListener(
-                v -> seekTo( mCurrentProgress + 15000 )
+                v -> seekTo(mCurrentProgress + 15000)
         );
 
         //播放倍数
         ivPlayerSpeedBtn.setOnClickListener(v -> {
             int index;
-            switchSpeedBtnStatus(
-                    ( index = (int) ivPlayerSpeedBtn.getTag() + 1 ) < 4 ? index : 0
-            );
+            switchSpeedBtnStatus((index = (int) ivPlayerSpeedBtn.getTag() + 1) < 4 ? index : 0);
         });
 
         //进度条滑动
         sbPlayerSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if( !fromUser ) return;
-                seekTo( progress );
+                if (!fromUser) {
+                    return;
+                }
+                seekTo(progress);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) { mMediaX.pause(); }
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                mMediaX.pause();
+            }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -174,16 +172,17 @@ public class ListenDailyPlayerView extends LinearLayout {
 
         mMediaX.setVideoInfoListener(new MediaX.CallVideoInfo() {
             @Override
-            public void onSource(@NonNull Data data) { }
+            public void onSource(@NonNull Data data) {
+            }
 
             @Override
             public void onInfo(int progress, int total) {
-                post( () -> setTotalProgress( total ) );
+                post(() -> setTotalProgress(total));
             }
 
             @Override
             public void onProgress(int progress) {
-                post( () -> setCurrentProgress( progress ) );
+                post(() -> setCurrentProgress(progress));
             }
         });
 
@@ -191,60 +190,67 @@ public class ListenDailyPlayerView extends LinearLayout {
             @Override
             public void onPlay() {
                 super.onPlay();
-                switchPlayBtnStatus( true );
+                switchPlayBtnStatus(true);
             }
 
             @Override
             public void onPause() {
                 super.onPause();
-                switchPlayBtnStatus( false );
+                switchPlayBtnStatus(false);
             }
 
             @Override
             public void onStop() {
                 super.onStop();
-                switchPlayBtnStatus( false );
+                switchPlayBtnStatus(false);
             }
 
             @Override
             public void onCompletion(int currentPlayNum, int playTotal, boolean isCom) {
                 super.onCompletion(currentPlayNum, playTotal, isCom);
 //
-                if( !isCom ) return;
-                switchPlayBtnStatus( false );
-                setCurrentProgress( mMaxProgress );
+                if (!isCom) {
+                    return;
+                }
+                switchPlayBtnStatus(false);
+                setCurrentProgress(mMaxProgress);
             }
         });
     }
 
     public void release() {
-        if( mMediaX != null ) mMediaX.release();
+        if (mMediaX != null) {
+            mMediaX.pause();
+            mMediaX.release();
+        }
     }
 
-    public int getCurrentProgress() { return mCurrentProgress; }
+    public int getCurrentProgress() {
+        return mCurrentProgress;
+    }
 
     public void setCurrentProgress(int progress, boolean fromUser) {
-        if( progress < 0 ) progress = 0;
+        if (progress < 0) {progress = 0;}
         isCompletion = progress >= mMaxProgress;
         mCurrentProgress = progress;
-        tvPlayerCurTime.setText( DateTime.toTimeProgressFormat( progress, mTimePattern ) );
-        if( !fromUser ) {
-            sbPlayerSeek.setProgress( progress );
+        tvPlayerCurTime.setText(DateTime.toTimeProgressFormat(progress, mTimePattern));
+        if (!fromUser) {
+            sbPlayerSeek.setProgress(progress);
         }
-        if( mOnCurrentProgressListener != null ) mOnCurrentProgressListener.onProgress( progress );
+        if (mOnCurrentProgressListener != null) {mOnCurrentProgressListener.onProgress(progress);}
 
         int diff = mMaxProgress - progress;
-        if( diff > 0 && diff <= 1000 ) {
+        if (diff > 0 && diff <= 1000) {
             final long finalProgress = progress;
-            postDelayed( () -> {
-                if( mCurrentProgress != finalProgress ) return;
-                setCurrentProgress( mMaxProgress );
+            postDelayed(() -> {
+                if (mCurrentProgress != finalProgress) {return;}
+                setCurrentProgress(mMaxProgress);
             }, 1000);
         }
     }
 
     public void setCurrentProgress(int progress) {
-        setCurrentProgress( progress, false );
+        setCurrentProgress(progress, false);
     }
 
     public void setOnCurrentProgressListener(OnCurrentProgressListener l) {
@@ -253,22 +259,22 @@ public class ListenDailyPlayerView extends LinearLayout {
 
     public void setTotalProgress(int progress) {
         mMaxProgress = progress;
-        tvPlayerTotalTime.setText(
-                DateTime.toTimeProgressFormat( progress, mTimePattern )
-        );
-        sbPlayerSeek.setMax( progress );
+        tvPlayerTotalTime.setText(DateTime.toTimeProgressFormat(progress, mTimePattern));
+        sbPlayerSeek.setMax(progress);
     }
 
-    public int getTotalProgress() { return mMaxProgress; }
+    public int getTotalProgress() {
+        return mMaxProgress;
+    }
 
 
     public void setDataUrl(String url) {
-        mMediaX.setDataSource( url );
+        mMediaX.setDataSource(url);
     }
 
     public void playStatus(boolean isPlay) {
-        switchPlayBtnStatus( isPlay );
-        seekTo( isCompletion ? 0 : mCurrentProgress, isPlay );
+        switchPlayBtnStatus(isPlay);
+        seekTo(isCompletion ? 0 : mCurrentProgress, isPlay);
 //        if( isPlay ) {
 //            seekTo( isCompletion ? 0 : mCurrentProgress, isPlay );
 ////            mMediaX.play();
@@ -278,29 +284,34 @@ public class ListenDailyPlayerView extends LinearLayout {
 //        mMediaX.pause();
     }
 
-    public boolean isPlaying() { return mMediaX.isPlaying(); }
+    public boolean isPlaying() {
+        return mMediaX.isPlaying();
+    }
 
     @Speed
-    public float getSpeed() { return mSpeed; }
+    public float getSpeed() {
+        return mSpeed;
+    }
 
     public void seekTo(int progress, boolean isPlay) {
-        if( progress == mMaxProgress ) {
+        if (progress == mMaxProgress) {
             mCurrentProgress = 0;
-            playStatus( true );
+            playStatus(true);
             return;
         }
-        if( progress < 0 ) progress = 0;
-        if( progress > mMaxProgress ) progress = mMaxProgress;
-        mMediaX.seekTo( mCurrentProgress = progress );
-        setCurrentProgress( progress, false );
+        if (progress < 0) progress = 0;
+        if (progress > mMaxProgress) progress = mMaxProgress;
+        mMediaX.seekTo(mCurrentProgress = progress);
+        setCurrentProgress(progress, false);
 
-        if( isPlay && !isPlaying() ) {
-            switchPlayBtnStatus( true );
+        if (isPlay && !isPlaying()) {
+            switchPlayBtnStatus(true);
             mMediaX.play();
         }
     }
+
     public void seekTo(int progress) {
-        seekTo( progress, true );
+        seekTo(progress, true);
     }
 
     private void switchPlayBtnStatus(boolean isPlay) {
@@ -308,12 +319,12 @@ public class ListenDailyPlayerView extends LinearLayout {
                 R.drawable.ic_listen_daily_stop_btn :
                 R.drawable.ic_listen_daily_play_btn
         );
-        ivPlayerPlayBtn.setTag( !isPlay );
+        ivPlayerPlayBtn.setTag(!isPlay);
     }
 
     private void switchSpeedBtnStatus(int index) {
         int resId;
-        switch( index ) {
+        switch (index) {
             case 1:
                 resId = R.drawable.ic_listen_daily_speed_1_btn;
                 mSpeed = Speed.X_0_8;
@@ -331,24 +342,24 @@ public class ListenDailyPlayerView extends LinearLayout {
                 mSpeed = Speed.X_1_0;
                 break;
         }
-        ivPlayerSpeedBtn.setImageResource( resId );
-        ivPlayerSpeedBtn.setTag( index );
-        doSpeedBtnListener( mSpeed );
+        ivPlayerSpeedBtn.setImageResource(resId);
+        ivPlayerSpeedBtn.setTag(index);
+        doSpeedBtnListener(mSpeed);
     }
 
     private void doSpeedBtnListener(float speed) {
-        mMediaX.setSpeed( speed );
+        mMediaX.setSpeed(speed);
     }
 
     private ViewGroup createSeekBar() {
         return (ViewGroup) LayoutInflater
-                .from( getContext() )
-                .inflate( R.layout.block_listen_daily_progress_bar, this );
+                .from(getContext())
+                .inflate(R.layout.block_listen_daily_progress_bar, this);
     }
 
     private ViewGroup createPlayControlView() {
         return (ViewGroup) LayoutInflater
-                .from( getContext() )
-                .inflate( R.layout.block_listen_daily_play_control, this );
+                .from(getContext())
+                .inflate(R.layout.block_listen_daily_play_control, this);
     }
 }
