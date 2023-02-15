@@ -70,8 +70,6 @@ public class AnswerExpPresenter extends MvpPresenter<AnswerExpView> {
                 }else {
                     v.onCallContent( content + " " + xp, mAnswerExp );
                 }
-
-
             }
         } );
     }

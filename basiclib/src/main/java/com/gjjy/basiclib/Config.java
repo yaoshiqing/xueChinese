@@ -14,7 +14,7 @@ public class Config {
     //好友分享的Quote
     public static String mInviteFriendsQuote = "멤버십 드릴테니 어서 써봅시다";
     //是否解锁全部模块限制（无法保存进度）
-    public static boolean isModelFullUnlock = true;
+    public static boolean isModelFullUnlock = false;
     //测试会员状态（后期需要去掉。1试用会员、2正式会员、0不是会员）
     public static int mVipStatus = 0;
     //后台api地址
