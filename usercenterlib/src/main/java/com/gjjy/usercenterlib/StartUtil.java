@@ -16,31 +16,38 @@ public class StartUtil {
     }
 
     public static void startMsgSystemListActivity(Activity activity) {
-        startMsgListActivity( activity, "1" );
-    }
-    public static void startMsgVipListActivity(Activity activity) {
-        startMsgListActivity( activity, "2" );
-    }
-    public static void startMsgInteractiveListActivity(Activity activity) {
-        startMsgListActivity( activity, "3" );
-    }
-    private static void startMsgListActivity(Activity activity, String type) {
-        Postcard p = ARouter.getInstance().build( "/message/msgListActivity" );
-        LogisticsCenter.completion( p );
-        Intent intent = new Intent( activity, p.getDestination() );
-        intent.putExtra( Constant.TYPE, type );
-        activity.startActivity( intent );
+        startMsgListActivity(activity, "1");
     }
 
-    public static void startAchievementActivity() {
-        ARouter.getInstance().build("/userCenter/achievementActivity").navigation();
+    public static void startMsgVipListActivity(Activity activity) {
+        startMsgListActivity(activity, "2");
+    }
+
+    public static void startMsgInteractiveListActivity(Activity activity) {
+        startMsgListActivity(activity, "3");
+    }
+
+    private static void startMsgListActivity(Activity activity, String type) {
+        Postcard p = ARouter.getInstance().build("/message/msgListActivity");
+        LogisticsCenter.completion(p);
+        Intent intent = new Intent(activity, p.getDestination());
+        intent.putExtra(Constant.TYPE, type);
+        activity.startActivity(intent);
+    }
+
+    public static void startAchievementActivity(Activity activity, int xpNum) {
+        Postcard p = ARouter.getInstance().build("/userCenter/achievementActivity");
+        LogisticsCenter.completion(p);
+        Intent intent = new Intent(activity, p.getDestination());
+        intent.putExtra(Constant.XP_NUM, xpNum);
+        activity.startActivity(intent);
+
+        // ARouter.getInstance().build("/userCenter/achievementActivity").navigation();
     }
 
     public static void startSettingActivity(Activity activity) {
         Postcard p = ARouter.getInstance().build("/userCenter/setUpActivity");
-        com.gjjy.basiclib.utils.StartUtil.startActivityForResult(
-                activity, p, com.gjjy.basiclib.utils.StartUtil.REQUEST_CODE_GO_TO_HOME
-        );
+        com.gjjy.basiclib.utils.StartUtil.startActivityForResult(activity, p, com.gjjy.basiclib.utils.StartUtil.REQUEST_CODE_GO_TO_HOME);
     }
 
     public static void startLearningReminderActivity() {
@@ -55,16 +62,14 @@ public class StartUtil {
         ARouter.getInstance().build("/login/emailUpdatePasswordActivity").navigation();
     }
 
-    public static void startLoginActivity(Activity activity,
-                                          @PageName String pageName,
-                                          boolean isBackBtn) {
-        Postcard p = ARouter.getInstance().build( "/login/loginActivity" );
-        LogisticsCenter.completion( p );
-        Intent intent = new Intent( activity, p.getDestination() );
-        intent.putExtra( Constant.PAGE_NAME, pageName );
-        intent.putExtra( Constant.LOGIN_NOT_BACK_BTN, !isBackBtn );
+    public static void startLoginActivity(Activity activity, @PageName String pageName, boolean isBackBtn) {
+        Postcard p = ARouter.getInstance().build("/login/loginActivity");
+        LogisticsCenter.completion(p);
+        Intent intent = new Intent(activity, p.getDestination());
+        intent.putExtra(Constant.PAGE_NAME, pageName);
+        intent.putExtra(Constant.LOGIN_NOT_BACK_BTN, !isBackBtn);
 
-        activity.startActivityForResult( intent, com.gjjy.basiclib.utils.StartUtil.REQUEST_CODE_LOGIN );
+        activity.startActivityForResult(intent, com.gjjy.basiclib.utils.StartUtil.REQUEST_CODE_LOGIN);
     }
 
     public static void startRankingActivity() {

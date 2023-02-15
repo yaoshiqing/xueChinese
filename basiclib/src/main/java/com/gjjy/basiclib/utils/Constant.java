@@ -39,6 +39,8 @@ public @interface Constant {
      */
     String MAIN_PUSH_BUNDLE = "MAIN_PUSH_BUNDLE";
 
+    String XP_NUM = "XP_NUM";
+
     /**
      * 页面类型
      * 类型：{@link PageName}
