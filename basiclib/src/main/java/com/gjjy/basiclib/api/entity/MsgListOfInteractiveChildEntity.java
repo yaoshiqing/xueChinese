@@ -21,6 +21,7 @@ public class MsgListOfInteractiveChildEntity extends MsgListContentEntity {
     private String imgUrl;                  //文章小图
     private String bigImgUrl;               //文章大图
     private int isVip;                      //是否为会员
+    private String videoId;                 //视频videoId
 
     @NonNull
     @Override
@@ -50,6 +51,7 @@ public class MsgListOfInteractiveChildEntity extends MsgListContentEntity {
                 ", talkId=" + talkId +
                 ", isVip=" + isVip +
                 ", createTime='" + getCreateTime() + '\'' +
+                ", videoId='" + videoId + '\'' +
                 '}';
     }
 
@@ -155,5 +157,13 @@ public class MsgListOfInteractiveChildEntity extends MsgListContentEntity {
     public boolean isVip() { return ObjUtils.parseBoolean( isVip ); }
     public void setIsVip(int isVip) {
         this.isVip = isVip;
+    }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
     }
 }

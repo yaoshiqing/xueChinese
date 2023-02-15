@@ -43,8 +43,8 @@ public class MsgListActivity extends BaseActivity implements MsgListView {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_msg_list );
-        mPresenter.initIntent( getIntent() );
+        setContentView(R.layout.activity_msg_list);
+        mPresenter.initIntent(getIntent());
         initView();
         initData();
         initListener();
@@ -52,39 +52,35 @@ public class MsgListActivity extends BaseActivity implements MsgListView {
 
     @Override
     protected void onDestroy() {
-        onCallShowLoadingDialog( false );
+        onCallShowLoadingDialog(false);
         super.onDestroy();
     }
 
     private void initView() {
-        tbToolbar = findViewById( R.id.msg_list_tb_toolbar );
-        prlRefreshLayout = findViewById( R.id.msg_list_prl_refresh_layout );
-        rvList = findViewById( R.id.msg_list_rv_list );
+        tbToolbar = findViewById(R.id.msg_list_tb_toolbar);
+        prlRefreshLayout = findViewById(R.id.msg_list_prl_refresh_layout);
+        rvList = findViewById(R.id.msg_list_rv_list);
     }
 
     private void initData() {
-        setStatusBarHeight( R.id.toolbar_height_space );
+        setStatusBarHeight(R.id.toolbar_height_space);
         mLoadingDialog = createLoadingDialog();
-        if( mPresenter.getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE ) {
-            tbToolbar.setTitle( R.string.stringMsgCenterMsgNotify );
-            rvList.setPadding( 0, 0, 0, 0 );
-            rvList.setBackgroundColor( Color.WHITE );
-            prlRefreshLayout.setBackgroundColor( Color.WHITE );
+        if (mPresenter.getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE) {
+            tbToolbar.setTitle(R.string.stringMsgCenterMsgNotify);
+            rvList.setPadding(0, 0, 0, 0);
+            rvList.setBackgroundColor(Color.WHITE);
+            prlRefreshLayout.setBackgroundColor(Color.WHITE);
         }
-        tbToolbar.setBackgroundColor( Color.WHITE );
-        tbToolbar.setOtherBtnOfImg( R.drawable.ic_msg_list_clear_unread_icon );
-        tbToolbar.getOtherBtnOfImg().setVisibility(
-                mPresenter.getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE ? View.GONE : View.VISIBLE
-        );
+        tbToolbar.setBackgroundColor(Color.WHITE);
+        tbToolbar.setOtherBtnOfImg(R.drawable.ic_msg_list_clear_unread_icon);
+        tbToolbar.getOtherBtnOfImg().setVisibility(mPresenter.getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE ? View.GONE : View.VISIBLE);
 
-        mAdapter = new MsgListAdapter(
-                Glide.with( this ), new ArrayList<>(), mPresenter.getMsgCenterType()
-        );
-        mAdapter.setUserName( mPresenter.getUserName() );
-        prlRefreshLayout.setEnableRefresh( false );
+        mAdapter = new MsgListAdapter(Glide.with(this), new ArrayList<>(), mPresenter.getMsgCenterType());
+        mAdapter.setUserName(mPresenter.getUserName());
+        prlRefreshLayout.setEnableRefresh(false);
 
-        rvList.setLayoutManager( new LinearLayoutManager( this ) );
-        rvList.setAdapter( mAdapter );
+        rvList.setLayoutManager(new LinearLayoutManager(this));
+        rvList.setAdapter(mAdapter);
 
         //获取消息列表
         mPresenter.refreshMsgList();
@@ -99,26 +95,24 @@ public class MsgListActivity extends BaseActivity implements MsgListView {
 
         prlRefreshLayout.setOnLoadMoreListener(refreshLayout -> mPresenter.nextMsgList());
 
-
         mAdapter.setOnItemClickListener((adapter, view, itemData, position) -> {
             //标记已读
-            mPresenter.unreadMsg( itemData.getId(), position );
+            mPresenter.unreadMsg(itemData.getId(), position);
             //打开互动消息页
-            if( mPresenter.getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE ) {
+            if (mPresenter.getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE) {
                 StartUtil.startTargetedLearningDetailsActivity(
                         itemData.getId(),
                         itemData.getTalkId(),
+                        itemData.getVideoId(),
                         itemData.getInteractType()
                 );
                 return;
             }
-            String title = getString( itemData.getMsgType() == 2 ?
-                    R.string.stringMsgCenterVipNotify :
-                    R.string.stringMsgCenterSystemNotify
-            );
+            String title = getString(itemData.getMsgType() == 2 ? R.string.stringMsgCenterVipNotify : R.string.stringMsgCenterSystemNotify);
             //打开详情页
             StartUtil.startMsgDetailsActivity(
                     this,
+                    itemData.getVideoId(),
                     itemData.getId(),
                     title
             );
@@ -129,36 +123,35 @@ public class MsgListActivity extends BaseActivity implements MsgListView {
     public void onCallMsgList(List<MsgListAdapter.ItemData> list, boolean isPaging) {
         boolean isNotData = list.size() == 0;
         int vis = mAdapter.getItemCount() == 0 ? View.GONE : View.VISIBLE;
-        if( isPaging ) {
-            if( !isNotData ) {
-                mAdapter.addItemData( list );
-                mAdapter.notifyItemRangeInserted(
-                        mAdapter.getItemCount() - list.size(),
-                        list.size()
-                );
+        if (isPaging) {
+            if (!isNotData) {
+                mAdapter.addItemData(list);
+                mAdapter.notifyItemRangeInserted(mAdapter.getItemCount() - list.size(), list.size());
             }
             //关闭分页加载动画
             prlRefreshLayout.finishLoadMore();
-        }else {
+        } else {
             mAdapter.clearItemData();
-            mAdapter.addItemData( list );
+            mAdapter.addItemData(list);
             mAdapter.notifyDataSetChanged();
         }
 
         //空数据源
-        if( isNotData ) {
-            prlRefreshLayout.setVisibility( vis );
-            tbToolbar.getOtherBtnOfImg().setVisibility( vis );
+        if (isNotData) {
+            prlRefreshLayout.setVisibility(vis);
+            tbToolbar.getOtherBtnOfImg().setVisibility(vis);
         }
     }
 
     @Override
     public void onCallUnread(int position) {
-        MsgListAdapter.ItemData item = mAdapter.getItemData( position );
-        if( item == null ) return;
-        item.setNews( false );
-        mAdapter.setItemData( position, item );
-        mAdapter.notifyItemChanged( position );
+        MsgListAdapter.ItemData item = mAdapter.getItemData(position);
+        if (item == null) {
+            return;
+        }
+        item.setNews(false);
+        mAdapter.setItemData(position, item);
+        mAdapter.notifyItemChanged(position);
     }
 
     @Override
@@ -168,8 +161,10 @@ public class MsgListActivity extends BaseActivity implements MsgListView {
 
     @Override
     public void onCallShowLoadingDialog(boolean isShow) {
-        if( mLoadingDialog == null ) return;
-        if( isShow ) {
+        if (mLoadingDialog == null) {
+            return;
+        }
+        if (isShow) {
             mLoadingDialog.show();
             return;
         }

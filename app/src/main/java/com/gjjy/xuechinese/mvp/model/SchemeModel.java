@@ -20,10 +20,18 @@ public class SchemeModel extends MvpModel {
 
     public void initIntent(Intent intent) {
         Uri uri = intent.getData();
-        if( uri == null ) return;
-        if( !"gjjy".equals( uri.getScheme() ) ) return;
-        if( !"ct.main".equals( uri.getHost() ) ) return;
-        if( uri.getPath() == null ) return;
+        if (uri == null) {
+            return;
+        }
+        if (!"gjjy".equals(uri.getScheme())) {
+            return;
+        }
+        if (!"ct.main".equals(uri.getHost())) {
+            return;
+        }
+        if (uri.getPath() == null) {
+            return;
+        }
 
         final String listenDailyPath = "/listen_daily";
         final String popularVideosPath = "/popular_videos";
@@ -31,14 +39,14 @@ public class SchemeModel extends MvpModel {
         final String path = uri.getPath();
 
         try {
-            mId = ObjUtils.parseInt( uri.getQueryParameter( "id" ) );
-            mVideoId = uri.getQueryParameter( "videoId" );
-            mName = uri.getQueryParameter( "name" );
-        }catch(Exception e) {
+            mId = ObjUtils.parseInt(uri.getQueryParameter("id"));
+            mVideoId = uri.getQueryParameter("videoId");
+            mName = uri.getQueryParameter("name");
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             //无效的传参
-            if( mId <= 0 || TextUtils.isEmpty( mVideoId ) || TextUtils.isEmpty( mName ) ) {
+            if (mId <= 0 || TextUtils.isEmpty(mVideoId) || TextUtils.isEmpty(mName)) {
                 mId = 0;
                 mName = null;
                 mVideoId = null;
@@ -46,7 +54,7 @@ public class SchemeModel extends MvpModel {
         }
 
         int pathType = 0;
-        switch( path ) {
+        switch (path) {
             case listenDailyPath:                   //每日聆听
                 pathType = PathType.LISTEN_DAILY;
                 break;
@@ -57,8 +65,10 @@ public class SchemeModel extends MvpModel {
                 pathType = PathType.TARGETED_LEARNING;
                 break;
         }
-        if( mOnIntentListener != null ) mOnIntentListener.accept( pathType );
-        LogUtil.e( "SchemeModel -> initIntent -> " +
+        if (mOnIntentListener != null) {
+            mOnIntentListener.accept(pathType);
+        }
+        LogUtil.e("SchemeModel -> initIntent -> " +
                 "pathType:" + pathType + " | " +
                 "id:" + mId + " | " +
                 "videoId:" + mVideoId + " | " +
@@ -66,11 +76,17 @@ public class SchemeModel extends MvpModel {
         );
     }
 
-    public int getId() { return mId; }
+    public int getId() {
+        return mId;
+    }
 
-    public String getVideoId() { return mVideoId; }
+    public String getVideoId() {
+        return mVideoId;
+    }
 
-    public String getName() { return mName; }
+    public String getName() {
+        return mName;
+    }
 
     public void setOnIntentListener(@PathType Consumer<Integer> call) {
         mOnIntentListener = call;

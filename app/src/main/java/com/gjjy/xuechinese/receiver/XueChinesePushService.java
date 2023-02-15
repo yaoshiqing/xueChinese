@@ -23,30 +23,34 @@ public class XueChinesePushService extends PushService {
 
     @Override
     public void onNewToken(@NonNull String s) {
-        super.onNewToken( s );
-        log( "onNewToken -> " + s );
+        super.onNewToken(s);
+        log("onNewToken -> " + s);
     }
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
-        super.onMessageReceived( remoteMessage );
+        super.onMessageReceived(remoteMessage);
         Map<String, String> map = remoteMessage.getData();
-        if( map.size() == 0 ) return;
+        if (map.size() == 0) {
+            return;
+        }
 
-        Intent intent = new Intent( this, MainActivity.class );
+        Intent intent = new Intent(this, MainActivity.class);
         Bundle data = new Bundle();
-        for( String key : map.keySet() ) data.putString( key, map.get( key ) );
-        intent.putExtra( Constant.MAIN_PUSH_BUNDLE, data );
+        for (String key : map.keySet()) {
+            data.putString(key, map.get(key));
+        }
+        intent.putExtra(Constant.MAIN_PUSH_BUNDLE, data);
 
         mHandler.post(() -> NotificationX.get().showNotification(
-                (int) ( Math.random() * 99999 ) + 10000,
+                (int) (Math.random() * 99999) + 10000,
                 NetworkConfig.get().getSmallIcon(),
-                map.containsKey( "title" ) ? map.get( "title" ) : null,
-                map.containsKey( "body" ) ? map.get( "body" ) : null,
+                map.containsKey("title") ? map.get("title") : null,
+                map.containsKey("body") ? map.get("body") : null,
                 intent,
                 false
         ));
-        log( data.toString() );
+        log(data.toString());
 //        if( intent == null ) return;
 //        String action = intent.getAction();
 //        Bundle data = intent.getExtras();
@@ -70,10 +74,10 @@ public class XueChinesePushService extends PushService {
     @Override
     public void onDeletedMessages() {
         super.onDeletedMessages();
-        mHandler.post( () -> NotificationX.get().cancelAll() );
+        mHandler.post(() -> NotificationX.get().cancelAll());
     }
 
     private void log(String msg) {
-        LogUtil.d( TAG, msg );
+        LogUtil.d(TAG, msg);
     }
 }

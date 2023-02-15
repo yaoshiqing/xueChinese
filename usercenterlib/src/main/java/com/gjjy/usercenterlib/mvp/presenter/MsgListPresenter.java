@@ -33,15 +33,18 @@ public class MsgListPresenter extends MvpPresenter<MsgListView> {
     }
 
     public void initIntent(Intent intent) {
-        if( intent == null ) return;
-
-        mMsgType = intent.getStringExtra( Constant.TYPE );
+        if (intent == null) {
+            return;
+        }
+        mMsgType = intent.getStringExtra(Constant.TYPE);
     }
 
-    public String getUserName(){ return mUserModel.getUserName( getResources() ); }
+    public String getUserName() {
+        return mUserModel.getUserName(getResources());
+    }
 
     public int getMsgCenterType() {
-        switch( mMsgType ) {
+        switch (mMsgType) {
             case "2":
                 return MsgCenterAdapter.Type.VIP;
             case "3":
@@ -52,39 +55,41 @@ public class MsgListPresenter extends MvpPresenter<MsgListView> {
     }
 
     public void getMsgList(int page) {
-        if( TextUtils.isEmpty( mMsgType ) ) return;
+        if (TextUtils.isEmpty(mMsgType)) {
+            return;
+        }
         boolean isPaging = page > 1;
-        viewCall( v -> v.onCallShowLoadingDialog( true ) );
+        viewCall(v -> v.onCallShowLoadingDialog(true));
         //互动消息
-        if( getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE ){
-            getMsgListOfInteractive( page, isPaging );
+        if (getMsgCenterType() == MsgCenterAdapter.Type.MESSAGE) {
+            getMsgListOfInteractive(page, isPaging);
             return;
         }
         //常规消息
         mReqMsgModel.reqMsgList(mMsgType, page, 10, entity -> {
-            if( entity == null ) {
+            if (entity == null) {
                 mPage = page - 1;
-                onCallMsgList( new ArrayList<>(), isPaging );
+                onCallMsgList(new ArrayList<>(), isPaging);
                 return;
             }
 
             List<MsgListContentEntity> list = entity.getData();
             List<MsgListAdapter.ItemData> retList = new ArrayList<>();
-            if( list == null ) {
-                onCallMsgList( retList, isPaging );
+            if (list == null) {
+                onCallMsgList(retList, isPaging);
                 return;
             }
             for (MsgListContentEntity data : list) {
                 MsgListAdapter.ItemData item = new MsgListAdapter.ItemData();
-                item.setId( data.getId() );
-                item.setMsgType( data.getMsgType() );
-                item.setTitle( data.getTitle() );
-                item.setContent( data.getSummary() );
+                item.setId(data.getId());
+                item.setMsgType(data.getMsgType());
+                item.setTitle(data.getTitle());
+                item.setContent(data.getSummary());
 //                item.setUrl( Config.URL_MSG_DETAILS + data.getId() );
-                item.setNews( data.getStatus() == 0 );
-                item.setDate( data.getCreateTime() * 1000L );
+                item.setNews(data.getStatus() == 0);
+                item.setDate(data.getCreateTime() * 1000L);
                 int type;
-                switch ( data.getSendKey() ) {
+                switch (data.getSendKey()) {
                     case "remind":       //提醒
                         type = MsgListAdapter.Type.REMIND;
                         break;
@@ -95,77 +100,83 @@ public class MsgListPresenter extends MvpPresenter<MsgListView> {
                         type = MsgListAdapter.Type.OTHER;
                         break;
                 }
-                item.setType( type );
-                retList.add( item );
+                item.setType(type);
+                retList.add(item);
             }
-            onCallMsgList( retList, isPaging );
+            onCallMsgList(retList, isPaging);
         });
     }
 
     /**
-     互动消息
-     @param page        第几页
-     @param isPaging    是否为第一页（分页）
+     * 互动消息
+     *
+     * @param page     第几页
+     * @param isPaging 是否为第一页（分页）
      */
     private void getMsgListOfInteractive(int page, boolean isPaging) {
         mReqMsgModel.reqMsgOfInteractiveList(page, entity -> {
-            if( entity == null ) {
+            if (entity == null) {
                 mPage = page - 1;
-                onCallMsgList( new ArrayList<>(), isPaging );
+                onCallMsgList(new ArrayList<>(), isPaging);
                 return;
             }
             List<MsgListOfInteractiveChildEntity> list = entity.getData();
             List<MsgListAdapter.ItemData> retList = new ArrayList<>();
-            if( list == null ) {
-                onCallMsgList( retList, isPaging );
+            if (list == null) {
+                onCallMsgList(retList, isPaging);
                 return;
             }
-            for( MsgListOfInteractiveChildEntity data : list ) {
+            for (MsgListOfInteractiveChildEntity data : list) {
                 MsgListAdapter.ItemData item = new MsgListAdapter.ItemData();
-                item.setId( data.getDiscoverArticleId() );
-                item.setTitle( data.getTitle() );
-                item.setContent( data.getInteractTalkContent() );
-                item.setMyContent( data.getTalkContent() );
-                item.setInteractType( data.getInteractType() );
-                item.setAvatarUrl( data.getInteractAvatarUrl() );
-                item.setImgUrl( data.getImgUrl() );
-                item.setNickname( data.getInteractNickname() );
-                item.setVip( data.isVip() );
-                item.setTalkId( data.getTalkId() );
-                item.setDate( data.getCreateTime() * 1000L );
-                retList.add( item );
+                item.setId(data.getDiscoverArticleId());
+                item.setTitle(data.getTitle());
+                item.setContent(data.getInteractTalkContent());
+                item.setMyContent(data.getTalkContent());
+                item.setInteractType(data.getInteractType());
+                item.setAvatarUrl(data.getInteractAvatarUrl());
+                item.setImgUrl(data.getImgUrl());
+                item.setNickname(data.getInteractNickname());
+                item.setVip(data.isVip());
+                item.setTalkId(data.getTalkId());
+                item.setVideoId(data.getVideoId());
+                item.setDate(data.getCreateTime() * 1000L);
+                retList.add(item);
             }
-            onCallMsgList( retList, isPaging );
-        } );
+            onCallMsgList(retList, isPaging);
+        });
     }
 
     private void onCallMsgList(List<MsgListAdapter.ItemData> list, boolean isPaging) {
-        viewCall( v -> {
-            v.onCallMsgList( list, isPaging );
-            v.onCallShowLoadingDialog( false );
-        } );
+        viewCall(v -> {
+            v.onCallMsgList(list, isPaging);
+            v.onCallShowLoadingDialog(false);
+        });
     }
 
     public void refreshMsgList() {
         mPage = 1;
-        getMsgList( mPage );
+        getMsgList(mPage);
     }
 
 
     public void nextMsgList() {
-        getMsgList( ++mPage );
+        getMsgList(++mPage);
     }
 
     public void unreadMsg(int id, int position) {
         mReqMsgModel.reqMsgEditStatus(id, result -> {
-            if( !result ) return;
-            viewCall(v -> v.onCallUnread( position ));
+            if (!result) {
+                return;
+            }
+            viewCall(v -> v.onCallUnread(position));
         });
     }
 
     public void unreadMsgAll() {
-        mReqMsgModel.reqMsgEditStatusAll( mMsgType, result -> {
-            if( !result ) return;
+        mReqMsgModel.reqMsgEditStatusAll(mMsgType, result -> {
+            if (!result) {
+                return;
+            }
             viewCall(MsgListView::onCallUnreadAll);
         });
     }

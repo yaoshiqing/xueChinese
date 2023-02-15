@@ -175,6 +175,7 @@ public class MsgListAdapter extends BaseRecyclerViewAdapter<MsgListAdapter.ItemD
         private String avatarUrl;           //回复人的头像
         private String myContent;           //自己的评论
         private int interactType;           //互动类型。1：点赞，2：回复
+        private String videoId;             // 视频videoId
 
         @NonNull
         @Override
@@ -195,6 +196,7 @@ public class MsgListAdapter extends BaseRecyclerViewAdapter<MsgListAdapter.ItemD
                     ", avatarUrl='" + avatarUrl + '\'' +
                     ", myContent='" + myContent + '\'' +
                     ", interactType='" + interactType + '\'' +
+                    ", videoId='" + videoId + '\'' +
                     '}';
         }
 
@@ -317,6 +319,14 @@ public class MsgListAdapter extends BaseRecyclerViewAdapter<MsgListAdapter.ItemD
 
         public void setInteractType(int interactType) {
             this.interactType = interactType;
+        }
+
+        public String getVideoId() {
+            return videoId;
+        }
+
+        public void setVideoId(String videoId) {
+            this.videoId = videoId;
         }
     }
 }
