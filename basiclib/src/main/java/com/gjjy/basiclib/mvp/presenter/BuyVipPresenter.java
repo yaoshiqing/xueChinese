@@ -56,6 +56,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
     private SkuDetails mCurrentSku;
 
     private boolean isHaveSelectTag = false;
+    private String googleOrderId = "";
 
     private final List<GoogleBuySubEntity> mGoogleBuySubList = new ArrayList<GoogleBuySubEntity>();
 
@@ -109,10 +110,8 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         return isLoginResult;
     }
 
-    private String mOrderId;
 
     public void play(String skuId) {
-//        mCurrentSkuId = skuId;
         mCurrentSku = mSkuList.getSkuDetails(skuId);
         if (mCurrentSku == null) {
             viewCall(v -> v.onCallBuyVipResult(PurchaseState.UNSPECIFIED_STATE, false, "sku is null"));
@@ -127,11 +126,8 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
         for (GoogleBuySubEntity sub : googleBuySubList) {
             if (skuId.equals(sub.getTpGoodsId())) {
-                mOtherModel.reqCreateOrder(sub.getId(), orderEntity -> {
-                    mOrderId = orderEntity.getOrderId();
-                    //发起购买
-                    mGoogleProductDao.launchBillingFlow(getActivity(), PurchaseType.ACKNOWLEDGE, mCurrentSku);
-                });
+                // 发起购买
+                mGoogleProductDao.launchBillingFlow(getActivity(), PurchaseType.ACKNOWLEDGE, mCurrentSku, mUserModel.getUid());
                 return;
             }
         }
@@ -143,7 +139,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
     }
 
     public void queryBuySubList() {
-        //查询所有订阅
+        // 查询所有订阅
         List<GoogleBuySubEntity> googleBuySubList = new ArrayList<GoogleBuySubEntity>();
         googleBuySubList.addAll(mGoogleBuySubList);
 
@@ -151,14 +147,13 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             startGoogleProduct(toSkuArr(googleBuySubList));
             return;
         }
-        //正常列表
+        // 正常列表
         mOtherModel.queryGoogleBuySubList(norList -> {
             mGoogleBuySubList.clear();
             mGoogleBuySubList.addAll(norList);
             try {
-                // mGoogleBuySubList.clear();
                 googleBuySubList.addAll(mGoogleBuySubList);
-                //开始查询
+                // 开始查询
                 startGoogleProduct(toSkuArr(googleBuySubList));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -170,20 +165,32 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         if (mGoogleProductClient == null) {
             mGoogleProductClient = GooglePlayProduct.get().create(getContext());
         }
-        //开始连接
+        // 开始连接
         mGoogleProductClient.startConnection();
-        //连接成功后才会返回Dao
+        // 连接成功后才会返回Dao
         mGoogleProductClient.setOnClientDaoListener(dao -> {
             mGoogleProductDao = dao;
-            //查询sku列表
+            // 查询sku列表
             dao.querySkuDetailsOfInApp(data -> callQuerySkuDetailsOfSubs(skuArr, data), skuArr);
         });
 
-        //购买结果
+        // 购买结果
         mGoogleProductClient.setOnPurchaseResultListener(new Client.OnPurchaseResultListener() {
             @Override
             public boolean onParam(Purchase purchase) {
-                Log.e("GooglePlaySub", "onParam -> " + purchase.getPurchaseToken());
+                googleOrderId = purchase.getOrderId();
+                Log.e("GooglePlaySub", "onParam mGoogleProductClient OnPurchaseResultListener -> "
+                        + " , signature = " + purchase.getSignature()
+                        + " , purchaseState = " + purchase.getPurchaseState()
+                        + " , orderId = " + purchase.getOrderId()
+                        + " , purchaseTime = " + purchase.getPurchaseTime()
+                        + " , originalJson = " + purchase.getOriginalJson()
+                        + " , skus = " + purchase.getSkus()
+                        + " , developerPayload = " + purchase.getDeveloperPayload()
+                        + " , accountIdentifiers = " + purchase.getAccountIdentifiers()
+                        + " , quantity = " + purchase.getQuantity()
+                        + ",purchaseToken = " + purchase.getPurchaseToken());
+
                 return true;
             }
 
@@ -196,15 +203,8 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
                     });
                 }
 
-                if (TextUtils.isEmpty(mOrderId)) {
-                    viewCall(v -> {
-                        v.onCallLoadingDialog(false);
-                        v.onCallBuyVipResult(PurchaseState.UNSPECIFIED_STATE, false, " orderId:" + mOrderId + " not found");
-                    });
-                    return;
-                }
                 viewCall(v -> v.onCallLoadingDialog(true), 250);
-                //设置new_sub
+                // 设置new_sub
                 sendNewSub(data);
             }
         });
@@ -243,13 +243,13 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         if (!subData.getTpGoodsId().equals(skuData.getSkuId())) {
             return false;
         }
-        //展示热门
+        // 展示热门
         skuData.setHotPrice(false);
-        //展示折扣
+        // 展示折扣
         skuData.setDiscount(false);
-        //是否显示原价
+        // 是否显示原价
         skuData.setShowPriceInfo(true);
-        //默认选中的id
+        // 默认选中的id
         if (!isHaveSelectTag && skuData.isHotPrice()) {
             setCurrentSkuId(skuData.getSkuId());
             isHaveSelectTag = true;
@@ -263,17 +263,17 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
      * @param data 处理结果
      */
     private void sendNewSub(PurchaseResultEntity data) {
-        mOtherModel.sendNewSub(mOrderId, data.getPurchaseToken(), r -> {
-            buriedPointBuyVip(r, mCurrentSubscriptionPeriod);
-            if (!r) {
+        mOtherModel.sendNewSub(data.getPurchaseToken(), isSuccess -> {
+            buriedPointBuyVip(isSuccess, mCurrentSubscriptionPeriod);
+            if (!isSuccess) {
                 data.setPurchaseState(PurchaseState.PENDING);
             }
-            mUserModel.setVip(r);
-            if (r) {
+            mUserModel.setVip(isSuccess);
+            if (isSuccess) {
                 mUserModel.setVipStatus(2);
             }
-            viewCall(v -> v.onCallBuyVipResult(data.getPurchaseState(), mUserModel.isVip(), "newSub result:" + r));
-            Log.e("GooglePlaySub", "onResult -> data:" + data + " | result:" + r);
+            viewCall(v -> v.onCallBuyVipResult(data.getPurchaseState(), mUserModel.isVip(), "newSub result:" + isSuccess));
+            Log.e("GooglePlaySub", "onResult -> data:" + data + " | result:" + isSuccess);
         });
     }
 
@@ -312,7 +312,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         if (getActivity() == null || TextUtils.isEmpty(subscriptionPeriod)) {
             return;
         }
-        //埋点转换
+        // 埋点转换
         String time = SkuUtils.toSubscriptionPeriod(getActivity().getResources(), subscriptionPeriod)
                 .toLowerCase()
                 .replace("years", "年")
@@ -323,7 +323,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
                 .replace("week", "个星期")
                 .replace("days", "天")
                 .replace("day", "天");
-        //非会员的限时弹窗埋点
+        // 非会员的限时弹窗埋点
         BuriedPointEvent.get().onVipPageOfPayButton(
                 getContext(),
                 result,
@@ -336,7 +336,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
         if (mCurrentSku != null && result) {
             StatisticalManage.get().buyVip(
-                    mOrderId,
+                    googleOrderId,
                     SkuUtils.getName(mCurrentSku.getTitle()),
                     SkuUtils.getPrice(mCurrentSku.getPrice()),
                     SkuUtils.getPrice(mCurrentSku.getIntroductoryPrice()),

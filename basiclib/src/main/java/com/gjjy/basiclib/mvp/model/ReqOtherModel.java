@@ -4,7 +4,6 @@ import androidx.core.util.Consumer;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gjjy.basiclib.api.apiOther.BuyListApi;
-import com.gjjy.basiclib.api.apiOther.CreateOrderApi;
 import com.gjjy.basiclib.api.apiOther.FeedbackApi;
 import com.gjjy.basiclib.api.apiOther.GoogleBuyListApi;
 import com.gjjy.basiclib.api.apiOther.NewSubApi;
@@ -18,7 +17,6 @@ import com.gjjy.basiclib.api.entity.CheckAnnouncementEntity;
 import com.gjjy.basiclib.api.entity.CheckUpdateEntity;
 import com.gjjy.basiclib.api.entity.GoogleBuySubEntity;
 import com.gjjy.basiclib.api.entity.OSSInfoEntity;
-import com.gjjy.basiclib.api.entity.OrderEntity;
 import com.gjjy.basiclib.entity.GetVodPlayAuthEntity;
 
 import java.util.List;
@@ -121,25 +119,8 @@ public class ReqOtherModel extends BasicGlobalReqModel {
      *
      * @param call 处理结果
      */
-    public void reqCreateOrder(int goodsId, Consumer<OrderEntity> call) {
-        CreateOrderApi api = new CreateOrderApi();
-        api.addParam("goods_id", goodsId);
-        api.setCallbackString((s, isResponse) -> {
-            if (call == null) return;
-            OrderEntity data = toReqEntity(s, OrderEntity.class);
-            call.accept(data == null ? new OrderEntity() : data);
-        });
-        reqApi(api);
-    }
-
-    /**
-     * 开通会员
-     *
-     * @param call 处理结果
-     */
-    public void reqNewSub(String orderId, String purToken, Consumer<Boolean> call) {
+    public void reqNewSub(String purToken, Consumer<Boolean> call) {
         NewSubApi api = new NewSubApi();
-        api.addParam("order_id", orderId);
         api.addParam("purchase_token", purToken);
         callbackSuccess(api, call);
         reqApi(api);

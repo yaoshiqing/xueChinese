@@ -8,7 +8,6 @@ import com.gjjy.basiclib.api.entity.BuySubEntity;
 import com.gjjy.basiclib.api.entity.CheckAnnouncementEntity;
 import com.gjjy.basiclib.api.entity.CheckUpdateEntity;
 import com.gjjy.basiclib.api.entity.GoogleBuySubEntity;
-import com.gjjy.basiclib.api.entity.OrderEntity;
 import com.gjjy.basiclib.api.entity.UploadImgEntity;
 import com.gjjy.osslib.OSS;
 import com.gjjy.osslib.OnOSSCompletedListener;
@@ -110,12 +109,8 @@ public class OtherModel extends MvpModel {
         mReqOther.reqBindPushId(call);
     }
 
-    public void reqCreateOrder(int goodsId, Consumer<OrderEntity> call) {
-        mReqOther.reqCreateOrder(goodsId, call);
-    }
-
-    public void sendNewSub(String orderId, String purToken, Consumer<Boolean> call) {
-        mReqOther.reqNewSub(orderId, purToken, call);
+    public void sendNewSub(String purToken, Consumer<Boolean> call) {
+        mReqOther.reqNewSub(purToken, call);
     }
 
     public void queryDiscountBuySubList(Consumer<List<BuySubEntity>> call) {

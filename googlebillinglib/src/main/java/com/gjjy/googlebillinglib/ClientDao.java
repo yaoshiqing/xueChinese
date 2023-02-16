@@ -27,10 +27,11 @@ public class ClientDao {
     }
 
     /**
-     展示可供购买的商品
-     @param type        Sku类型
-     @param call        查询结果
-     @param skuList      sku参数
+     * 展示可供购买的商品
+     *
+     * @param type    Sku类型
+     * @param call    查询结果
+     * @param skuList sku参数
      */
     private void querySkuDetails(@BillingClient.SkuType String type, Consumer<SkuList> call, List<String> skuList) {
 //        skuList.add("premium_upgrade");
@@ -43,11 +44,9 @@ public class ClientDao {
 
         //开始查询
         mBillingClient.querySkuDetailsAsync(p, (result, list) -> {
-            Log.e("GooglePlaySub", "querySkuDetails Size:" + (list != null ? list.size() : -1));
-            Log.e("GooglePlaySub", "querySkuDetails result: "
+            Log.e("GooglePlaySub", "querySkuDetails Size:" + (list != null ? list.size() : -1) + "result: "
                     + result == null ? "null" : "(getDebugMessage = " + result.getDebugMessage()
-                    + "getResponseCode = " + result.getResponseCode()+")"
-            );
+                    + "getResponseCode = " + result.getResponseCode() + ")");
             if (call != null) {
                 call.accept(new SkuList(result, list));
             }
@@ -65,22 +64,24 @@ public class ClientDao {
     }
 
     /**
-     展示可供购买的一次性商品
-     @param call        查询结果
-     @param skuArr      sku参数
+     * 展示可供购买的一次性商品
+     *
+     * @param call   查询结果
+     * @param skuArr sku参数
      */
     public void querySkuDetailsOfInApp(Consumer<SkuList> call, List<String> skuArr) {
         querySkuDetails(BillingClient.SkuType.INAPP, call, skuArr);
     }
 
     /**
-     启动购买流程
-     @param activity        页面
-     @param purchaseType    购买类型
-     @param skuDetails      购买的商品
-     @return                响应结果
+     * 启动购买流程
+     *
+     * @param activity     页面
+     * @param purchaseType 购买类型
+     * @param skuDetails   购买的商品
+     * @return 响应结果
      */
-    public int launchBillingFlow(Activity activity, @PurchaseType int purchaseType, SkuDetails skuDetails) {
+    public int launchBillingFlow(Activity activity, @PurchaseType int purchaseType, SkuDetails skuDetails, String uid) {
         //设置购买类型
         mClient.setPurchaseType(purchaseType);
         if (skuDetails == null) {
@@ -90,9 +91,10 @@ public class ClientDao {
         // Retrieve a value for "skuDetails" by calling querySkuDetailsAsync().
         BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                 .setSkuDetails(skuDetails)
+                .setObfuscatedAccountId(uid)
                 .build();
 
-        //发起购买
+        // 发起购买
         int responseCode = mBillingClient.launchBillingFlow(activity, billingFlowParams).getResponseCode();
         Log.e("GooglePlaySub", "launchBillingFlow -> responseCode:" + responseCode);
         return responseCode;
