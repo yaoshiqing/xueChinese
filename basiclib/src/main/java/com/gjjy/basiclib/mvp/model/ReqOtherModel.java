@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gjjy.basiclib.api.apiOther.BuyListApi;
 import com.gjjy.basiclib.api.apiOther.FeedbackApi;
 import com.gjjy.basiclib.api.apiOther.GoogleBuyListApi;
+import com.gjjy.basiclib.api.apiOther.GooglePayVerifyPayApi;
 import com.gjjy.basiclib.api.apiOther.NewSubApi;
 import com.gjjy.basiclib.api.apiOther.RecordKeywordApi;
 import com.gjjy.basiclib.api.apiOther.UploadTokenApi;
@@ -18,6 +19,7 @@ import com.gjjy.basiclib.api.entity.CheckUpdateEntity;
 import com.gjjy.basiclib.api.entity.GoogleBuySubEntity;
 import com.gjjy.basiclib.api.entity.OSSInfoEntity;
 import com.gjjy.basiclib.entity.GetVodPlayAuthEntity;
+import com.gjjy.basiclib.entity.VerifyPayReq;
 
 import java.util.List;
 
@@ -169,6 +171,20 @@ public class ReqOtherModel extends BasicGlobalReqModel {
                 call.accept(toReqEntityOfList(s, GoogleBuySubEntity.class));
             }
         });
+        reqApi(api);
+    }
+
+    public void reqGooglePayVerifyPay(VerifyPayReq verifyPayReq, Consumer<Boolean> call){
+        GooglePayVerifyPayApi api = new GooglePayVerifyPayApi();
+        api.addParam("googleOrderId", verifyPayReq.getGoogleOrderId());
+        api.addParam("packageName", verifyPayReq.getPackageName());
+        api.addParam("productId", verifyPayReq.getProductId());
+        api.addParam("purchaseTime", verifyPayReq.getPurchaseTime());
+        api.addParam("purchaseState", verifyPayReq.getPurchaseState());
+        api.addParam("purchaseToken", verifyPayReq.getPurchaseToken());
+        api.addParam("signture", verifyPayReq.getSignture());
+        api.addParam("originalJson", verifyPayReq.getOriginalJson());
+        callbackSuccess(api, call);
         reqApi(api);
     }
 
