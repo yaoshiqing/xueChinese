@@ -320,16 +320,14 @@ public class Client implements BillingClientStateListener {
     }
 
     // 查询未确认消耗的商品
-    private void queryPurchaseHistoryAsync(String skuType){
-        mBillingClient.queryPurchaseHistoryAsync(skuType, new PurchaseHistoryResponseListener() {
-            @Override
-            public void onPurchaseHistoryResponse(@NonNull BillingResult billingResult, @Nullable List<PurchaseHistoryRecord> list) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
-                    for (PurchaseHistoryRecord purchaseHistoryRecord : list) {
-
-                    }
-                }
+    public void queryPurchaseHistoryAsync(String skuType) {
+        // google 消费失败的补单
+        List<Purchase> purchases = mBillingClient.queryPurchases(skuType).getPurchasesList();
+        if (purchases != null && !purchases.isEmpty()) {
+            for (Purchase purchase : purchases) {
+                handlePurchaseOfConsume(purchase);
+                return;
             }
-        });
+        }
     }
 }
