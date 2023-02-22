@@ -17,6 +17,7 @@ import com.android.billingclient.api.ConsumeResponseListener;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchaseHistoryRecord;
 import com.android.billingclient.api.PurchaseHistoryResponseListener;
+import com.android.billingclient.api.PurchasesResponseListener;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.gjjy.googlebillinglib.annotation.PurchaseState;
 import com.gjjy.googlebillinglib.annotation.PurchaseType;
@@ -322,12 +323,16 @@ public class Client implements BillingClientStateListener {
     // 查询未确认消耗的商品
     public void queryPurchaseHistoryAsync(String skuType) {
         // google 消费失败的补单
-        List<Purchase> purchases = mBillingClient.queryPurchases(skuType).getPurchasesList();
-        if (purchases != null && !purchases.isEmpty()) {
-            for (Purchase purchase : purchases) {
-                handlePurchaseOfConsume(purchase);
-                return;
+        mBillingClient.queryPurchasesAsync(skuType, new PurchasesResponseListener() {
+            @Override
+            public void onQueryPurchasesResponse(@NonNull BillingResult billingResult, @NonNull List<Purchase> purchases) {
+                if (purchases != null && !purchases.isEmpty()) {
+                    for (Purchase purchase : purchases) {
+                        handlePurchaseOfConsume(purchase);
+                        return;
+                    }
+                }
             }
-        }
+        });
     }
 }
