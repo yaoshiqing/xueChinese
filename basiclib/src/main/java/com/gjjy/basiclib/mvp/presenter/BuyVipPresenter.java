@@ -58,9 +58,9 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
     private boolean isHaveSelectTag = false;
     private String mGoogleOrderId = "";
-    private long mPurchaseTime =0L;
+    private long mPurchaseTime = 0L;
     private String mOriginalJson = "";
-    private String mSignture = "";
+    private String mSignature = "";
 
     private final List<GoogleBuySubEntity> mGoogleBuySubList = new ArrayList<GoogleBuySubEntity>();
 
@@ -194,7 +194,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
                 mGoogleOrderId = purchase.getOrderId();
                 mPurchaseTime = purchase.getPurchaseTime();
                 mOriginalJson = purchase.getOriginalJson();
-                mSignture = purchase.getSignature();
+                mSignature = purchase.getSignature();
 
                 Log.e("GooglePlaySub", "onParam mGoogleProductClient OnPurchaseResultListener -> "
                         + " , signature = " + purchase.getSignature()
@@ -202,11 +202,11 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
                         + " , orderId = " + purchase.getOrderId()
                         + " , purchaseTime = " + purchase.getPurchaseTime()
                         + " , originalJson = " + purchase.getOriginalJson()
-                        + " , skus = " + purchase.getSkus()
+                        + " , productId = " + purchase.getSkus()
                         + " , developerPayload = " + purchase.getDeveloperPayload()
                         + " , accountIdentifiers = " + purchase.getAccountIdentifiers()
                         + " , quantity = " + purchase.getQuantity()
-                        + ",purchaseToken = " + purchase.getPurchaseToken());
+                        + " , purchaseToken = " + purchase.getPurchaseToken());
 
                 return true;
             }
@@ -231,11 +231,11 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
                 req.setOriginalJson(mOriginalJson);
                 req.setPurchaseToken(data.getPurchaseToken());
                 req.setPackageName(getActivity().getPackageName());
-                req.setPurchaseState(data.getPurchaseState()+"");
-                req.setSignture(mSignture);
+                req.setPurchaseState(data.getPurchaseState() + "");
+                req.setSignture(mSignature);
                 req.setPurchaseTime(mPurchaseTime);
                 // google 支付订单校验
-                googlePayVerifyPay(data,req);
+                googlePayVerifyPay(data, req);
             }
         });
     }
@@ -322,7 +322,6 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             Log.e("GooglePlaySub", "onResult -> data:" + data + " | result:" + isSuccess);
         });
     }
-
 
 
     public void queryBuyVipEvalList() {

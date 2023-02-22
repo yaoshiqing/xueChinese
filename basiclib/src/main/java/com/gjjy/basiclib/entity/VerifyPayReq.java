@@ -14,7 +14,7 @@ public class VerifyPayReq {
     private String purchaseState;   // 订单购买状态,0. 已购买 1. 已取消 2. 待定
     private String purchaseToken;   // 购买令牌
     private String signture;        // 签名
-    private String originalJson;    // 签名
+    private String originalJson;    // 签名内容
 
     @NonNull
     @Override
