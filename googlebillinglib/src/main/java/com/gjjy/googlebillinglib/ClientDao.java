@@ -12,7 +12,6 @@ import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.gjjy.googlebillinglib.annotation.PurchaseType;
 import com.gjjy.googlebillinglib.entity.SkuList;
-import com.ybear.ybutils.utils.DigestUtil;
 
 import java.util.List;
 
@@ -89,7 +88,7 @@ public class ClientDao {
             return BillingClient.BillingResponseCode.ERROR;
         }
 
-        String uuid = DigestUtil.toMD5(googleOrderId);
+        String uuid = googleOrderId;
 
         // Retrieve a value for "skuDetails" by calling querySkuDetailsAsync().
         BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
