@@ -15,11 +15,15 @@ import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.ConsumeParams;
 import com.android.billingclient.api.ConsumeResponseListener;
 import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchaseHistoryRecord;
+import com.android.billingclient.api.PurchaseHistoryResponseListener;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.gjjy.googlebillinglib.annotation.PurchaseState;
 import com.gjjy.googlebillinglib.annotation.PurchaseType;
 import com.gjjy.googlebillinglib.entity.PurchaseResultEntity;
 import com.gjjy.googlebillinglib.entity.ResultEntity;
+
+import java.util.List;
 
 public class Client implements BillingClientStateListener {
     public interface OnPurchaseResultListener {
@@ -96,22 +100,22 @@ public class Client implements BillingClientStateListener {
         return (result, purchases) -> {
             int code = result.getResponseCode();
             if (code == BillingClient.BillingResponseCode.OK && purchases != null) {
-                for (Purchase p : purchases) {
-                    if (p == null) {
+                for (Purchase purchase : purchases) {
+                    if (purchase == null) {
                         continue;
                     }
                     // 参数
-                    if (mOnPurchaseResultListener.onParam(p)) {
-                        handlePurchaseUnspecified(code, p, mPurchaseType, PurchaseState.PURCHASED);
+                    if (mOnPurchaseResultListener.onParam(purchase)) {
+                        handlePurchaseUnspecified(code, purchase, mPurchaseType, PurchaseState.PURCHASED);
                         break;
                     }
                     // 购买类型
                     switch (mPurchaseType) {
                         case PurchaseType.CONSUME:              // 一次性消耗商品
-                            handlePurchaseOfConsume(p);
+                            handlePurchaseOfConsume(purchase);
                             break;
                         case PurchaseType.ACKNOWLEDGE:          // 非消耗商品
-                            handlePurchaseOfAcknowledge(p);
+                            handlePurchaseOfAcknowledge(purchase);
                             break;
                     }
                 }
@@ -136,7 +140,6 @@ public class Client implements BillingClientStateListener {
 
     public void startConnection(Consumer<ClientDao> callClientDao, Consumer<ResultEntity> l) {
         if (mBillingClient == null) {
-//            throw new NullPointerException("Call the create(Activity) method.");
             if (callClientDao != null) {
                 callClientDao.accept(null);
             }
@@ -184,33 +187,33 @@ public class Client implements BillingClientStateListener {
      * 客户端Dao回调监听器
      * 服务器连接成功后才会返回Dao，可以用Dao发起查询，购买等请求
      *
-     * @param l 监听器
+     * @param onClientDaoListener 监听器
      * @return this
      */
-    public Client setOnClientDaoListener(Consumer<ClientDao> l) {
-        this.mOnClientDaoListener = l;
+    public Client setOnClientDaoListener(Consumer<ClientDao> onClientDaoListener) {
+        this.mOnClientDaoListener = onClientDaoListener;
         return this;
     }
 
     /**
      * 连接Google Play服务器结果
      *
-     * @param l 监听器
+     * @param onConnectionResultListener 监听器
      * @return this
      */
-    public Client setOnConnectionResultListener(Consumer<ResultEntity> l) {
-        this.mOnConnectionResultListener = l;
+    public Client setOnConnectionResultListener(Consumer<ResultEntity> onConnectionResultListener) {
+        this.mOnConnectionResultListener = onConnectionResultListener;
         return this;
     }
 
     /**
      * 购买结果监听器
      *
-     * @param l 监听器
+     * @param onPurchaseResultListener 监听器
      * @return this
      */
-    public Client setOnPurchaseResultListener(OnPurchaseResultListener l) {
-        this.mOnPurchaseResultListener = l;
+    public Client setOnPurchaseResultListener(OnPurchaseResultListener onPurchaseResultListener) {
+        this.mOnPurchaseResultListener = onPurchaseResultListener;
         return this;
     }
 
@@ -221,12 +224,12 @@ public class Client implements BillingClientStateListener {
      */
     private void handlePurchaseOfConsume(Purchase purchase) {
         // 参数
-        ConsumeParams params = ConsumeParams.newBuilder()
+        ConsumeParams consumeParams = ConsumeParams.newBuilder()
                 .setPurchaseToken(purchase.getPurchaseToken())
                 .build();
 
         // 消费监听回调处理
-        ConsumeResponseListener l = (result, purchaseToken) -> {
+        ConsumeResponseListener consumeResponseListener = (result, purchaseToken) -> {
             if (mOnPurchaseResultListener == null) return;
             int purchaseState = PurchaseState.UNSPECIFIED_STATE;            // 未知状态
             switch (result.getResponseCode()) {
@@ -241,7 +244,7 @@ public class Client implements BillingClientStateListener {
         };
         // 发起确认
         if (mBillingClient != null) {
-            mBillingClient.consumeAsync(params, l);
+            mBillingClient.consumeAsync(consumeParams, consumeResponseListener);
         }
     }
 
@@ -274,12 +277,12 @@ public class Client implements BillingClientStateListener {
             return;
         }
         // 参数
-        AcknowledgePurchaseParams params = AcknowledgePurchaseParams.newBuilder()
+        AcknowledgePurchaseParams acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
                 .setPurchaseToken(purchaseToken)
                 .build();
 
         // 回调处理
-        AcknowledgePurchaseResponseListener l = result -> {
+        AcknowledgePurchaseResponseListener acknowledgePurchaseResponseListener = result -> {
             if (mOnPurchaseResultListener == null) {
                 return;
             }
@@ -293,7 +296,7 @@ public class Client implements BillingClientStateListener {
 
         // 发起确认
         if (mBillingClient != null) {
-            mBillingClient.acknowledgePurchase(params, l);
+            mBillingClient.acknowledgePurchase(acknowledgePurchaseParams, acknowledgePurchaseResponseListener);
         }
     }
 
@@ -308,12 +311,25 @@ public class Client implements BillingClientStateListener {
         }
         PurchaseResultEntity data = new PurchaseResultEntity();
         data.setCode(responseCode);
-//        data.setDebugMessage( "Purchase error!" );
         data.setPurchaseType(type);
         data.setPurchaseState(state);
         if (purchase != null) {
             data.setPurchaseToken(purchase.getPurchaseToken());
         }
         mOnPurchaseResultListener.onResult(data);
+    }
+
+    // 查询未确认消耗的商品
+    private void queryPurchaseHistoryAsync(String skuType){
+        mBillingClient.queryPurchaseHistoryAsync(skuType, new PurchaseHistoryResponseListener() {
+            @Override
+            public void onPurchaseHistoryResponse(@NonNull BillingResult billingResult, @Nullable List<PurchaseHistoryRecord> list) {
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
+                    for (PurchaseHistoryRecord purchaseHistoryRecord : list) {
+
+                    }
+                }
+            }
+        });
     }
 }

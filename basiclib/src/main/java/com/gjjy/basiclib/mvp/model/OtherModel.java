@@ -9,6 +9,7 @@ import com.gjjy.basiclib.api.entity.CheckAnnouncementEntity;
 import com.gjjy.basiclib.api.entity.CheckUpdateEntity;
 import com.gjjy.basiclib.api.entity.GoogleBuySubEntity;
 import com.gjjy.basiclib.api.entity.UploadImgEntity;
+import com.gjjy.basiclib.entity.VerifyPayReq;
 import com.gjjy.osslib.OSS;
 import com.gjjy.osslib.OnOSSCompletedListener;
 import com.ybear.mvp.annotations.Model;
@@ -127,4 +128,10 @@ public class OtherModel extends MvpModel {
     public void queryGoogleBuySubList(Consumer<List<GoogleBuySubEntity>> call) {
         mReqOther.reqGoogleBuySubList(call);
     }
+
+    // google 支付 订单校验
+    public void queryGooglePayVerifyPay(VerifyPayReq verifyPayReq, Consumer<Boolean> call) {
+        mReqOther.reqGooglePayVerifyPay(verifyPayReq,call);
+    }
+
 }

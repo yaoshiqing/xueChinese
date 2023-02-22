@@ -137,7 +137,7 @@ public class BuyVipActivity extends BaseActivity implements BuyVipView {
                 return;
             }
             tvBuyBtn.setEnabled(false);
-            mPresenter.play(mPresenter.getCurrentSkuId());
+            mPresenter.play(mPresenter.getCurrentSkuId(),mPresenter.getGoogleOrderId());
         });
 
         mNormalVipAdapter.setOnMultiSelectChangeListener(new OnMultiSelectChangeAdapter<BuyVipAdapter.BuyVipHolder>() {
@@ -153,6 +153,7 @@ public class BuyVipActivity extends BaseActivity implements BuyVipView {
                 BuyVipOptionEntity data = mNormalVipAdapter.getItemData(position);
                 if (data != null) {
                     mPresenter.setCurrentSkuId(data.getSkuId());
+                    mPresenter.setGoogleOrderId(data.getGoogleOrderId());
                 }
 //                LogUtil.e( "BuyVipIntroduce -> OnMultiSelectChange -> pos:" + position );
             }

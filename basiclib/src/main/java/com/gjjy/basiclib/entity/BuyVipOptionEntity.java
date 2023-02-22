@@ -18,6 +18,7 @@ public class BuyVipOptionEntity implements IItemData {
     private boolean isDiscount;
     private boolean isFirstDiscount;
     private boolean isShowPriceInfo;
+    private String googleOrderId;
 
     @NonNull
     @Override
@@ -35,6 +36,7 @@ public class BuyVipOptionEntity implements IItemData {
                 ", isDiscount=" + isDiscount +
                 ", isFirstDiscount=" + isFirstDiscount +
                 ", isShowPriceInfo=" + isShowPriceInfo +
+                ", googleOrderId=" + googleOrderId +
                 '}';
     }
 
@@ -78,4 +80,12 @@ public class BuyVipOptionEntity implements IItemData {
 
     public boolean isShowPriceInfo() { return isShowPriceInfo; }
     public void setShowPriceInfo(boolean isShow) { isShowPriceInfo = isShow; }
+
+    public String getGoogleOrderId() {
+        return googleOrderId;
+    }
+
+    public void setGoogleOrderId(String googleOrderId) {
+        this.googleOrderId = googleOrderId;
+    }
 }

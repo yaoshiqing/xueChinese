@@ -17,6 +17,7 @@ import com.gjjy.basiclib.buried_point.BuriedPointEvent;
 import com.gjjy.basiclib.buried_point.PageName;
 import com.gjjy.basiclib.entity.BuyVipEvaluationEntity;
 import com.gjjy.basiclib.entity.BuyVipOptionEntity;
+import com.gjjy.basiclib.entity.VerifyPayReq;
 import com.gjjy.basiclib.mvp.model.OtherModel;
 import com.gjjy.basiclib.mvp.model.ReqConfigModel;
 import com.gjjy.basiclib.mvp.model.UserModel;
@@ -53,10 +54,13 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
     private SkuList mSkuList;
     private String mCurrentSkuId;
     private String mCurrentSubscriptionPeriod;
-    private SkuDetails mCurrentSku;
+    private SkuDetails mCurrentSkuDetails;
 
     private boolean isHaveSelectTag = false;
-    private String googleOrderId = "";
+    private String mGoogleOrderId = "";
+    private long mPurchaseTime =0L;
+    private String mOriginalJson = "";
+    private String mSignture = "";
 
     private final List<GoogleBuySubEntity> mGoogleBuySubList = new ArrayList<GoogleBuySubEntity>();
 
@@ -99,6 +103,15 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         return mCurrentSkuId;
     }
 
+    public void setGoogleOrderId(String googleOrderId) {
+        mGoogleOrderId = googleOrderId;
+        LogUtil.e("BuyVip -> googleOrderId -> " + googleOrderId);
+    }
+
+    public String getGoogleOrderId() {
+        return mGoogleOrderId;
+    }
+
     public boolean checkIsLogin() {
         if (getActivity() == null) {
             return false;
@@ -111,13 +124,13 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
     }
 
 
-    public void play(String skuId) {
-        mCurrentSku = mSkuList.getSkuDetails(skuId);
-        if (mCurrentSku == null) {
+    public void play(String skuId, String googleOrderId) {
+        mCurrentSkuDetails = mSkuList.getSkuDetails(skuId);
+        if (mCurrentSkuDetails == null) {
             viewCall(v -> v.onCallBuyVipResult(PurchaseState.UNSPECIFIED_STATE, false, "sku is null"));
             return;
         }
-        mCurrentSubscriptionPeriod = mCurrentSku.getSubscriptionPeriod();
+        mCurrentSubscriptionPeriod = mCurrentSkuDetails.getSubscriptionPeriod();
 
         viewCall(v -> v.onCallLoadingDialog(true));
 
@@ -127,7 +140,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         for (GoogleBuySubEntity sub : googleBuySubList) {
             if (skuId.equals(sub.getTpGoodsId())) {
                 // 发起购买
-                mGoogleProductDao.launchBillingFlow(getActivity(), PurchaseType.ACKNOWLEDGE, mCurrentSku, mUserModel.getUid());
+                mGoogleProductDao.launchBillingFlow(getActivity(), PurchaseType.ACKNOWLEDGE, mCurrentSkuDetails, googleOrderId, mUserModel.getUid());
                 return;
             }
         }
@@ -161,7 +174,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         });
     }
 
-    public void startGoogleProduct(List<String> skuArr) {
+    public void startGoogleProduct(List<String> skuList) {
         if (mGoogleProductClient == null) {
             mGoogleProductClient = GooglePlayProduct.get().create(getContext());
         }
@@ -171,14 +184,18 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         mGoogleProductClient.setOnClientDaoListener(dao -> {
             mGoogleProductDao = dao;
             // 查询sku列表
-            dao.querySkuDetailsOfInApp(data -> callQuerySkuDetailsOfSubs(skuArr, data), skuArr);
+            dao.querySkuDetailsOfInApp(data -> callQuerySkuDetailsOfSubs(skuList, data), skuList);
         });
 
         // 购买结果
         mGoogleProductClient.setOnPurchaseResultListener(new Client.OnPurchaseResultListener() {
             @Override
             public boolean onParam(Purchase purchase) {
-                googleOrderId = purchase.getOrderId();
+                mGoogleOrderId = purchase.getOrderId();
+                mPurchaseTime = purchase.getPurchaseTime();
+                mOriginalJson = purchase.getOriginalJson();
+                mSignture = purchase.getSignature();
+
                 Log.e("GooglePlaySub", "onParam mGoogleProductClient OnPurchaseResultListener -> "
                         + " , signature = " + purchase.getSignature()
                         + " , purchaseState = " + purchase.getPurchaseState()
@@ -205,20 +222,33 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
                 viewCall(v -> v.onCallLoadingDialog(true), 250);
                 // 设置new_sub
-                sendNewSub(data);
+                // sendNewSub(data);
+
+                VerifyPayReq req = new VerifyPayReq();
+                req.setGoogleOrderId(mGoogleOrderId);
+                // 购买商品第三方id
+                req.setProductId(mCurrentSkuId);
+                req.setOriginalJson(mOriginalJson);
+                req.setPurchaseToken(data.getPurchaseToken());
+                req.setPackageName(getActivity().getPackageName());
+                req.setPurchaseState(data.getPurchaseState()+"");
+                req.setSignture(mSignture);
+                req.setPurchaseTime(mPurchaseTime);
+                // google 支付订单校验
+                googlePayVerifyPay(data,req);
             }
         });
     }
 
-    private void callQuerySkuDetailsOfSubs(List<String> skuArr, SkuList data) {
+    private void callQuerySkuDetailsOfSubs(List<String> skuList, SkuList data) {
         mSkuList = data;
         if (mSkuList != null) {
-            mSkuList.sort(skuArr);
+            mSkuList.sort(skuList);
         }
-        List<BuyVipOptionEntity> skuList = toBuyVipOptionEntityArr(mSkuList);
+        List<BuyVipOptionEntity> buyVipList = toBuyVipOptionEntityArr(mSkuList);
         List<BuyVipOptionEntity> norList = new ArrayList<>();
 
-        for (BuyVipOptionEntity skuData : skuList) {
+        for (BuyVipOptionEntity skuData : buyVipList) {
             for (GoogleBuySubEntity norData : mGoogleBuySubList) {
                 if (buySub2SkuData(norData, skuData)) {
                     norList.add(skuData);
@@ -252,6 +282,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         // 默认选中的id
         if (!isHaveSelectTag && skuData.isHotPrice()) {
             setCurrentSkuId(skuData.getSkuId());
+            setGoogleOrderId(skuData.getGoogleOrderId());
             isHaveSelectTag = true;
         }
         return true;
@@ -276,6 +307,23 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             Log.e("GooglePlaySub", "onResult -> data:" + data + " | result:" + isSuccess);
         });
     }
+
+    private void googlePayVerifyPay(PurchaseResultEntity data, VerifyPayReq verifyPayReq) {
+        mOtherModel.queryGooglePayVerifyPay(verifyPayReq, isSuccess -> {
+            buriedPointBuyVip(isSuccess, mCurrentSubscriptionPeriod);
+            if (!isSuccess) {
+                data.setPurchaseState(PurchaseState.PENDING);
+            }
+            mUserModel.setVip(isSuccess);
+            if (isSuccess) {
+                mUserModel.setVipStatus(2);
+            }
+            viewCall(v -> v.onCallBuyVipResult(data.getPurchaseState(), mUserModel.isVip(), "newSub result:" + isSuccess));
+            Log.e("GooglePlaySub", "onResult -> data:" + data + " | result:" + isSuccess);
+        });
+    }
+
+
 
     public void queryBuyVipEvalList() {
         Resources res = getResources();
@@ -334,14 +382,14 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
                 time
         );
 
-        if (mCurrentSku != null && result) {
+        if (mCurrentSkuDetails != null && result) {
             StatisticalManage.get().buyVip(
-                    googleOrderId,
-                    SkuUtils.getName(mCurrentSku.getTitle()),
-                    SkuUtils.getPrice(mCurrentSku.getPrice()),
-                    SkuUtils.getPrice(mCurrentSku.getIntroductoryPrice()),
-                    mCurrentSku.getPriceCurrencyCode(),
-                    mCurrentSku.getType()
+                    mGoogleOrderId,
+                    SkuUtils.getName(mCurrentSkuDetails.getTitle()),
+                    SkuUtils.getPrice(mCurrentSkuDetails.getPrice()),
+                    SkuUtils.getPrice(mCurrentSkuDetails.getIntroductoryPrice()),
+                    mCurrentSkuDetails.getPriceCurrencyCode(),
+                    mCurrentSkuDetails.getType()
             );
         }
     }
@@ -353,9 +401,9 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         }
         Resources res = getActivity().getResources();
         List<BuyVipOptionEntity> retList = new ArrayList<>();
-        List<SkuDetails> list = data.getSkuDetailsList();
-        for (int i = 0; i < list.size(); i++) {
-            SkuDetails sku = list.get(i);
+        List<SkuDetails> skuDetails = data.getSkuDetailsList();
+        for (int i = 0; i < skuDetails.size(); i++) {
+            SkuDetails sku = skuDetails.get(i);
             String price = sku.getPrice();
             if (TextUtils.isEmpty(price)) {
                 continue;
@@ -370,6 +418,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             char dateSymbol = SkuUtils.toSubscriptionPeriodOfDateSymbol(subscriptionPeriod);
 
             price = SkuUtils.getPrice(price);
+
             entity.setSkuId(sku.getSku());
             //时间
             entity.setInDate(SkuUtils.getName(sku.getTitle()));

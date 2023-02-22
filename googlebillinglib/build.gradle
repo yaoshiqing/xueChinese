@@ -30,6 +30,9 @@ android {
 }
 
 dependencies {
+    //基础框架
+    implementation project(path: ':basiclib')
+
     implementation externalMaterial
     implementation externalAppcompat
     testImplementation externalJunit

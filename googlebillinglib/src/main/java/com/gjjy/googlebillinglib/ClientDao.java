@@ -12,6 +12,7 @@ import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.gjjy.googlebillinglib.annotation.PurchaseType;
 import com.gjjy.googlebillinglib.entity.SkuList;
+import com.ybear.ybutils.utils.DigestUtil;
 
 import java.util.List;
 
@@ -57,20 +58,20 @@ public class ClientDao {
      * 展示可供购买的订阅
      *
      * @param call   查询结果
-     * @param skuArr sku参数
+     * @param skuList sku参数
      */
-    public void querySkuDetailsOfSubs(Consumer<SkuList> call, List<String> skuArr) {
-        querySkuDetails(BillingClient.SkuType.SUBS, call, skuArr);
+    public void querySkuDetailsOfSubs(Consumer<SkuList> call, List<String> skuList) {
+        querySkuDetails(BillingClient.SkuType.SUBS, call, skuList);
     }
 
     /**
      * 展示可供购买的一次性商品
      *
      * @param call   查询结果
-     * @param skuArr sku参数
+     * @param skuList sku参数
      */
-    public void querySkuDetailsOfInApp(Consumer<SkuList> call, List<String> skuArr) {
-        querySkuDetails(BillingClient.SkuType.INAPP, call, skuArr);
+    public void querySkuDetailsOfInApp(Consumer<SkuList> call, List<String> skuList) {
+        querySkuDetails(BillingClient.SkuType.INAPP, call, skuList);
     }
 
     /**
@@ -81,17 +82,20 @@ public class ClientDao {
      * @param skuDetails   购买的商品
      * @return 响应结果
      */
-    public int launchBillingFlow(Activity activity, @PurchaseType int purchaseType, SkuDetails skuDetails, String uid) {
+    public int launchBillingFlow(Activity activity, @PurchaseType int purchaseType, SkuDetails skuDetails,String googleOrderId, String uid){
         //设置购买类型
         mClient.setPurchaseType(purchaseType);
         if (skuDetails == null) {
             return BillingClient.BillingResponseCode.ERROR;
         }
 
+        String uuid = DigestUtil.toMD5(googleOrderId);
+
         // Retrieve a value for "skuDetails" by calling querySkuDetailsAsync().
         BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                 .setSkuDetails(skuDetails)
                 .setObfuscatedAccountId(uid)
+                .setObfuscatedProfileId(uuid)
                 .build();
 
         // 发起购买
