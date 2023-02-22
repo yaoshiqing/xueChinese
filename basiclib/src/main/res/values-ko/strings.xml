@@ -141,6 +141,7 @@
     <string name="stringFirstDiscountOfYear">내년 가격회복</string>
     <string name="stringFirstDiscountOfMonth">%s달 후 가격회복 </string>
     <string name="stringFirstDiscountOfWeek">다음주 가격회복</string>
+    <string name="StringInviteFriendsQuote">멤버십 드릴테니 어서 써봅시다</string>
 
     <string-array name="stringBuyVipEvalUserNameArray">
         <item>로웨나</item>

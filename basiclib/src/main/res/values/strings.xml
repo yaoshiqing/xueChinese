@@ -141,6 +141,7 @@
     <string name="stringFirstDiscountOfYear">restore at 2nd year</string>
     <string name="stringFirstDiscountOfMonth">restore at %s month</string>
     <string name="stringFirstDiscountOfWeek">restore at 2nd week</string>
+    <string name="StringInviteFriendsQuote">I\'ll give you membership. use it quickly</string>
     <string-array name="stringBuyVipEvalUserNameArray">
         <item>Rowena</item>
         <item>Regan</item>

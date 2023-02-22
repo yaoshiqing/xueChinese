@@ -39,86 +39,90 @@ public class InviteFriendsActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_invite_friends );
+        setContentView(R.layout.activity_invite_friends);
         initView();
         initData();
         initListener();
     }
 
     private void initView() {
-        tbToolbar = findViewById( R.id.invite_friends_tb_toolbar );
-        tvFacebookBtn = findViewById( R.id.invite_friends_tv_facebook_btn );
-        tvMessengerBtn = findViewById( R.id.invite_friends_tv_messenger_btn );
+        tbToolbar = findViewById(R.id.invite_friends_tb_toolbar);
+        tvFacebookBtn = findViewById(R.id.invite_friends_tv_facebook_btn);
+        tvMessengerBtn = findViewById(R.id.invite_friends_tv_messenger_btn);
     }
 
     private void initData() {
-        setStatusBarHeight( R.id.toolbar_height_space );
-        tbToolbar.setBackBtnOfImg( R.drawable.ic_white_back );
+        setStatusBarHeight(R.id.toolbar_height_space);
+        tbToolbar.setBackBtnOfImg(R.drawable.ic_white_back);
 
-        tvFacebookBtn.setVisibility(
-                mReqConfigModel.isEnableInviteFriendsFacebook() ? View.VISIBLE : View.GONE
-        );
-        tvMessengerBtn.setVisibility(
-                mReqConfigModel.isEnableInviteFriendsMessenger() ? View.VISIBLE : View.GONE
-        );
+        tvFacebookBtn.setVisibility(mReqConfigModel.isEnableInviteFriendsFacebook() ? View.VISIBLE : View.GONE);
+        tvMessengerBtn.setVisibility(mReqConfigModel.isEnableInviteFriendsMessenger() ? View.VISIBLE : View.GONE);
     }
 
     private void initListener() {
         tbToolbar.setOnClickBackBtnListener(v -> finish());
-
-        tvFacebookBtn.setOnClickListener( v -> doFacebook() );
-
-        tvMessengerBtn.setOnClickListener( v -> doMessenger() );
+        tvFacebookBtn.setOnClickListener(v -> doFacebook());
+        tvMessengerBtn.setOnClickListener(v -> doMessenger());
     }
 
     private void doFacebook() {
         FacebookShare fbShare = FacebookShare.get();
-        ShareLinkContent content = fbShare.createShareLink(
-                getShareUrl(), Config.mInviteFriendsQuote
-        );
+        ShareLinkContent content = fbShare.createShareLink(getShareUrl(), getResources().getString(R.string.StringInviteFriendsQuote));
         fbShare.share(getActivity(), content, new FacebookCallback<Sharer.Result>() {
             @Override
-            public void onSuccess(Sharer.Result result) { callResult( true ); }
+            public void onSuccess(Sharer.Result result) {
+                callResult(true);
+            }
+
             @Override
-            public void onCancel() { callResult( false ); }
+            public void onCancel() {
+                callResult(false);
+            }
+
             @Override
-            public void onError(FacebookException error) { callResult( false ); }
+            public void onError(FacebookException error) {
+                callResult(false);
+            }
 
             private void callResult(boolean result) {
                 BuriedPointEvent.get().onInviteFriendsPageOfFacebook(
                         getContext(),
                         mUserModel.getUid(),
-                        mUserModel.getUserName( getResources() ),
+                        mUserModel.getUserName(getResources()),
                         result
                 );
 
-                if( result || getContext() == null ) return;
-                post( () -> showToast( getString( R.string.stringError ) ) );
+                if (result || getContext() == null) {
+                    return;
+                }
+                post(() -> showToast(getString(R.string.stringError)));
             }
         });
     }
 
     private void doMessenger() {
         boolean result = false;
-        MessageDialog md = new MessageDialog( this );
+        MessageDialog md = new MessageDialog(this);
         try {
-            ShareLinkContent slc = FacebookShare.get().createShareLink( getShareUrl() );
-            if( result = md.canShow( slc ) ) md.show( slc );
-        }catch(Exception e) {
+            ShareLinkContent slc = FacebookShare.get().createShareLink(getShareUrl());
+            if (result = md.canShow(slc)) {
+                md.show(slc);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if( !result ) post( () -> showToast( getString( R.string.stringError ) ) );
+        if (!result) post(() -> showToast(getString(R.string.stringError)));
 
         BuriedPointEvent.get().onInviteFriendsPageOfMessenger(
                 this,
                 mUserModel.getUid(),
-                mUserModel.getUserName( getResources() ),
+                mUserModel.getUserName(getResources()),
                 result
         );
     }
 
     private String getShareUrl() {
-        return String.format( Config.mInvitationCodeUrl, mUserModel.getInvitationCode() );
+        return String.format(Config.mInvitationCodeUrl, mUserModel.getInvitationCode());
     }
 }

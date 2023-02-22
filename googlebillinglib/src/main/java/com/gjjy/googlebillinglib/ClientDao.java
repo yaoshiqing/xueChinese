@@ -100,10 +100,12 @@ public class ClientDao {
 
         // 发起购买因为网络原因可能出现掉单的问题，所以就出现补单逻辑，调起支付之前
         BillingResult billingResult = mBillingClient.launchBillingFlow(activity, billingFlowParams);
-        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+        int responseCode = billingResult.getResponseCode();
+        if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+            // 未能购买，因为已经拥有此商品
             mClient.queryPurchaseHistoryAsync(BillingClient.SkuType.INAPP);
         }
-        int responseCode = billingResult.getResponseCode();
+
         Log.e("GooglePlaySub", "launchBillingFlow -> responseCode:" + responseCode);
         return responseCode;
     }
