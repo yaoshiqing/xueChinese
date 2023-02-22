@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 
 import com.android.billingclient.api.BillingClient;
@@ -11,6 +12,7 @@ import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
+import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.gjjy.googlebillinglib.annotation.PurchaseType;
 import com.gjjy.googlebillinglib.entity.SkuList;
 
@@ -32,24 +34,24 @@ public class ClientDao {
      *
      * @param type    Sku类型
      * @param call    查询结果
-     * @param skuList sku参数
+     * @param list sku参数
      */
-    private void querySkuDetails(@BillingClient.SkuType String type, Consumer<SkuList> call, List<String> skuList) {
-//        skuList.add("premium_upgrade");
-//        skuList.add("gas");
-
-        SkuDetailsParams p = SkuDetailsParams.newBuilder()
-                .setSkusList(skuList)
+    private void querySkuDetails(@BillingClient.SkuType String type, Consumer<SkuList> call, List<String> list) {
+        SkuDetailsParams skuDetailsParams = SkuDetailsParams.newBuilder()
+                .setSkusList(list)
                 .setType(type)
                 .build();
 
         //开始查询
-        mBillingClient.querySkuDetailsAsync(p, (result, list) -> {
-            Log.e("GooglePlaySub", "querySkuDetails Size:" + (list != null ? list.size() : -1) + "result: "
-                    + result == null ? "null" : "(getDebugMessage = " + result.getDebugMessage()
-                    + "getResponseCode = " + result.getResponseCode() + ")");
-            if (call != null) {
-                call.accept(new SkuList(result, list));
+        mBillingClient.querySkuDetailsAsync(skuDetailsParams, new SkuDetailsResponseListener() {
+            @Override
+            public void onSkuDetailsResponse(@NonNull BillingResult billingResult, @Nullable List<SkuDetails> skuDetailsList) {
+                Log.e("GooglePlaySub", "querySkuDetails Size:" + (skuDetailsList != null ? skuDetailsList.size() : -1) + "billingResult: "
+                        + billingResult == null ? "null" : "getDebugMessage = " + billingResult.getDebugMessage()
+                        + "getResponseCode = " + billingResult.getResponseCode());
+                if (call != null) {
+                    call.accept(new SkuList(billingResult, skuDetailsList));
+                }
             }
         });
     }
@@ -58,20 +60,20 @@ public class ClientDao {
      * 展示可供购买的订阅
      *
      * @param call    查询结果
-     * @param skuList sku参数
+     * @param list sku参数
      */
-    public void querySkuDetailsOfSubs(Consumer<SkuList> call, List<String> skuList) {
-        querySkuDetails(BillingClient.SkuType.SUBS, call, skuList);
+    public void querySkuDetailsOfSubs(Consumer<SkuList> call, List<String> list) {
+        querySkuDetails(BillingClient.SkuType.SUBS, call, list);
     }
 
     /**
      * 展示可供购买的一次性商品
      *
      * @param call    查询结果
-     * @param skuList sku参数
+     * @param list sku参数
      */
-    public void querySkuDetailsOfInApp(Consumer<SkuList> call, List<String> skuList) {
-        querySkuDetails(BillingClient.SkuType.INAPP, call, skuList);
+    public void querySkuDetailsOfInApp(Consumer<SkuList> call, List<String> list) {
+        querySkuDetails(BillingClient.SkuType.INAPP, call, list);
     }
 
     /**

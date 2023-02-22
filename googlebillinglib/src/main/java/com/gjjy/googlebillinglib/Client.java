@@ -60,10 +60,7 @@ public class Client implements BillingClientStateListener {
     @Override
     public void onBillingSetupFinished(@NonNull BillingResult result) {
         ResultEntity data = new ResultEntity(result);
-
-        Log.e("GooglePlaySub", "startConnection -> " +
-                "onBillingSetupFinished -> " + data.toString()
-        );
+        Log.e("GooglePlaySub", "startConnection onBillingSetupFinished -> " + data.toString());
 
         if (mBillingClient != null) {
             mClientDao = data.isSuccess() ? new ClientDao(this, mBillingClient) : null;
@@ -98,8 +95,8 @@ public class Client implements BillingClientStateListener {
 
     // 支付监听回调
     public PurchasesUpdatedListener createPurchasesUpdatedListener() {
-        return (result, purchases) -> {
-            int code = result.getResponseCode();
+        return (billingResult, purchases) -> {
+            int code = billingResult.getResponseCode();
             if (code == BillingClient.BillingResponseCode.OK && purchases != null) {
                 for (Purchase purchase : purchases) {
                     if (purchase == null) {
@@ -243,7 +240,7 @@ public class Client implements BillingClientStateListener {
             }
             mOnPurchaseResultListener.onResult(new PurchaseResultEntity(result, PurchaseType.CONSUME).setPurchaseState(purchaseState).setToken(purchaseToken));
         };
-        // 发起确认
+        // 发起确认消费
         if (mBillingClient != null) {
             mBillingClient.consumeAsync(consumeParams, consumeResponseListener);
         }
@@ -320,7 +317,7 @@ public class Client implements BillingClientStateListener {
         mOnPurchaseResultListener.onResult(data);
     }
 
-    // 查询未确认消耗的商品
+    // 查询历史记录，有没校验的开始支付验证流程
     public void queryPurchaseHistoryAsync(String skuType) {
         // google 消费失败的补单
         mBillingClient.queryPurchasesAsync(skuType, new PurchasesResponseListener() {
