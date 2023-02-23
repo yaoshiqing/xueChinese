@@ -188,7 +188,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             dao.querySkuDetailsOfInApp(new Consumer<SkuList>() {
                 @Override
                 public void accept(SkuList skuList) {
-                    callQuerySkuDetailsOfSubs(list, skuList);
+                    callQuerySkuDetailsOfSubs(skuList);
                 }
             }, list);
         });
@@ -246,11 +246,11 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         });
     }
 
-    private void callQuerySkuDetailsOfSubs(List<String> list, SkuList skuList) {
+    private void callQuerySkuDetailsOfSubs(SkuList skuList) {
         mSkuList = skuList;
-        if (mSkuList != null) {
-            mSkuList.sort(list);
-        }
+//        if (mSkuList != null) {
+//            mSkuList.sort(list);
+//        }
         List<BuyVipOptionEntity> buyVipList = toBuyVipOptionEntityArr(mSkuList);
         List<BuyVipOptionEntity> norList = new ArrayList<>();
 
@@ -289,6 +289,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         if (!isHaveSelectTag && skuData.isHotPrice()) {
             setCurrentSkuId(skuData.getSkuId());
             setGoogleOrderId(skuData.getGoogleOrderId());
+            LogUtil.e("GooglePlaySub", "buySub2SkuData skuData.getSkuId()= " + skuData.getSkuId() + ", googleOrderId = " + skuData.getGoogleOrderId());
             isHaveSelectTag = true;
         }
         return true;

@@ -15,14 +15,12 @@ import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.ConsumeParams;
 import com.android.billingclient.api.ConsumeResponseListener;
 import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchaseHistoryRecord;
-import com.android.billingclient.api.PurchaseHistoryResponseListener;
 import com.android.billingclient.api.PurchasesResponseListener;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.gjjy.googlebillinglib.annotation.PurchaseState;
 import com.gjjy.googlebillinglib.annotation.PurchaseType;
 import com.gjjy.googlebillinglib.entity.PurchaseResultEntity;
-import com.gjjy.googlebillinglib.entity.ResultEntity;
+import com.gjjy.googlebillinglib.entity.BaseResultEntity;
 
 import java.util.List;
 
@@ -39,7 +37,7 @@ public class Client implements BillingClientStateListener {
     private int mPurchaseType;
 
     private Consumer<ClientDao> mOnClientDaoListener;
-    private Consumer<ResultEntity> mOnConnectionResultListener;
+    private Consumer<BaseResultEntity> mOnConnectionResultListener;
     private OnPurchaseResultListener mOnPurchaseResultListener;
 
     public Client(@Nullable Context context) {
@@ -59,7 +57,7 @@ public class Client implements BillingClientStateListener {
      */
     @Override
     public void onBillingSetupFinished(@NonNull BillingResult result) {
-        ResultEntity data = new ResultEntity(result);
+        BaseResultEntity data = new BaseResultEntity(result);
         Log.e("GooglePlaySub", "startConnection onBillingSetupFinished -> " + data.toString());
 
         if (mBillingClient != null) {
@@ -81,7 +79,7 @@ public class Client implements BillingClientStateListener {
     @Override
     public void onBillingServiceDisconnected() {
         // 尝试在下一个请求上重新启动连接 通过调用startConnection()方法重新连接
-        ResultEntity data = new ResultEntity();
+        BaseResultEntity data = new BaseResultEntity();
         data.setCode(BillingClient.BillingResponseCode.SERVICE_DISCONNECTED);
         data.setDebugMessage("Billing service disconnected");
 
@@ -136,7 +134,7 @@ public class Client implements BillingClientStateListener {
         return mClientDao;
     }
 
-    public void startConnection(Consumer<ClientDao> callClientDao, Consumer<ResultEntity> l) {
+    public void startConnection(Consumer<ClientDao> callClientDao, Consumer<BaseResultEntity> l) {
         if (mBillingClient == null) {
             if (callClientDao != null) {
                 callClientDao.accept(null);
@@ -159,7 +157,7 @@ public class Client implements BillingClientStateListener {
             }
 
             if (mOnConnectionResultListener != null) {
-                mOnConnectionResultListener.accept(new ResultEntity().setCode(BillingClient.BillingResponseCode.OK));
+                mOnConnectionResultListener.accept(new BaseResultEntity().setCode(BillingClient.BillingResponseCode.OK));
             }
             Log.e("GooglePlaySub", "startConnection -> reConnection");
         }
@@ -199,7 +197,7 @@ public class Client implements BillingClientStateListener {
      * @param onConnectionResultListener 监听器
      * @return this
      */
-    public Client setOnConnectionResultListener(Consumer<ResultEntity> onConnectionResultListener) {
+    public Client setOnConnectionResultListener(Consumer<BaseResultEntity> onConnectionResultListener) {
         this.mOnConnectionResultListener = onConnectionResultListener;
         return this;
     }
@@ -227,18 +225,25 @@ public class Client implements BillingClientStateListener {
                 .build();
 
         // 消费监听回调处理
-        ConsumeResponseListener consumeResponseListener = (result, purchaseToken) -> {
-            if (mOnPurchaseResultListener == null) return;
-            int purchaseState = PurchaseState.UNSPECIFIED_STATE;            // 未知状态
-            switch (result.getResponseCode()) {
-                case BillingClient.BillingResponseCode.OK:                  // 确认成功
-                    purchaseState = PurchaseState.PURCHASED;
-                    break;
-                case BillingClient.BillingResponseCode.USER_CANCELED:       // 取消确认
-                    purchaseState = PurchaseState.PENDING;
-                    break;
+        ConsumeResponseListener consumeResponseListener = new ConsumeResponseListener() {
+            @Override
+            public void onConsumeResponse(@NonNull BillingResult billingResult, @NonNull String purchaseToken) {
+                if (mOnPurchaseResultListener == null) {
+                    return;
+                }
+                int purchaseState;
+                switch (billingResult.getResponseCode()) {
+                    case BillingClient.BillingResponseCode.OK:                  // 确认成功
+                        purchaseState = PurchaseState.PURCHASED;
+                        break;
+                    case BillingClient.BillingResponseCode.USER_CANCELED:       // 取消确认
+                        purchaseState = PurchaseState.PENDING;
+                        break;
+                    default:
+                        purchaseState = PurchaseState.UNSPECIFIED_STATE;        // 未知状态
+                }
+                mOnPurchaseResultListener.onResult(new PurchaseResultEntity(billingResult, PurchaseType.CONSUME).setPurchaseState(purchaseState).setToken(purchaseToken));
             }
-            mOnPurchaseResultListener.onResult(new PurchaseResultEntity(result, PurchaseType.CONSUME).setPurchaseState(purchaseState).setToken(purchaseToken));
         };
         // 发起确认消费
         if (mBillingClient != null) {

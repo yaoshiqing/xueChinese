@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Sku详细信息
  */
-public class SkuList extends ResultEntity {
+public class SkuList extends BaseResultEntity {
     private List<SkuDetails> skuDetailsList;
 
     public SkuList() {
@@ -56,9 +56,13 @@ public class SkuList extends ResultEntity {
 
         List<SkuDetails> retList = new ArrayList<>();
         for (String s : sku) {
-            if (TextUtils.isEmpty(s)) continue;
+            if (TextUtils.isEmpty(s)) {
+                continue;
+            }
             for (SkuDetails item : skuDetailsList) {
-                if (item == null || !s.equals(item.getSku())) continue;
+                if (item == null || !s.equals(item.getSku())) {
+                    continue;
+                }
                 retList.add(item);
                 break;
             }
@@ -77,13 +81,17 @@ public class SkuList extends ResultEntity {
         return this;
     }
 
-    public void sort(List<String> sku) {
-        if (sku == null || sku.size() != skuDetailsList.size()) return;
+    public void sort(List<String> list) {
+        if (list == null || list.size() != skuDetailsList.size()) {
+            return;
+        }
         List<SkuDetails> newList = new ArrayList<>(skuDetailsList);
         skuDetailsList.clear();
-        for (String s : sku) {
+        for (String sku : list) {
             for (SkuDetails skuDetail : newList) {
-                if (!s.equals(skuDetail.getSku())) continue;
+                if (!sku.equals(skuDetail.getSku())) {
+                    continue;
+                }
                 skuDetailsList.add(skuDetail);
                 break;
             }

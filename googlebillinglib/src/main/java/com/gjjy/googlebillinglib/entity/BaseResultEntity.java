@@ -6,16 +6,17 @@ import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingResult;
 
 /**
- 基础处理结果
+ * 基础处理结果
  */
-public class ResultEntity{
+public class BaseResultEntity {
     @BillingClient.BillingResponseCode
     private int code;
     private String debugMessage;
 
-    public ResultEntity() {}
+    public BaseResultEntity() {
+    }
 
-    public ResultEntity(BillingResult result) {
+    public BaseResultEntity(BillingResult result) {
         code = result.getResponseCode();
         debugMessage = result.getDebugMessage();
     }
@@ -23,23 +24,31 @@ public class ResultEntity{
     @NonNull
     @Override
     public String toString() {
-        return "ResultEntity{" +
+        return "BaseResultEntity{" +
                 "code=" + code +
                 ", debugMessage='" + debugMessage + '\'' +
                 '}';
     }
 
-    public boolean isSuccess() { return code == BillingClient.BillingResponseCode.OK; }
+    public boolean isSuccess() {
+        return code == BillingClient.BillingResponseCode.OK;
+    }
 
     @BillingClient.BillingResponseCode
-    public int getCode() { return code; }
-    public ResultEntity setCode(@BillingClient.BillingResponseCode int code) {
+    public int getCode() {
+        return code;
+    }
+
+    public BaseResultEntity setCode(@BillingClient.BillingResponseCode int code) {
         this.code = code;
         return this;
     }
 
-    public String getDebugMessage() { return debugMessage; }
-    public ResultEntity setDebugMessage(String debugMessage ) {
+    public String getDebugMessage() {
+        return debugMessage;
+    }
+
+    public BaseResultEntity setDebugMessage(String debugMessage) {
         this.debugMessage = debugMessage;
         return this;
     }

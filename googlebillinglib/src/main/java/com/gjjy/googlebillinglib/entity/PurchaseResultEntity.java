@@ -7,9 +7,9 @@ import com.gjjy.googlebillinglib.annotation.PurchaseState;
 import com.gjjy.googlebillinglib.annotation.PurchaseType;
 
 /**
- 购买结果
+ * 购买结果
  */
-public class PurchaseResultEntity extends ResultEntity{
+public class PurchaseResultEntity extends BaseResultEntity {
     private String token;
     @PurchaseType
     private int purchaseType;
@@ -17,10 +17,11 @@ public class PurchaseResultEntity extends ResultEntity{
     private int purchaseState;
     private String purchaseToken;
 
-    public PurchaseResultEntity() { }
+    public PurchaseResultEntity() {
+    }
 
     public PurchaseResultEntity(BillingResult result, @PurchaseType int purchaseType) {
-        super( result );
+        super(result);
         this.purchaseType = purchaseType;
     }
 
@@ -37,21 +38,30 @@ public class PurchaseResultEntity extends ResultEntity{
                 '}';
     }
 
-    public String getToken() { return token; }
+    public String getToken() {
+        return token;
+    }
+
     public PurchaseResultEntity setToken(String token) {
         this.token = token;
         return this;
     }
 
     @PurchaseType
-    public int getPurchaseType() { return purchaseType; }
+    public int getPurchaseType() {
+        return purchaseType;
+    }
+
     public PurchaseResultEntity setPurchaseType(@PurchaseType int purchaseType) {
         this.purchaseType = purchaseType;
         return this;
     }
 
     @PurchaseState
-    public int getPurchaseState() { return purchaseState; }
+    public int getPurchaseState() {
+        return purchaseState;
+    }
+
     public PurchaseResultEntity setPurchaseState(@PurchaseState int purchaseState) {
         this.purchaseState = purchaseState;
         return this;
