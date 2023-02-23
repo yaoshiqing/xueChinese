@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 
+import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.SkuDetails;
 import com.gjjy.basiclib.R;
@@ -158,7 +159,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         googleBuySubList.addAll(mGoogleBuySubList);
 
         if (googleBuySubList.size() > 0) {
-            startGoogleProduct(toSkuArr(googleBuySubList));
+            startGoogleProduct(toSkuList(googleBuySubList));
             return;
         }
         // 正常列表
@@ -168,7 +169,7 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
             try {
                 googleBuySubList.addAll(mGoogleBuySubList);
                 // 开始查询
-                startGoogleProduct(toSkuArr(googleBuySubList));
+                startGoogleProduct(toSkuList(googleBuySubList));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -184,8 +185,12 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         // 连接成功后才会返回Dao
         mGoogleProductClient.setOnClientDaoListener(dao -> {
             mGoogleProductDao = dao;
+            // 展示可供购买的订阅
+            dao.setSkuType(BillingClient.SkuType.SUBS);
+            // 展示可供购买的一次性商品
+            // dao.setSkuType(BillingClient.SkuType.INAPP);
             // 查询sku列表
-            dao.querySkuDetailsOfInApp(new Consumer<SkuList>() {
+            dao.querySkuDetails(new Consumer<SkuList>() {
                 @Override
                 public void accept(SkuList skuList) {
                     callQuerySkuDetailsOfSubs(skuList);
@@ -464,12 +469,13 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
         return retList;
     }
 
-    private List<String> toSkuArr(List<GoogleBuySubEntity> list) {
+    private List<String> toSkuList(List<GoogleBuySubEntity> list) {
         List<String> skuList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             GoogleBuySubEntity data = list.get(i);
             String tpGoodsId = data.getTpGoodsId();
-            if (!tpGoodsId.isEmpty()) {
+            // 购买类型 1、订阅 2、一次性购买
+            if (!tpGoodsId.isEmpty() && data.getBuyType() == 1) {
                 skuList.add(tpGoodsId);
             }
         }

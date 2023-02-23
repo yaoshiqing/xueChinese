@@ -23,23 +23,32 @@ public class ClientDao {
     private final Client mClient;
     @NonNull
     private final BillingClient mBillingClient;
+    @BillingClient.SkuType
+    private String skuType;
 
     public ClientDao(@NonNull Client client, @NonNull BillingClient billingClient) {
         mClient = client;
         mBillingClient = billingClient;
     }
 
+    public String getSkuType() {
+        return skuType;
+    }
+
+    public void setSkuType(String skuType) {
+        this.skuType = skuType;
+    }
+
     /**
      * 展示可供购买的商品
      *
-     * @param type    Sku类型
      * @param call    查询结果
      * @param list sku参数
      */
-    private void querySkuDetails(@BillingClient.SkuType String type, Consumer<SkuList> call, List<String> list) {
+    public void querySkuDetails(Consumer<SkuList> call, List<String> list) {
         SkuDetailsParams skuDetailsParams = SkuDetailsParams.newBuilder()
                 .setSkusList(list)
-                .setType(type)
+                .setType(getSkuType())
                 .build();
 
         //开始查询
@@ -54,26 +63,6 @@ public class ClientDao {
                 }
             }
         });
-    }
-
-    /**
-     * 展示可供购买的订阅
-     *
-     * @param call    查询结果
-     * @param list sku参数
-     */
-    public void querySkuDetailsOfSubs(Consumer<SkuList> call, List<String> list) {
-        querySkuDetails(BillingClient.SkuType.SUBS, call, list);
-    }
-
-    /**
-     * 展示可供购买的一次性商品
-     *
-     * @param call    查询结果
-     * @param list sku参数
-     */
-    public void querySkuDetailsOfInApp(Consumer<SkuList> call, List<String> list) {
-        querySkuDetails(BillingClient.SkuType.INAPP, call, list);
     }
 
     /**
@@ -105,7 +94,7 @@ public class ClientDao {
         int responseCode = billingResult.getResponseCode();
         if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
             // 未能购买，因为已经拥有此商品
-            mClient.queryPurchaseHistoryAsync(BillingClient.SkuType.INAPP);
+            mClient.queryPurchaseHistoryAsync(getSkuType());
         }
 
         Log.e("GooglePlaySub", "launchBillingFlow -> responseCode:" + responseCode);
