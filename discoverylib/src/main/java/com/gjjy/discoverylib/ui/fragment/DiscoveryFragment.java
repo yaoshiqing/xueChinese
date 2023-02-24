@@ -74,11 +74,9 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.add(R.id.find_ll_fragment_layout, fListenDailyFragment = new ListenDailyFragment());
         ft.add(R.id.find_ll_fragment_layout, fTargetedLearningFragment = new TargetedLearningFragment());
+        ft.add(R.id.find_ll_fragment_layout, fPopularVideosFragment = new PopularVideosFragment());
 
-        if (!isKoLang()) {
-            ft.add(R.id.find_ll_fragment_layout, fPopularVideosFragment = new PopularVideosFragment());
-            ft.show(fPopularVideosFragment);
-        }
+        ft.show(fPopularVideosFragment);
         ft.show(fListenDailyFragment);
         ft.show(fTargetedLearningFragment);
         ft.commitAllowingStateLoss();
@@ -115,9 +113,7 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
                     if (getActivity() != null && fListenDailyFragment != null && fTargetedLearningFragment != null) {
                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                         ft.show(fListenDailyFragment);
-                        if (!isKoLang()) {
-                            ft.show(fPopularVideosFragment);
-                        }
+                        ft.show(fPopularVideosFragment);
                         ft.show(fTargetedLearningFragment);
                         ft.commitAllowingStateLoss();
                     }
@@ -129,10 +125,8 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
                     if (fListenDailyFragment != null) {
                         fListenDailyFragment.notifyUpdatedData();
                     }
-                    if (!isKoLang()) {
-                        if (fPopularVideosFragment != null) {
-                            fPopularVideosFragment.notifyUpdatedData();
-                        }
+                    if (fPopularVideosFragment != null) {
+                        fPopularVideosFragment.notifyUpdatedData();
                     }
                     if (fTargetedLearningFragment != null) {
                         fTargetedLearningFragment.notifyUpdatedData();
@@ -140,9 +134,5 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
                 }
                 break;
         }
-    }
-
-    private boolean isKoLang() {
-        return "ko".equals(Config.getLang());
     }
 }

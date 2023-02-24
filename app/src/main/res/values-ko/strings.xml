@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">XueChinese</string>
+    <string name="app_name">xueChinese</string>
     <string name="stringDoubleExit">%s을(를) 종료하려면 다시 누르십시오.</string>
 </resources>
