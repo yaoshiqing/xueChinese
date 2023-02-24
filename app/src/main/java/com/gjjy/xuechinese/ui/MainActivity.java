@@ -103,7 +103,8 @@ public class MainActivity extends BaseActivity implements MainView {
                 post(() -> mPresenter.logOut());
                 break;
             case DOMConstant.INIT_INIT_GUIDE:                       //引导页
-                mPresenter.checkVersion();
+                // 不处理版本更新检查
+                // mPresenter.checkVersion();
                 break;
             case DOMConstant.ANSWER_NEXT_SAVE_PROGRESS_SUCCESS:     //答题进度保存结果
                 if( !ObjUtils.parseBoolean( data ) ) break;

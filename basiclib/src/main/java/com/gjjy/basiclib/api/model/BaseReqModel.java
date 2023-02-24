@@ -35,7 +35,7 @@ import okhttp3.Call;
 public class BaseReqModel extends MvpModel {
     public Req mReq;
     private static final String mAESKey = "8eDdWU3CKP5@jjuK";
-    private static final String mSignKey = "xapa1yz6ogcayyhysn3ezw";
+    // private static final String mSignKey = "xapa1yz6ogcayyhysn3ezw";
     private final char[] mSignSeeds = new char[]{'0', 'a', 'A'};
     private boolean isTokenOverdue = false;
 
@@ -87,9 +87,9 @@ public class BaseReqModel extends MvpModel {
 
     private <R extends Request> ClientBuilder getReqBuilder(R api) {
         // 签名
-        api.addParam("time_stamp", System.currentTimeMillis() / 1000L);
-        api.addParam("random_str", getRandomStr());
-        api.addParam("sign", DigestUtil.toMD5(api.getParam().toParamString().toLowerCase() + mSignKey));
+//        api.addParam("time_stamp", System.currentTimeMillis() / 1000L);
+//        api.addParam("random_str", getRandomStr());
+//        api.addParam("sign", DigestUtil.toMD5(api.getParam().toParamString().toLowerCase() + mSignKey));
         // 加密请求参数
         if (Config.isDebugOfURL) {
             api.setParam(JSONObject.toJSONString(api.getParam().getMap()));

@@ -108,11 +108,11 @@ public class BasicGlobalReqModel extends BaseReqModel implements DOM.OnResultLis
             api.addParam("token", mToken);
         }
         //系统：1安卓、2苹果
-        api.addParam("system", "1");
+        // api.addParam("system", "1");
         //渠道唯一标识，默认渠道填：default
-        api.addParam("mark", Config.mUpdatedChannel);
+        // api.addParam("mark", Config.mUpdatedChannel);
         //版本号，格式：X.X.X
-        api.addParam("version", Config.mVersion);
+        // api.addParam("version", Config.mVersion);
         //语言版本（ko：韩文）
         api.addParam("lang", Config.getLang());
     }

@@ -48,7 +48,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
     private CheckUpdateEntity mUpdateCheckData;
     private CheckAnnouncementEntity mCheckAnnouncementEntity;
-    private boolean isReCheckVersion = false;
+    // private boolean isReCheckVersion = false;
 
     public MainPresenter(@NonNull MainView view) {
         super(view);
@@ -84,9 +84,9 @@ public class MainPresenter extends MvpPresenter<MainView> {
         //检查是否初始化了oss
         mOtherModel.activityCheckInitOSS(activity.getApplication());
         //是否重新检查版本
-        if (isReCheckVersion) {
-            checkVersion();
-        }
+//        if (isReCheckVersion) {
+//            checkVersion();
+//        }
         //处理好友邀请码
         doInviteFriendsCode();
         //绑定推送
@@ -289,17 +289,17 @@ public class MainPresenter extends MvpPresenter<MainView> {
         });
     }
 
-    public void checkVersion() {
-        if (!mUserModel.isExistUid()) {
-            isReCheckVersion = true;
-            return;
-        }
-        isReCheckVersion = false;
-        mOtherModel.updateCheck(data -> {
-            mUpdateCheckData = data;
-            callUpdateData();
-        });
-    }
+//    public void checkVersion() {
+//        if (!mUserModel.isExistUid()) {
+//            isReCheckVersion = true;
+//            return;
+//        }
+//        isReCheckVersion = false;
+//        mOtherModel.updateCheck(data -> {
+//            mUpdateCheckData = data;
+//            callUpdateData();
+//        });
+//    }
 
     private void callAnnouncementData() {
         if (mCheckAnnouncementEntity == null) {
