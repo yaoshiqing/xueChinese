@@ -110,7 +110,7 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
                     }
                     //刷新
                     setCallResult(id, 1);
-                    if (getActivity() != null && fListenDailyFragment != null && fTargetedLearningFragment != null) {
+                    if (getActivity() != null && fListenDailyFragment != null && fPopularVideosFragment != null && fTargetedLearningFragment != null) {
                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                         ft.show(fListenDailyFragment);
                         ft.show(fPopularVideosFragment);

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- 探索 - 专项学习
+ * 探索 - 专项学习
  */
 public class TargetedLearningFragment extends BaseFragment implements TargetedLearningView {
     @Presenter
@@ -44,9 +44,8 @@ public class TargetedLearningFragment extends BaseFragment implements TargetedLe
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate( R.layout.fragment_targeted_learning, container, false );
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_targeted_learning, container, false);
     }
 
     @Override
@@ -59,12 +58,14 @@ public class TargetedLearningFragment extends BaseFragment implements TargetedLe
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult( requestCode, resultCode, data );
-        if( requestCode == com.gjjy.basiclib.utils.StartUtil.REQUEST_CODE_BUY_VIP ) {
-            if( mSelectedItemData == null ) return;
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == com.gjjy.basiclib.utils.StartUtil.REQUEST_CODE_BUY_VIP) {
+            if (mSelectedItemData == null) {
+                return;
+            }
             boolean isResult = resultCode == Activity.RESULT_OK;
-            if( isResult ) {
-                StartUtil.startTargetedLearningDetailsActivity( mSelectedItemData.getId(),mSelectedItemData.getVideoId() );
+            if (isResult) {
+                StartUtil.startTargetedLearningDetailsActivity(mSelectedItemData.getId(), mSelectedItemData.getVideoId());
             }
             mPresenter.buriedPointUnlockCourse(mSelectedItemData.getId(), mSelectedItemData.getTitle(), isResult);
         }
@@ -73,39 +74,41 @@ public class TargetedLearningFragment extends BaseFragment implements TargetedLe
     @Override
     public void onResult(int id, Object data) {
         super.onResult(id, data);
-        if( id == DOMConstant.NOTIFY_DISCOVERY_LIST && data != null && (int)data == 1 ) {
-            post( () -> mPresenter.queryDataList( false ), 1200 );
+        if (id == DOMConstant.NOTIFY_DISCOVERY_LIST && data != null && (int) data == 1) {
+            post(() -> mPresenter.queryDataList(false), 1200);
         }
     }
 
     private void initView() {
-        rvList = findViewById( R.id.targeted_learning_rv_list );
-        tvMoreBtn = findViewById( R.id.targeted_learning_tv_more_btn );
+        rvList = findViewById(R.id.targeted_learning_rv_list);
+        tvMoreBtn = findViewById(R.id.targeted_learning_tv_more_btn);
     }
 
     private void initData() {
-        mAdapter = new TargetedLearningListAdapter( Glide.with( this ), new ArrayList<>() );
+        mAdapter = new TargetedLearningListAdapter(Glide.with(this), new ArrayList<>());
 
-        rvList.setLayoutManager( new LinearLayoutManager( getContext() ) );
-        rvList.setAdapter( mAdapter );
+        rvList.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvList.setAdapter(mAdapter);
     }
 
     private void initListener() {
-        tvMoreBtn.setOnClickListener( view -> {
+        tvMoreBtn.setOnClickListener(view -> {
             StartUtil.startTargetedLearningVoiceMoreListActivity();
             mPresenter.buriedPointOpenMore();
         });
 
-        mAdapter.setOnItemClickListener( (adapter, view, data, i) -> {
+        mAdapter.setOnItemClickListener((adapter, view, data, i) -> {
             BaseActivity activity = (BaseActivity) getActivity();
-            if( activity == null ) return;
+            if (activity == null) {
+                return;
+            }
 
             mSelectedItemData = data;
 
-            mPresenter.buriedPointSelectedCourse( data.getId(), data.getTitle() );
+            mPresenter.buriedPointSelectedCourse(data.getId(), data.getTitle());
 
             //Vip课程需要开通会员
-            if( data.isVip() && !mPresenter.isVip() ) {
+            if (data.isVip() && !mPresenter.isVip()) {
                 activity.showUnlockVipDialog(
                         mPresenter.getUid(), mPresenter.getUserName(),
                         1003, data.getId(), data.getTitle(),
@@ -113,38 +116,40 @@ public class TargetedLearningFragment extends BaseFragment implements TargetedLe
                 );
                 return;
             }
-            StartUtil.startTargetedLearningDetailsActivity( data.getId(),data.getVideoId() );
-        } );
+            StartUtil.startTargetedLearningDetailsActivity(data.getId(), data.getVideoId());
+        });
 
         //数据发生改变
-        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver(){
+        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
                 super.onChanged();
                 FragmentActivity activity = getActivity();
-                if( activity == null ) return;
+                if (activity == null) {
+                    return;
+                }
 
                 FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
                 boolean isNotData = mAdapter.getItemCount() == 0;
-                if( isNotData ) {
-                    ft.hide( getThis() );
-                }else {
-                    ft.show( getThis() );
+                if (isNotData) {
+                    ft.hide(getThis());
+                } else {
+                    ft.show(getThis());
                 }
                 ft.commitAllowingStateLoss();
-                rvList.setVisibility( isNotData ? View.GONE : View.VISIBLE );
+                rvList.setVisibility(isNotData ? View.GONE : View.VISIBLE);
             }
         });
     }
 
     public void notifyUpdatedData() {
-        mPresenter.queryDataList( false );
+        mPresenter.queryDataList(false);
     }
 
     @Override
     public void onCallDataList(List<TargetedLearningListAdapter.ItemData> list) {
         mAdapter.clearItemData();
-        mAdapter.addItemData( list );
+        mAdapter.addItemData(list);
         mAdapter.notifyDataSetChanged();
     }
 }

@@ -25,7 +25,7 @@
     <string name="stringSetUpLearningReminder">학습 알림</string>
     <string name="stringSetUpResetPwd">비밀번호 초기화</string>
     <string name="stringSetUpVer">version:%s</string>
-    <string name="stringSetUpExit">LOG OFF</string>
+    <string name="stringSetUpExit">로그아웃</string>
     <string name="stringContactHint">이메일을 입력하십시오.</string>
     <string name="stringProblemDescHint">여기에 제안 사항, 오류 보고서 및 새로운 아이디어를 입력하십시오. 모든 피드백을 검토하겠습니다..</string>
     <string name="stringSubmit">제출</string>

@@ -41,9 +41,7 @@ public class ListenDailyFragment extends BaseFragment implements ListenDailyView
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_listen_daily, container, false);
     }
 
@@ -78,9 +76,7 @@ public class ListenDailyFragment extends BaseFragment implements ListenDailyView
                 mPresenter.getUserName()
         );
 
-        rvList.setLayoutManager(new LinearLayoutManager(
-                getContext(), RecyclerView.HORIZONTAL, false)
-        );
+        rvList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         rvList.setAdapter(mAdapter);
     }
 
@@ -100,7 +96,9 @@ public class ListenDailyFragment extends BaseFragment implements ListenDailyView
             public void onChanged() {
                 super.onChanged();
                 FragmentActivity activity = getActivity();
-                if (activity == null) return;
+                if (activity == null) {
+                    return;
+                }
 
                 FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
                 boolean isNotData = mAdapter.getItemCount() == 0;

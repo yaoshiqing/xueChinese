@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- 专项学习 - 语法页面
+ * 专项学习 - 语法页面
  */
 public class GrammarFragment extends BaseFragment {
     private RecyclerView rvList;
@@ -29,9 +29,8 @@ public class GrammarFragment extends BaseFragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate( R.layout.fragment_grammar, container, false );
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_grammar, container, false);
     }
 
     @Override
@@ -43,17 +42,15 @@ public class GrammarFragment extends BaseFragment {
     }
 
     private void initView() {
-        rvList = findViewById( R.id.grammar_rv_list );
+        rvList = findViewById(R.id.grammar_rv_list);
     }
 
     private void initData() {
-        rvList.setLayoutManager( new LinearLayoutManager( getContext() ) );
-        rvList.setNestedScrollingEnabled( false );
-        rvList.addItemDecoration( new SpaceItemDecoration( Utils.dp2Px( getContext(), 14 ) ) );
+        rvList.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvList.setNestedScrollingEnabled(false);
+        rvList.addItemDecoration(new SpaceItemDecoration(Utils.dp2Px(getContext(), 14)));
 
-        rvList.setAdapter(
-                mAdapter = new TargetedLearningDetailsGrammarAdapter( new ArrayList<>() )
-        );
+        rvList.setAdapter(mAdapter = new TargetedLearningDetailsGrammarAdapter(new ArrayList<>()));
     }
 
     private void initListener() {
@@ -61,9 +58,11 @@ public class GrammarFragment extends BaseFragment {
     }
 
     public void setDataList(List<TargetedLearningDetailsGrammarAdapter.ItemData> list) {
-        if( mAdapter == null ) return;
+        if (mAdapter == null) {
+            return;
+        }
         mAdapter.clearItemData();
-        mAdapter.addItemData( list );
+        mAdapter.addItemData(list);
         mAdapter.notifyDataSetChanged();
     }
 }
