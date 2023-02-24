@@ -34,53 +34,64 @@ public class PopularVideosPresenter extends MvpPresenter<PopularVideosView> {
     @Override
     public void onLifeResume() {
         super.onLifeResume();
-        mDisArtModel.setUid( mUserModel.getUid(), mUserModel.getToken() );
-        post( () -> queryDataList( true ), 500 );
+        mDisArtModel.setUid(mUserModel.getUid(), mUserModel.getToken());
+        post(() -> queryDataList(true), 500);
     }
 
-    public String getUid() { return mUserModel.getUid(); }
-    public String getUserName() { return mUserModel.getUserName( getResources() ); }
+    public String getUid() {
+        return mUserModel.getUid();
+    }
+
+    public String getUserName() {
+        return mUserModel.getUserName(getResources());
+    }
 
     public void queryDataList(boolean isCache) {
         mPage = 0;
-        nextDataList( isCache );
+        nextDataList(isCache);
     }
 
     public void nextDataList(boolean isCache) {
-        if( isQuerying ) return;
+        if (isQuerying) {
+            return;
+        }
         isQuerying = true;
-        if( isCache ) viewCall( v -> v.onCallIsVip( mUserModel.isVip() ) );
-        if( mCallDataList == null ) {
+        if (isCache) {
+            viewCall(v -> v.onCallIsVip(mUserModel.isVip()));
+        }
+        if (mCallDataList == null) {
             mCallDataList = data -> {
-                viewCall( v -> {
+                viewCall(v -> {
                     v.onCallDataList(
-                            mDisArtModel.toPopularVideosList( data.getData() ),
+                            mDisArtModel.toPopularVideosList(data.getData()),
                             mPage == -1 || mPage > 1
                     );
-                    v.onCallIsVip( mUserModel.isVip() );
+                    v.onCallIsVip(mUserModel.isVip());
                 });
-                if( mPage >= data.getLastPage() ) mPage = -1;
+                if (mPage >= data.getLastPage()) {
+                    mPage = -1;
+                }
                 isQuerying = false;
             };
         }
 
-        if( mPage == -1 ) {
-            viewCall( v -> v.onCallDataList( null, true ) );
+        if (mPage == -1) {
+            viewCall(v -> v.onCallDataList(null, true));
             return;
-        }else {
+        } else {
             mPage++;
         }
-        if( isMoreList ) {
-            mDisArtModel.reqPopularVideosMoreList(mPage, mCallDataList );
+        if (isMoreList) {
+            mDisArtModel.reqPopularVideosMoreList(mPage, mCallDataList);
             return;
         }
-        mDisArtModel.reqPopularVideosList(isCache, mCallDataList );
+        mDisArtModel.reqPopularVideosList(isCache, mCallDataList);
     }
 
     public void buriedPointOpenItem(long id, String name) {
         BuriedPointEvent.get().onDiscoveryPageOfPopularVideoLessons(
                 getContext(),
-                mUserModel.getUid(), mUserModel.getUserName( getResources() ),
+                mUserModel.getUid(), mUserModel.getUserName(getResources()),
                 id, name
         );
     }
@@ -89,7 +100,7 @@ public class PopularVideosPresenter extends MvpPresenter<PopularVideosView> {
         BuriedPointEvent.get().onDiscoveryPageOfMoreButtonPopularVideos(
                 getContext(),
                 mUserModel.getUid(),
-                mUserModel.getUserName( getResources() )
+                mUserModel.getUserName(getResources())
         );
     }
 }

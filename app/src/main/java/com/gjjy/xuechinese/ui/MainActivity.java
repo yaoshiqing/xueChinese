@@ -50,9 +50,9 @@ public class MainActivity extends BaseActivity implements MainView {
     private MenuView mvMenuView;
     //默认进入的页面
     private final int mDefItemPos = 1;
-    
-//    private FrameAnimation.FrameRequest mMenuSelectFrameAnim;
-//    private FrameAnimation.FrameRequest mMenuUnSelectFrameAnim;
+
+    //    private FrameAnimation.FrameRequest mMenuSelectFrameAnim;
+    //    private FrameAnimation.FrameRequest mMenuUnSelectFrameAnim;
     private DialogOption mFrontInitGuideDialog;
     private DialogOption mDiscoveryInitGuideDialog;
     private DialogOption mMeInvitationCodeInitGuideDialog;
@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity implements MainView {
         setContentView(R.layout.activity_main);
         //注册网络监听
         NetworkChangeManage.get().registerService();
-        mPresenter.initIntent( getIntent() );
+        mPresenter.initIntent(getIntent());
         //初始化引导页
         mPresenter.startLoginCheckActivity();
         initData();
@@ -75,8 +75,10 @@ public class MainActivity extends BaseActivity implements MainView {
     public void onBackPressed() {
 //        super.onBackPressed();
         String exitStr = mPresenter.getDoubleBackPressedExitString();
-        getStackManage().doubleBackPressedExit( this, exitStr, result -> {
-            if( result ) mPresenter.unNetworkService();
+        getStackManage().doubleBackPressedExit(this, exitStr, result -> {
+            if (result) {
+                mPresenter.unNetworkService();
+            }
             return true;
         });
     }
@@ -84,13 +86,17 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void onResume() {
         super.onResume();
-        changeStatusBarIconColor( fvpPager.getCurrentItem() );
+        changeStatusBarIconColor(fvpPager.getCurrentItem());
     }
 
     @Override
     protected void onDestroy() {
-        if( mFeedbackDialog != null && mFeedbackDialog.isShowing() ) mFeedbackDialog.cancel();
-        if( mFrontInitGuideDialog != null ) mFrontInitGuideDialog.dismiss();
+        if (mFeedbackDialog != null && mFeedbackDialog.isShowing()) {
+            mFeedbackDialog.cancel();
+        }
+        if (mFrontInitGuideDialog != null) {
+            mFrontInitGuideDialog.dismiss();
+        }
         onExitApp();
         super.onDestroy();
     }
@@ -98,7 +104,7 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void onResult(int id, Object data) {
         super.onResult(id, data);
-        switch( id ) {
+        switch (id) {
             case DOMConstant.LOG_OFF:                               //退出登录
                 post(() -> mPresenter.logOut());
                 break;
@@ -107,8 +113,8 @@ public class MainActivity extends BaseActivity implements MainView {
                 // mPresenter.checkVersion();
                 break;
             case DOMConstant.ANSWER_NEXT_SAVE_PROGRESS_SUCCESS:     //答题进度保存结果
-                if( !ObjUtils.parseBoolean( data ) ) break;
-                mFeedbackDialog = showFeedbackDialog( mPresenter.getUserId(), mPresenter.getEmail() );
+                if (!ObjUtils.parseBoolean(data)) break;
+                mFeedbackDialog = showFeedbackDialog(mPresenter.getUserId(), mPresenter.getEmail());
                 break;
         }
     }
@@ -116,86 +122,92 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        fvpPager.getFragment( fvpPager.getCurrentItem() ).onActivityResult( requestCode, resultCode, data );
+        fvpPager.getFragment(fvpPager.getCurrentItem()).onActivityResult(requestCode, resultCode, data);
         LogUtil.e("MainActivity -> onActivityResult -> " +
                 "requestCode:" + requestCode + " | " +
                 "resultCode:" + resultCode
         );
         //退出账号的后续操作
-        mPresenter.logOutOfOnActivityResult( requestCode, resultCode );
+        mPresenter.logOutOfOnActivityResult(requestCode, resultCode);
 
-        switch ( requestCode ) {
+        switch (requestCode) {
             case StartUtil.REQUEST_CODE_LOGIN_ERROR:
-                if( data == null ) break;
+                if (data == null) {
+                    break;
+                }
                 //未绑定账号的情况下启动引导页
-                int result = data.getIntExtra( Constant.LOGIN_CALL_RESULT, 1 );
-                if( result == 0 ) {
+                int result = data.getIntExtra(Constant.LOGIN_CALL_RESULT, 1);
+                if (result == 0) {
                     StartUtil.startGuideActivity(this, true, false);
                 }
                 break;
             case StartUtil.REQUEST_CODE_GO_TO_HOME:
-                if( resultCode == RESULT_OK ) post( this::onCallToFront );
+                if (resultCode == RESULT_OK) {
+                    post(this::onCallToFront);
+                }
                 break;
         }
     }
 
     private void initData() {
 //        setStatusBarHeightForPadding( fvpPager );
-        fvpPager.setFragmentActivity( this )
-                .setEnableVisibleChanged( true )
+        fvpPager.setFragmentActivity(this)
+                .setEnableVisibleChanged(true)
                 .setFragments(
                         new FrontFragment(),                //主页
                         new DiscoveryFragment(),            //发现
 //                        new TargetedLearningFragment(),     //专项学习
                         new UserCenterFragment()            //个人中心
                 );
-        fvpPager.setOffscreenPageLimit( 3 );
+        fvpPager.setOffscreenPageLimit(3);
         fvpPager.notifyAdapter();
 
         mvMenuView.setItemStyle(new ItemStyleBuild()
-                .setIconWidth( 22 )
-                .setIconHeight( 22 )
-                .setTextIncludeFontPadding( false )
-                .setTextColor( R.color.color95 )
-                .setTextSelectColor( R.color.colorMain )
-                .setTextSize( 13 )
+                        .setIconWidth(22)
+                        .setIconHeight(22)
+                        .setTextIncludeFontPadding(false)
+                        .setTextColor(R.color.color95)
+                        .setTextSelectColor(R.color.colorMain)
+                        .setTextSize(13)
 //                .setTypeface( Typeface.defaultFromStyle( Typeface.BOLD ) )
         );
 
         mvMenuView.setMenuItem(
-                new MenuItem( getResources(),
+                new MenuItem(getResources(),
                         R.drawable.ic_menu_front_def_0, R.string.menuFront,
                         R.drawable.ic_menu_front_touch_0, R.string.menuFront
                 ),
-                new MenuItem( getResources(),
+                new MenuItem(getResources(),
                         R.drawable.ic_menu_discover_def_0, R.string.menuDiscovery,
                         R.drawable.ic_menu_discover_touch_0, R.string.menuDiscovery
                 ),
-                new MenuItem( getResources(),
+                new MenuItem(getResources(),
                         R.drawable.ic_menu_user_center_def_0, R.string.menuUserCenter,
                         R.drawable.ic_menu_user_center_touch_0, R.string.menuUserCenter
                 )
         );
-        mvMenuView.setBackgroundResource( com.gjjy.frontlib.R.color.colorWhite );
+        mvMenuView.setBackgroundResource(com.gjjy.frontlib.R.color.colorWhite);
 
-        mvMenuView.setEnableTopLine( true );
-        mvMenuView.setTopLineColor( getResources(), R.color.colorMainBG );
+        mvMenuView.setEnableTopLine(true);
+        mvMenuView.setTopLineColor(getResources(), R.color.colorMainBG);
         mvMenuView.notifyMenuChanged();
 
         /* 默认进入的页面 */
-        fvpPager.setCurrentItem( mDefItemPos );
-        mvMenuView.setSelectItem( mDefItemPos, false );
+        fvpPager.setCurrentItem(mDefItemPos);
+        mvMenuView.setSelectItem(mDefItemPos, false);
     }
 
     private void initListener() {
         fvpPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
             @Override
             public void onPageSelected(int position) {
-                mvMenuView.setSelectItem( position, false );
-                changeStatusBarIconColor( position );
-                switch( position ) {
+                mvMenuView.setSelectItem(position, false);
+                changeStatusBarIconColor(position);
+                switch (position) {
                     case 0:     //初始化发现页新手引导
                         mPresenter.checkFrontInitGuide();
                         break;
@@ -213,36 +225,38 @@ public class MainActivity extends BaseActivity implements MainView {
 //                    mPresenter.buriedPointClickFindPage();
 //                }
             }
+
             @Override
-            public void onPageScrollStateChanged(int state) { }
+            public void onPageScrollStateChanged(int state) {
+            }
         });
 
         Consumer<Boolean> doubleTouchListener = isDouble -> {
-            if( !isDouble ) {
-                fvpPager.setCurrentItem( mvMenuView.getCurrentPosition() );
+            if (!isDouble) {
+                fvpPager.setCurrentItem(mvMenuView.getCurrentPosition());
                 return;
             }
-            switch ( fvpPager.getCurrentItem() ) {
+            switch (fvpPager.getCurrentItem()) {
                 case 0:
-                    setCallResult( DOMConstant.NOTIFY_FRONT_LIST, 0 );
+                    setCallResult(DOMConstant.NOTIFY_FRONT_LIST, 0);
                     break;
                 case 1:
-                    setCallResult( DOMConstant.NOTIFY_DISCOVERY_LIST );
+                    setCallResult(DOMConstant.NOTIFY_DISCOVERY_LIST);
                     break;
 //                case 2:
 //                    setCallResult( DOMConstant.NOTIFY_targeted_learning_LIST );
 //                    break;
                 case 2:
-                    setCallResult( DOMConstant.NOTIFY_USER_CENTER_LIST );
+                    setCallResult(DOMConstant.NOTIFY_USER_CENTER_LIST);
                     break;
             }
         };
 
         mvMenuView.setOnCheckedChangeListener((menuView, v, curPos, oldPos) -> {
-            if( fvpPager.getCurrentItem() == curPos ) {
-                Utils.doubleClickListener( doubleTouchListener );
+            if (fvpPager.getCurrentItem() == curPos) {
+                Utils.doubleClickListener(doubleTouchListener);
             } else {
-                fvpPager.setCurrentItem( curPos );
+                fvpPager.setCurrentItem(curPos);
             }
         });
 
@@ -291,82 +305,87 @@ public class MainActivity extends BaseActivity implements MainView {
 
     private DialogOption mUpdateDialog;
     private DialogOption mAnnouncementDialog;
+
     @Override
     public void onCheckUpdate(String version, String content, String url, boolean isCancelable) {
-        if( mUpdateDialog != null && !mUpdateDialog.isShowing() ) {
+        if (mUpdateDialog != null && !mUpdateDialog.isShowing()) {
 //            isInitGuide = false;
             mUpdateDialog.show();
             return;
         }
 
-        String title = String.format( getString( R.string.stringUpdateTitle ), version );
+        String title = String.format(getString(R.string.stringUpdateTitle), version);
         mUpdateDialog = showUpdateDialog(title, content, isCancelable, v -> mPresenter.updateJumpEvent());
-        mUpdateDialog.setOnDismissListener( dialog -> mPresenter.checkAnnouncement() );
+        mUpdateDialog.setOnDismissListener(dialog -> mPresenter.checkAnnouncement());
     }
 
     @Override
     public void onCheckAnnouncement(String content) {
         content = Config.mAnnouncementUrl;
-        if( mAnnouncementDialog != null && !mAnnouncementDialog.isShowing() ) {
+        if (mAnnouncementDialog != null && !mAnnouncementDialog.isShowing()) {
 //            isInitGuide = false;
             mAnnouncementDialog.show();
             return;
         }
-        mAnnouncementDialog = showAnnouncementDialog( content );
-        mAnnouncementDialog.setOnDismissListener( dialog -> mPresenter.checkFindInitGuide() );
+        mAnnouncementDialog = showAnnouncementDialog(content);
+        mAnnouncementDialog.setOnDismissListener(dialog -> mPresenter.checkFindInitGuide());
     }
 
     @UiThread
     @Override
     public void onCallToFront() {
         post(() -> {
-            fvpPager.setCurrentItem( mDefItemPos );
-            setCallResult( DOMConstant.NOTIFY_FRONT_LIST, 0 );
-        }, 350 );
+            fvpPager.setCurrentItem(mDefItemPos);
+            setCallResult(DOMConstant.NOTIFY_FRONT_LIST, 0);
+        }, 350);
     }
 
     @Override
-    public void onCallDispatchScheme(int type, int id, String videoId,String name) {
-        switch( type ) {
+    public void onCallDispatchScheme(int type, int id, String videoId, String name) {
+        switch (type) {
             case PathType.LISTEN_DAILY:                //每日聆听
-                com.gjjy.discoverylib.utils.StartUtil.startListenDailyDetailsActivity( id, videoId,name );
+                com.gjjy.discoverylib.utils.StartUtil.startListenDailyDetailsActivity(id, videoId, name);
                 break;
             case PathType.POPULAR_VIDEOS:              //热门视频
-                com.gjjy.discoverylib.utils.StartUtil.startPopularVideosDetailsActivity( id, videoId,name );
+                com.gjjy.discoverylib.utils.StartUtil.startPopularVideosDetailsActivity(id, videoId, name);
                 break;
             case PathType.TARGETED_LEARNING:          //专项学习
-                com.gjjy.discoverylib.utils.StartUtil.startTargetedLearningDetailsActivity( id ,videoId);
+                com.gjjy.discoverylib.utils.StartUtil.startTargetedLearningDetailsActivity(id, videoId);
                 break;
         }
-        LogUtil.e( "dsm -> onCallDispatchScheme -> type:" + type + " | id:" + id + " | videoId:" + videoId + " | name:" + name );
+        LogUtil.e("dsm -> onCallDispatchScheme -> type:" + type + " | id:" + id + " | videoId:" + videoId + " | name:" + name);
     }
 
     @Override
     public void onCallShowFrontInitGuide() {
-        if( mFrontInitGuideDialog != null ) {
+        if (mFrontInitGuideDialog != null) {
 //            mPresenter.checkVersion();
             return;
         }
-        mFrontInitGuideDialog = showFrontInitGuideDialog( view -> {
-            SpIO.saveFrontInitGuideStatus( this );
+        mFrontInitGuideDialog = showFrontInitGuideDialog(view -> {
+            SpIO.saveFrontInitGuideStatus(this);
 //            mPresenter.checkVersion();
         });
     }
 
     @Override
     public void onCallShowFindInitGuide() {
-        if( mDiscoveryInitGuideDialog != null ) return;
+        if (mDiscoveryInitGuideDialog != null) {
+            return;
+        }
         mDiscoveryInitGuideDialog = showFindInitGuideDialog(
-                view -> SpIO.saveFindInitGuideStatus( this )
+                view -> SpIO.saveFindInitGuideStatus(this)
         );
     }
 
     @Override
     public void onCallShowMeInvitationCodeInitGuide() {
         BaseActivity activity = (BaseActivity) getActivity();
-        if( activity == null || mMeInvitationCodeInitGuideDialog != null ) return;
+        if (activity == null || mMeInvitationCodeInitGuideDialog != null) {
+            return;
+        }
         mMeInvitationCodeInitGuideDialog = activity.showMeInvitationCodeInitGuideDialog(view ->
-                SpIO.saveMeInvitationCodeInitGuideStatus( activity )
+                SpIO.saveMeInvitationCodeInitGuideStatus(activity)
         );
     }
 

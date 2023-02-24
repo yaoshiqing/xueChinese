@@ -33,10 +33,8 @@ import java.util.List;
 public class PopularVideosFragment extends BaseFragment implements PopularVideosView {
     @Presenter
     private PopularVideosPresenter mPresenter;
-
     private RecyclerView rvList;
     private TextView tvMoreBtn;
-
     private DiscoveryListAdapter mAdapter;
 
     @Nullable

@@ -73,11 +73,12 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
         }
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.add(R.id.find_ll_fragment_layout, fListenDailyFragment = new ListenDailyFragment());
-        ft.add(R.id.find_ll_fragment_layout, fTargetedLearningFragment = new TargetedLearningFragment());
         ft.add(R.id.find_ll_fragment_layout, fPopularVideosFragment = new PopularVideosFragment());
+        ft.add(R.id.find_ll_fragment_layout, fTargetedLearningFragment = new TargetedLearningFragment());
 
-        ft.show(fPopularVideosFragment);
+
         ft.show(fListenDailyFragment);
+        ft.show(fPopularVideosFragment);
         ft.show(fTargetedLearningFragment);
         ft.commitAllowingStateLoss();
     }
