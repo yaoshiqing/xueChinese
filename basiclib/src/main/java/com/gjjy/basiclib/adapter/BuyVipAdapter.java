@@ -17,30 +17,30 @@ import com.gjjy.basiclib.widget.vip.BuyVipButton;
 import java.util.List;
 
 /**
- 购买会员列表适配器
+ * 购买会员列表适配器
  */
-public class BuyVipAdapter extends BaseMultiSelectAdapter<BuyVipOptionEntity, BuyVipAdapter.BuyVipHolder>{
+public class BuyVipAdapter extends BaseMultiSelectAdapter<BuyVipOptionEntity, BuyVipAdapter.BuyVipHolder> {
     private final boolean isDiscount;
 
     public BuyVipAdapter(@NonNull List<BuyVipOptionEntity> list, boolean isDiscount) {
-        super( list );
+        super(list);
         this.isDiscount = isDiscount;
-        setEnableTouchStyle( false );
-        setMinMultiSelectCount( 0 );
-        setMaxMultiSelectCount( 1 );
+        setEnableTouchStyle(false);
+        setMinMultiSelectCount(0);
+        setMaxMultiSelectCount(1);
     }
 
     @NonNull
     @Override
     public BuyVipHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new BuyVipHolder( new BuyVipButton( parent.getContext() ), isDiscount );
+        return new BuyVipHolder(new BuyVipButton(parent.getContext()), isDiscount);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BuyVipHolder holder, int position, boolean selectStatus) {
         BuyVipButton btn = holder.getBuyVipButton();
-        btn.setTouchChangedSelected( false );
-        btn.setData( getItemData( position ) );
+        btn.setTouchChangedSelected(false);
+        btn.setData(getItemData(position));
     }
 
     @Override
@@ -52,19 +52,21 @@ public class BuyVipAdapter extends BaseMultiSelectAdapter<BuyVipOptionEntity, Bu
     public void onMultiSelectChange(RecyclerView.Adapter<BuyVipHolder> adapter,
                                     @Nullable BuyVipHolder holder,
                                     int position, boolean isChecked, boolean fromUser) {
-        if( holder != null ) holder.getBuyVipButton().setSelected( isChecked );
+        if (holder != null) {
+            holder.getBuyVipButton().setSelected(isChecked);
+        }
     }
 
     public static class BuyVipHolder extends BaseViewHolder {
         private final BuyVipButton bvbBuyVip;
 
         public BuyVipHolder(@NonNull View itemView, boolean isDiscount) {
-            super( itemView );
+            super(itemView);
             bvbBuyVip = (BuyVipButton) itemView;
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    Utils.dp2Px( getContext(), isDiscount ? 103 : 86 )
+                    Utils.dp2Px(getContext(), isDiscount ? 103 : 86)
             );
 //            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
 //                    Utils.dp2Px( getContext(), 100 ),
@@ -73,10 +75,12 @@ public class BuyVipAdapter extends BaseMultiSelectAdapter<BuyVipOptionEntity, Bu
 //            int marginDP = Utils.dp2Px( getContext(), 9 );
 //            lp.setMarginStart( marginDP );
 //            lp.setMarginEnd( marginDP );
-            bvbBuyVip.setLayoutParams( lp );
-            bvbBuyVip.setDiscountButton( isDiscount );
+            bvbBuyVip.setLayoutParams(lp);
+            bvbBuyVip.setDiscountButton(isDiscount);
         }
 
-        public BuyVipButton getBuyVipButton() { return bvbBuyVip; }
+        public BuyVipButton getBuyVipButton() {
+            return bvbBuyVip;
+        }
     }
 }

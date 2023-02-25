@@ -17,8 +17,7 @@ import com.ybear.ybutils.utils.SysUtil;
 import com.ybear.ybutils.utils.toast.Build;
 import com.ybear.ybutils.utils.toast.ToastManage;
 
-public class BaseAppCompatActivity extends MvpAppCompatActivity
-        implements IActivity, DOM.OnResultListener {
+public class BaseAppCompatActivity extends MvpAppCompatActivity implements IActivity, DOM.OnResultListener {
     private final ActivityImpl mImpl = ActivityImpl.create();
 
     @Override

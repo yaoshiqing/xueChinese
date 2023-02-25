@@ -137,7 +137,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 infos.put("versionCode", versionCode);
             }
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "an error occured when collect package info", e);
+            Log.e(TAG, "an error occurred when collect package info", e);
         }
 
         Field[] fields = Build.class.getDeclaredFields();

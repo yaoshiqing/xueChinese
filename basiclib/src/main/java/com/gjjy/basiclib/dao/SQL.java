@@ -24,12 +24,14 @@ class SQL {
                 null,
                 daoClasses
         );
-        mSession = new DaoMaster( helper.getWritableDatabase() ).newSession();
+        mSession = new DaoMaster(helper.getWritableDatabase()).newSession();
     }
 
     @NonNull
     DaoSession getDaoSession() {
-        if( mSession != null ) return mSession;
+        if (mSession != null) {
+            return mSession;
+        }
         throw new NullPointerException("Need to be init, You can call the init().");
     }
 
