@@ -3,15 +3,18 @@ package com.gjjy.discoverylib.ui.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Space;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.FragmentTransaction;
@@ -40,13 +43,13 @@ import com.gjjy.speechsdk.PermManage;
 import com.google.android.material.appbar.AppBarLayout;
 import com.ybear.mvp.annotations.Presenter;
 import com.ybear.ybutils.utils.SysUtil;
+import com.ybear.ybutils.utils.Utils;
 import com.ybear.ybutils.utils.dialog.DialogOption;
 
 import java.util.List;
 
 @Route(path = "/discovery/TargetedLearningDetailsActivity")
-public class TargetedLearningDetailsActivity extends BaseActivity
-        implements TargetedLearningDetailsView, FindDetailsView {
+public class TargetedLearningDetailsActivity extends BaseActivity implements TargetedLearningDetailsView, FindDetailsView {
     @Presenter
     private DiscoveryDetailsPresenter mPresenter;
 
@@ -63,17 +66,17 @@ public class TargetedLearningDetailsActivity extends BaseActivity
     private DialogueFragment fDialogue;
     private GrammarFragment fGrammar;
     private TargetedLearningCommentsFragment fTargetedLearningComments;
-    
+
     private ValueAnimator vaTableDiv;
-    
+
     private DialogOption mTargetedLearningDetailsInitGuideDialog;
     private DialogOption mLoadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_targeted_learning_details );
-        mPresenter.initIntent( getIntent() );
+        setContentView(R.layout.activity_targeted_learning_details);
+        mPresenter.initIntent(getIntent());
         //防录屏截屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         initView();
@@ -82,10 +85,7 @@ public class TargetedLearningDetailsActivity extends BaseActivity
         initListener();
 
         //默认Dialogue页面。0：Dialogue，1：Grammar，2：Comments
-       switchPage( "2".equals( mPresenter.getType() ) ?
-               R.id.targeted_learning_details_rb_comments_btn : R.id.targeted_learning_details_rb_dialogue_btn,
-               true
-       );
+        switchPage("2".equals(mPresenter.getType()) ? R.id.targeted_learning_details_rb_comments_btn : R.id.targeted_learning_details_rb_dialogue_btn, true);
     }
 
     @Override
@@ -96,12 +96,12 @@ public class TargetedLearningDetailsActivity extends BaseActivity
 //        }
 
         // 横盘的情况下，变成竖屏，不退出
-        if(mAliyunVodPlayerView != null && mAliyunVodPlayerView.getScreenMode() == AliyunScreenMode.Full){
+        if (mAliyunVodPlayerView != null && mAliyunVodPlayerView.getScreenMode() == AliyunScreenMode.Full) {
             mAliyunVodPlayerView.changeScreenMode(AliyunScreenMode.Small, false);
             return;
         }
 
-        if(mAliyunVodPlayerView != null){
+        if (mAliyunVodPlayerView != null) {
             mAliyunVodPlayerView.onDestroy();
         }
         super.onBackPressed();
@@ -134,59 +134,60 @@ public class TargetedLearningDetailsActivity extends BaseActivity
         if (mAliyunVodPlayerView != null) {
             mAliyunVodPlayerView.onDestroy();
         }
-        mPresenter.buriedPointViewDurationOfTargetedLearning( this );
-        onCallShowLoadingDialog( false );
+        mPresenter.buriedPointViewDurationOfTargetedLearning(this);
+        onCallShowLoadingDialog(false);
         super.onDestroy();
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        boolean ret = super.dispatchTouchEvent( ev );
-        if( getContext() == null || ev.getAction() != MotionEvent.ACTION_UP ) return ret;
-        if( ev.getY() <= SysUtil.getScreenTrueHeight( getContext() ) / 1.25F ) {
-            SysUtil.hideKeyboard( getActivity() );
+        boolean ret = super.dispatchTouchEvent(ev);
+        if (getContext() == null || ev.getAction() != MotionEvent.ACTION_UP) {
+            return ret;
+        }
+        if (ev.getY() <= SysUtil.getScreenTrueHeight(getContext()) / 1.25F) {
+            SysUtil.hideKeyboard(getActivity());
         }
         return ret;
     }
 
     @Override
     public void onResult(int id, Object data) {
-        super.onResult( id, data );
-
-        if( id == DOMConstant.targeted_learning_DETAIL_ABL_EXPANDED ) {
-            ablLayout.setExpanded( false, true );
+        super.onResult(id, data);
+        if (id == DOMConstant.targeted_learning_DETAIL_ABL_EXPANDED) {
+            ablLayout.setExpanded(false, true);
         }
     }
 
     private void initView() {
-        sSpace = findViewById( R.id.toolbar_height_space );
-        stbToolbar = findViewById( R.id.targeted_learning_details_stb_toolbar );
-        ablLayout = findViewById( R.id.targeted_learning_details_abl_layout );
+        sSpace = findViewById(R.id.toolbar_height_space);
+        stbToolbar = findViewById(R.id.targeted_learning_details_stb_toolbar);
+        ablLayout = findViewById(R.id.targeted_learning_details_abl_layout);
         // vvVideo = findViewById( R.id.targeted_learning_details_vv_video );
         mAliyunVodPlayerView = findViewById(R.id.targeted_learning_details_vv_video);
-        rgTable = findViewById( R.id.targeted_learning_details_rg_table );
-        ivTableDiv = findViewById( R.id.targeted_learning_details_iv_table_div );
+        rgTable = findViewById(R.id.targeted_learning_details_rg_table);
+        ivTableDiv = findViewById(R.id.targeted_learning_details_iv_table_div);
 
-        tvTitle = findViewById( R.id.targeted_learning_details_tv_title );
-        tvContent = findViewById( R.id.targeted_learning_details_tv_content );
+        tvTitle = findViewById(R.id.targeted_learning_details_tv_title);
+        tvContent = findViewById(R.id.targeted_learning_details_tv_content);
     }
 
     private void initData() {
-        setStatusBarHeightForSpace( sSpace );
+        setStatusBarHeightForSpace(sSpace);
         mLoadingDialog = createLoadingDialog();
-        stbToolbar.showTitle( false );
+        stbToolbar.showTitle(false);
 
         stbToolbar.setOnCollectBtnClickListener(isCollect -> {
-            mPresenter.buriedPointCollectionOfListenDaily(  this, isCollect );
-            return mPresenter.editCollectStatus( isCollect );
+            mPresenter.buriedPointCollectionOfListenDaily(this, isCollect);
+            return mPresenter.editCollectStatus(isCollect);
         });
 
-        stbToolbar.setOnShareBtnClickListener( v -> {
+        stbToolbar.setOnShareBtnClickListener(v -> {
 //            vvVideo.pause();
             mAliyunVodPlayerView.pause();
             fDialogue.pauseAudio();
             mPresenter.share();
-        } );
+        });
 
 //        vvVideo.setZOrderOnTop( false );
 
@@ -196,29 +197,29 @@ public class TargetedLearningDetailsActivity extends BaseActivity
 //        ).setEnableFullScreenOfLandscape( true );
 
         vaTableDiv = new ValueAnimator();
-        vaTableDiv.setDuration( 200 );
+        vaTableDiv.setDuration(200);
     }
 
     private void initFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add( R.id.targeted_learning_details_fl_table_layout, fTargetedLearningComments = new TargetedLearningCommentsFragment() );
-        ft.hide( fTargetedLearningComments );
-        ft.add( R.id.targeted_learning_details_fl_table_layout, fGrammar = new GrammarFragment() );
-        ft.hide( fGrammar );
-        ft.add( R.id.targeted_learning_details_fl_table_layout, fDialogue = new DialogueFragment() );
+        ft.add(R.id.targeted_learning_details_fl_table_layout, fTargetedLearningComments = new TargetedLearningCommentsFragment());
+        ft.hide(fTargetedLearningComments);
+        ft.add(R.id.targeted_learning_details_fl_table_layout, fGrammar = new GrammarFragment());
+        ft.hide(fGrammar);
+        ft.add(R.id.targeted_learning_details_fl_table_layout, fDialogue = new DialogueFragment());
         ft.commitAllowingStateLoss();
         //音频暂停
         post(() -> {
-            fDialogue.setOnAudioPlayListener( isPlay -> {
-                if( isPlay ){
+            fDialogue.setOnAudioPlayListener(isPlay -> {
+                if (isPlay) {
 //                    vvVideo.pause();
                     mAliyunVodPlayerView.pause();
                 }
             });
             //权限检查
-            PermManage.Perm perm = PermManage.create( this );
+            PermManage.Perm perm = PermManage.create(this);
             perm.reqExternalStoragePerm((isGranted, name, shouldShowRequestPermissionRationale) -> {
-                if( isGranted ) {
+                if (isGranted) {
                     mPresenter.requestData();
                     return;
                 }
@@ -228,14 +229,14 @@ public class TargetedLearningDetailsActivity extends BaseActivity
     }
 
     private void initListener() {
-        stbToolbar.setOnClickBackBtnListener( view -> onBackPressed() );
+        stbToolbar.setOnClickBackBtnListener(view -> onBackPressed());
 
         stbToolbar.setOnCollectBtnClickListener(isCollect -> {
-            mPresenter.buriedPointCollectionOfTargetedLearning( this, isCollect );
-            return mPresenter.editCollectStatus( isCollect );
+            mPresenter.buriedPointCollectionOfTargetedLearning(this, isCollect);
+            return mPresenter.editCollectStatus(isCollect);
         });
 
-        stbToolbar.setOnShareBtnClickListener( v -> mPresenter.share() );
+        stbToolbar.setOnShareBtnClickListener(v -> mPresenter.share());
 
 //        vvVideo.addOrientationChangedListener((orientation, angle, isPortrait) -> {
 //            int vis = isPortrait ? View.VISIBLE : View.GONE;
@@ -273,77 +274,98 @@ public class TargetedLearningDetailsActivity extends BaseActivity
 //            }
 //        } );
 
-        rgTable.setOnCheckedChangeListener( (group, checkedId) -> switchPage( checkedId, false ) );
+        rgTable.setOnCheckedChangeListener((group, checkedId) -> switchPage(checkedId, false));
 
         vaTableDiv.addUpdateListener(animation ->
-                ivTableDiv.setTranslationX( (float) animation.getAnimatedValue() )
+                ivTableDiv.setTranslationX((float) animation.getAnimatedValue())
         );
-        vaTableDiv.addListener( new AnimatorListenerAdapter(){
+        vaTableDiv.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd( animation );
-                if( ivTableDiv.getVisibility() != View.VISIBLE ) {
-                    ivTableDiv.setVisibility( View.VISIBLE );
+                super.onAnimationEnd(animation);
+                if (ivTableDiv.getVisibility() != View.VISIBLE) {
+                    ivTableDiv.setVisibility(View.VISIBLE);
                 }
             }
-        } );
+        });
     }
 
     private void switchPage(int checkedId, boolean expanded) {
-        post( () -> switchTableDiv( checkedId ), 200);
-        post( () -> {
-            ablLayout.setExpanded( expanded, true );
+        post(() -> switchTableDiv(checkedId), 200);
+        post(() -> {
+            ablLayout.setExpanded(expanded, true);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            if( checkedId == R.id.targeted_learning_details_rb_dialogue_btn ) {
+            if (checkedId == R.id.targeted_learning_details_rb_dialogue_btn) {
                 /* 对话 */
-                ft.show( fDialogue );
-                ft.hide( fGrammar );
-                ft.hide( fTargetedLearningComments );
-                mPresenter.updateBuriedPointTargetedLearningViewDur( 0 );
-            }else if( checkedId == R.id.targeted_learning_details_rb_grammar_btn ){
+                ft.show(fDialogue);
+                ft.hide(fGrammar);
+                ft.hide(fTargetedLearningComments);
+                mPresenter.updateBuriedPointTargetedLearningViewDur(0);
+            } else if (checkedId == R.id.targeted_learning_details_rb_grammar_btn) {
                 /* 语法 */
-                ft.show( fGrammar );
-                ft.hide( fDialogue );
-                ft.hide( fTargetedLearningComments );
-                mPresenter.updateBuriedPointTargetedLearningViewDur( 1 );
-            }else {
+                ft.show(fGrammar);
+                ft.hide(fDialogue);
+                ft.hide(fTargetedLearningComments);
+                mPresenter.updateBuriedPointTargetedLearningViewDur(1);
+            } else {
                 /* 评论 */
-                ft.show( fTargetedLearningComments );
-                ft.hide( fDialogue );
-                ft.hide( fGrammar );
-                mPresenter.updateBuriedPointTargetedLearningViewDur( 2 );
+                ft.show(fTargetedLearningComments);
+                ft.hide(fDialogue);
+                ft.hide(fGrammar);
+                mPresenter.updateBuriedPointTargetedLearningViewDur(2);
             }
             ft.commitAllowingStateLoss();
-        } );
+        });
     }
 
     private void switchTableDiv(int id) {
         post(() -> {
-            View v = rgTable.findViewById( id );
-            float toX = v.getX() + ( v.getWidth() / 2F ) - ( ivTableDiv.getWidth() / 2F );
-            vaTableDiv.setFloatValues( ivTableDiv.getTranslationX(), toX );
+            View v = rgTable.findViewById(id);
+            float toX = v.getX() + (v.getWidth() / 2F) - (ivTableDiv.getWidth() / 2F);
+            vaTableDiv.setFloatValues(ivTableDiv.getTranslationX(), toX);
             vaTableDiv.start();
         }, 10);
     }
 
     @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            stbToolbar.setVisibility(View.GONE);
+            sSpace.setVisibility(View.GONE);
+        } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            stbToolbar.setVisibility(View.VISIBLE);
+            sSpace.setVisibility(View.VISIBLE);
+
+            ViewGroup.LayoutParams lp = mAliyunVodPlayerView.getLayoutParams();
+            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            lp.height = Utils.dp2Px( this, 209 );
+            mAliyunVodPlayerView.setLayoutParams( lp );
+        }
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
     public void onCallTitle(String title) {
-        if( tvTitle != null ) tvTitle.setText( title );
+        if (tvTitle != null) {
+            tvTitle.setText(title);
+        }
     }
 
     @Override
     public void onCallIntroduction(String content) {
-        if( tvContent != null ) tvContent.setText( content );
+        if (tvContent != null) {
+            tvContent.setText(content);
+        }
     }
 
     @Override
     public void onCallDialogueDataList(List<TargetedLearningDetailsDialogueAdapter.ItemData> list) {
-        fDialogue.setDataList( list );
+        fDialogue.setDataList(list);
     }
 
     @Override
     public void onCallGrammarDataList(List<TargetedLearningDetailsGrammarAdapter.ItemData> list) {
-        fGrammar.setDataList( list );
+        fGrammar.setDataList(list);
     }
 
     @Override
@@ -352,7 +374,7 @@ public class TargetedLearningDetailsActivity extends BaseActivity
         reqOtherModel.getVodPlayAuth(videoId, new Consumer<GetVodPlayAuthEntity>() {
             @Override
             public void accept(GetVodPlayAuthEntity getVodPlayAuthEntity) {
-                if(getVodPlayAuthEntity != null){
+                if (getVodPlayAuthEntity != null) {
                     String playAuth = getVodPlayAuthEntity.getPlayAuth();
                     int expiredTime = getVodPlayAuthEntity.getExpiredTime();
 
@@ -386,37 +408,41 @@ public class TargetedLearningDetailsActivity extends BaseActivity
 
     @Override
     public void onCallShowShareButton(boolean isShow) {
-        stbToolbar.showShareBtn( isShow );
+        stbToolbar.showShareBtn(isShow);
     }
 
     @Override
     public void onCallCollectStatus(boolean isCollect, boolean isShowToast) {
-        stbToolbar.setCollectStatus( isCollect, isShowToast );
+        stbToolbar.setCollectStatus(isCollect, isShowToast);
     }
 
     @Override
     public void onCallCommentInfo(long id, int topTalkId, int topInteractType) {
-        fTargetedLearningComments.queryDataList( id, topTalkId, topInteractType );
+        fTargetedLearningComments.queryDataList(id, topTalkId, topInteractType);
     }
 
     @Override
     public void onCallShareResult(boolean result) {
-        stbToolbar.showShareResult( result );
-        mPresenter.buriedPointShareOfTargetedLearning( this, result );
+        stbToolbar.showShareResult(result);
+        mPresenter.buriedPointShareOfTargetedLearning(this, result);
     }
 
     @Override
     public void onCallShowTargetedLearningDetailsInitGuide() {
-        if( mTargetedLearningDetailsInitGuideDialog != null ) return;
+        if (mTargetedLearningDetailsInitGuideDialog != null) {
+            return;
+        }
         mTargetedLearningDetailsInitGuideDialog = showTargetedLearningDetailsInitGuideDialog(view ->
-                SpIO.saveTargetedLearningDetailsInitGuideStatus( this )
+                SpIO.saveTargetedLearningDetailsInitGuideStatus(this)
         );
     }
 
     @Override
     public void onCallShowLoadingDialog(boolean isShow) {
-        if( mLoadingDialog == null ) return;
-        if( isShow ) {
+        if (mLoadingDialog == null) {
+            return;
+        }
+        if (isShow) {
             mLoadingDialog.show();
             return;
         }

@@ -1,9 +1,13 @@
 package com.gjjy.discoverylib.ui.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Space;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 
@@ -27,6 +31,7 @@ import com.gjjy.discoverylib.mvp.view.PopularVideosDetailsView;
 import com.gjjy.speechsdk.PermManage;
 import com.ybear.mvp.annotations.Model;
 import com.ybear.mvp.annotations.Presenter;
+import com.ybear.ybutils.utils.Utils;
 import com.ybear.ybutils.utils.dialog.DialogOption;
 
 import me.jessyan.autosize.internal.CancelAdapt;
@@ -60,8 +65,8 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_popular_videos_details );
-        mPresenter.initIntent( getIntent() );
+        setContentView(R.layout.activity_popular_videos_details);
+        mPresenter.initIntent(getIntent());
         //防录屏截屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         initView();
@@ -69,9 +74,9 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
         initListener();
 
         //权限检查
-        PermManage.Perm perm = PermManage.create( this );
+        PermManage.Perm perm = PermManage.create(this);
         perm.reqExternalStoragePerm((isGranted, name, shouldShowRequestPermissionRationale) -> {
-            if( isGranted ) {
+            if (isGranted) {
                 mPresenter.requestData();
                 return;
             }
@@ -87,12 +92,12 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
 //        }
 
         // 横盘的情况下，变成竖屏，不退出
-        if(mAliyunVodPlayerView != null && mAliyunVodPlayerView.getScreenMode() == AliyunScreenMode.Full){
+        if (mAliyunVodPlayerView != null && mAliyunVodPlayerView.getScreenMode() == AliyunScreenMode.Full) {
             mAliyunVodPlayerView.changeScreenMode(AliyunScreenMode.Small, false);
             return;
         }
 
-        if(mAliyunVodPlayerView != null){
+        if (mAliyunVodPlayerView != null) {
             mAliyunVodPlayerView.onDestroy();
         }
         super.onBackPressed();
@@ -111,7 +116,7 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
     protected void onPause() {
         super.onPause();
 //        vvVideo.pause();
-        if(mAliyunVodPlayerView != null) {
+        if (mAliyunVodPlayerView != null) {
             mAliyunVodPlayerView.pause();
         }
     }
@@ -133,33 +138,33 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
             mAliyunVodPlayerView.onDestroy();
         }
         mPresenter.buriedPointDurationOfPopularVideos();
-        onCallShowLoadingDialog( false );
+        onCallShowLoadingDialog(false);
         super.onDestroy();
     }
 
-    private void initCacheConfig(){
+    private void initCacheConfig() {
         CacheConfig cacheConfig = new CacheConfig();
         GlobalPlayerConfig.PlayCacheConfig.mDir = FileUtils.getDir(this) + GlobalPlayerConfig.CACHE_DIR_PATH;
         cacheConfig.mEnable = GlobalPlayerConfig.PlayCacheConfig.mEnableCache;
         cacheConfig.mDir = GlobalPlayerConfig.PlayCacheConfig.mDir;
         cacheConfig.mMaxDurationS = GlobalPlayerConfig.PlayCacheConfig.mMaxDurationS;
         cacheConfig.mMaxSizeMB = GlobalPlayerConfig.PlayCacheConfig.mMaxSizeMB;
-        if(mAliyunVodPlayerView != null) {
+        if (mAliyunVodPlayerView != null) {
             mAliyunVodPlayerView.setCacheConfig(cacheConfig);
         }
     }
 
     private void initView() {
-        sSpace = findViewById( R.id.toolbar_height_space );
-        stbToolbar = findViewById( R.id.popular_videos_detail_stb_toolbar );
-        cwvWebView = findViewById( R.id.popular_videos_detail_cwv_web_view );
+        sSpace = findViewById(R.id.toolbar_height_space);
+        stbToolbar = findViewById(R.id.popular_videos_detail_stb_toolbar);
+        cwvWebView = findViewById(R.id.popular_videos_detail_cwv_web_view);
         // vvVideo = findViewById( R.id.popular_videos_detail_vv_video );
         mAliyunVodPlayerView = findViewById(R.id.video_view);
     }
 
     private void initData() {
-        setStatusBarHeightForSpace( sSpace );
-        stbToolbar.setTitle( R.string.stringPopularVideosMainTitle );
+        setStatusBarHeightForSpace(sSpace);
+        stbToolbar.setTitle(R.string.stringPopularVideosMainTitle);
         mLoadingDialog = createLoadingDialog();
 //        vvVideo.setScreenSizeOfPortrait(
 //                ViewGroup.LayoutParams.MATCH_PARENT,
@@ -170,18 +175,18 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
     }
 
     private void initListener() {
-        stbToolbar.setOnClickBackBtnListener( view -> onBackPressed() );
+        stbToolbar.setOnClickBackBtnListener(view -> onBackPressed());
 
         stbToolbar.setOnCollectBtnClickListener(isCollect -> {
-            mPresenter.buriedPointCollectionOfPopularVideos( this, isCollect );
-            return mPresenter.editCollectStatus( isCollect );
+            mPresenter.buriedPointCollectionOfPopularVideos(this, isCollect);
+            return mPresenter.editCollectStatus(isCollect);
         });
 
-        stbToolbar.setOnShareBtnClickListener( v -> {
+        stbToolbar.setOnShareBtnClickListener(v -> {
             mPresenter.share();
             mAliyunVodPlayerView.pause();
 //            vvVideo.pause();
-        } );
+        });
 
 //        vvVideo.setOnFinishListener(r -> finish());
 
@@ -201,13 +206,37 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
     }
 
     @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            stbToolbar.setVisibility(View.GONE);
+            sSpace.setVisibility(View.GONE);
+        } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            stbToolbar.setVisibility(View.VISIBLE);
+            sSpace.setVisibility(View.VISIBLE);
+            cwvWebView.setVisibility(View.VISIBLE);
+
+            ViewGroup.LayoutParams lp = mAliyunVodPlayerView.getLayoutParams();
+            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            lp.height = Utils.dp2Px( this, 209 );
+            mAliyunVodPlayerView.setLayoutParams( lp );
+        }
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
     public void onCallTitle(String title) {
-        stbToolbar.setTitle( title );
+        stbToolbar.setTitle(title);
     }
 
     @Override
     public void onCallHtmlUrl(String url) {
-        cwvWebView.loadUrl( url );
+        if (url.isEmpty()) {
+            if (mAliyunVodPlayerView != null) {
+                mAliyunVodPlayerView.changeScreenMode(AliyunScreenMode.Full, false);
+            }
+        } else {
+            cwvWebView.loadUrl(url);
+        }
     }
 
     @Override
@@ -216,7 +245,7 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
         reqOtherModel.getVodPlayAuth(videoId, new Consumer<GetVodPlayAuthEntity>() {
             @Override
             public void accept(GetVodPlayAuthEntity getVodPlayAuthEntity) {
-                if(getVodPlayAuthEntity != null){
+                if (getVodPlayAuthEntity != null) {
                     String playAuth = getVodPlayAuthEntity.getPlayAuth();
                     int expiredTime = getVodPlayAuthEntity.getExpiredTime();
 
@@ -231,7 +260,7 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if(mAliyunVodPlayerView != null) {
+                            if (mAliyunVodPlayerView != null) {
                                 VidAuth vidAuth = getVidAuth(GlobalPlayerConfig.mVid);
                                 mAliyunVodPlayerView.setAuthInfo(vidAuth);
                             }
@@ -253,9 +282,10 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
 
     /**
      * 获取VidAuth
-     * @param vid   videoId
+     *
+     * @param vid videoId
      */
-    private VidAuth getVidAuth(String vid){
+    private VidAuth getVidAuth(String vid) {
         VidAuth vidAuth = new VidAuth();
         vidAuth.setVid(vid);
         vidAuth.setRegion(GlobalPlayerConfig.mRegion);
@@ -265,26 +295,26 @@ public class PopularVideosDetailsActivity extends BaseActivity implements Popula
 
     @Override
     public void onCallShowShareButton(boolean isShow) {
-        stbToolbar.showShareBtn( isShow );
+        stbToolbar.showShareBtn(isShow);
     }
 
     @Override
     public void onCallCollectStatus(boolean isCollect, boolean isShowToast) {
-        stbToolbar.setCollectStatus( isCollect, isShowToast );
+        stbToolbar.setCollectStatus(isCollect, isShowToast);
     }
 
     @Override
     public void onCallShareResult(boolean result) {
-        stbToolbar.showShareResult( result );
-        mPresenter.buriedPointShareOfPopularVideos( this, result );
+        stbToolbar.showShareResult(result);
+        mPresenter.buriedPointShareOfPopularVideos(this, result);
         mAliyunVodPlayerView.setAutoPlay(true);
 //        vvVideo.play();
     }
 
     @Override
     public void onCallShowLoadingDialog(boolean isShow) {
-        if( mLoadingDialog == null ) return;
-        if( isShow ) {
+        if (mLoadingDialog == null) return;
+        if (isShow) {
             mLoadingDialog.show();
             return;
         }

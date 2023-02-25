@@ -293,6 +293,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
                 }
             }
         });
+
         //锁屏按钮监听
         mScreenLockBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -346,6 +347,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
                 }
             }
         });
+
         //音轨
         mAudioTextView.setOnClickListener(new OnClickListener() {
             @Override
@@ -355,6 +357,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
                 }
             }
         });
+
         //码率
         mBitrateTextView.setOnClickListener(new OnClickListener() {
             @Override
@@ -364,6 +367,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
                 }
             }
         });
+
         //字幕
         mSubtitleTextView.setOnClickListener(new OnClickListener() {
             @Override
@@ -373,6 +377,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
                 }
             }
         });
+
         //清晰度
         mDefinitionTextView.setOnClickListener(new OnClickListener() {
             @Override
@@ -566,7 +571,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
      */
     private void updateShowMoreBtn() {
         if (mAliyunScreenMode == AliyunScreenMode.Full && !mInScreenCosting) {
-            mTitleMore.setVisibility(VISIBLE);
+            // mTitleMore.setVisibility(VISIBLE);
         } else {
             mTitleMore.setVisibility(GONE);
         }
@@ -692,8 +697,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
         if (mAliyunMediaInfo != null && mAliyunMediaInfo.getTrackInfos() != null) {
             for (TrackInfo trackInfo : mAliyunMediaInfo.getTrackInfos()) {
                 TrackInfo.Type type = trackInfo.getType();
-                if(type == trackInfoType){
-
+                if (type == trackInfoType) {
                     if (trackInfoType == TrackInfo.Type.TYPE_SUBTITLE) {
                         //字幕
                         if (!TextUtils.isEmpty(trackInfo.getSubtitleLang())) {
@@ -707,7 +711,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
                     } else if (trackInfoType == TrackInfo.Type.TYPE_VIDEO) {
                         //码率
                         if (trackInfo.getVideoBitrate() > 0) {
-                            if(trackInfoList.size() == 0){
+                            if (trackInfoList.size() == 0) {
                                 //添加自动码率
                                 trackInfoList.add(trackInfo);
                             }
@@ -719,7 +723,6 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
                             trackInfoList.add(trackInfo);
                         }
                     }
-
                 }
             }
         }
@@ -1050,7 +1053,9 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
         if (mAliyunScreenMode == AliyunScreenMode.Small) {
             //里面包含了很多按钮，比如切换清晰度的按钮之类的
             mLargeInfoBar.setVisibility(INVISIBLE);
+            mTitlebarBackBtn.setVisibility(View.GONE);
         } else if (mAliyunScreenMode == AliyunScreenMode.Full) {
+            mTitlebarBackBtn.setVisibility(View.VISIBLE);
             mTrackLinearLayout.setVisibility(View.VISIBLE);
             mScreenModeBtn.setVisibility(View.GONE);
             if (GlobalPlayerConfig.IS_VIDEO && !mInScreenCosting) {
@@ -1306,7 +1311,6 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
      */
     private static class HideHandler extends Handler {
         private WeakReference<ControlView> controlViewWeakReference;
-
         public HideHandler(ControlView controlView) {
             controlViewWeakReference = new WeakReference<ControlView>(controlView);
         }
@@ -1349,8 +1353,8 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
     /**
      * 关闭控制栏自动隐藏，并且展示控制栏
      */
-    public void closeAutoHide(){
-        if(mHideHandler != null){
+    public void closeAutoHide() {
+        if (mHideHandler != null) {
             mHideHandler.removeMessages(WHAT_HIDE);
         }
         show();
@@ -1359,8 +1363,8 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
     /**
      * 开启控制栏自动隐藏
      */
-    public void openAutoHide(){
-        if(mHideHandler != null){
+    public void openAutoHide() {
+        if (mHideHandler != null) {
             hideDelayed();
         }
     }
@@ -1522,8 +1526,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
         void showMore();
     }
 
-    public void setOnShowMoreClickListener(
-            OnShowMoreClickListener listener) {
+    public void setOnShowMoreClickListener(OnShowMoreClickListener listener) {
         this.mOnShowMoreClickListener = listener;
     }
 
@@ -1692,7 +1695,6 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
             seekBarGrandParent.removeView(mDotView);
             seekBarGrandParent.addView(mDotView);
         }
-
 
         for (final DotView dotView : dotViewList) {
             dotView.post(new Runnable() {
