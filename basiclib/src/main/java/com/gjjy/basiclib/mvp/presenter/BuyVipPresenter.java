@@ -92,7 +92,9 @@ public class BuyVipPresenter extends MvpPresenter<BuyVipView> {
 
     @Override
     public void onLifeDestroy() {
-        if (mGoogleProductClient != null) mGoogleProductClient.endConnection();
+        if (mGoogleProductClient != null) {
+            mGoogleProductClient.endConnection();
+        }
         super.onLifeDestroy();
     }
 

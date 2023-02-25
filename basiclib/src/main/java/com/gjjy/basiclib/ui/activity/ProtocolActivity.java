@@ -9,12 +9,12 @@ import androidx.annotation.Nullable;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.gjjy.basiclib.Config;
 import com.gjjy.basiclib.R;
-import com.gjjy.basiclib.widget.Toolbar;
 import com.gjjy.basiclib.utils.Constant;
 import com.gjjy.basiclib.widget.ContentWebView;
+import com.gjjy.basiclib.widget.Toolbar;
 
 /**
- terms_policy_integral等介绍页面
+ * terms_policy_integral等介绍页面
  */
 @Route(path = "/protocol/protocolActivity")
 public class ProtocolActivity extends BaseActivity {
@@ -28,7 +28,7 @@ public class ProtocolActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_protocol );
+        setContentView(R.layout.activity_protocol);
         initIntent();
         initView();
         initData();
@@ -37,23 +37,23 @@ public class ProtocolActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if( cwvWebView != null && cwvWebView.canGoBack() ) {
+        if (cwvWebView != null && cwvWebView.canGoBack()) {
             cwvWebView.goBack();
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
 
     private void initIntent() {
         Intent intent = getIntent();
-        int type = intent.getIntExtra(Constant.AGREEMENT_TYPE, -1 );
+        int type = intent.getIntExtra(Constant.AGREEMENT_TYPE, -1);
 
-        if( type == -1 ) {
+        if (type == -1) {
             finish();
             return;
         }
 
-        switch ( type ) {
+        switch (type) {
             case 0:     //terms
                 mUrl = Config.mTermsUrl;
                 break;
@@ -65,24 +65,27 @@ public class ProtocolActivity extends BaseActivity {
                 mUrl = Config.mIntegralRulesUrl;
                 break;
         }
-
     }
 
     private void initView() {
-        tbToolbar = findViewById( R.id.protocol_tb_toolbar );
-        cwvWebView = findViewById( R.id.protocol_cwv_content );
+        tbToolbar = findViewById(R.id.protocol_tb_toolbar);
+        cwvWebView = findViewById(R.id.protocol_cwv_content);
     }
 
     private void initData() {
-        setStatusBarHeightForSpace( findViewById( R.id.toolbar_height_space ) );
-        if( mTitleResId != 0 ) tbToolbar.setTitle( mTitleResId );
+        setStatusBarHeightForSpace(findViewById(R.id.toolbar_height_space));
+        if (mTitleResId != 0) {
+            tbToolbar.setTitle(mTitleResId);
+        }
 
-        if( !TextUtils.isEmpty( mUrl ) ) {
-            cwvWebView.loadUrl( mUrl );
+        if (!TextUtils.isEmpty(mUrl)) {
+            cwvWebView.loadUrl(mUrl);
             return;
         }
         finish();
     }
 
-    private void initListener() { tbToolbar.setOnClickBackBtnListener( v -> onBackPressed() ); }
+    private void initListener() {
+        tbToolbar.setOnClickBackBtnListener(v -> onBackPressed());
+    }
 }
