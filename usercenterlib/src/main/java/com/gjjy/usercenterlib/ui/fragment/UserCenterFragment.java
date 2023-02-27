@@ -227,7 +227,7 @@ public class UserCenterFragment extends BaseFragment implements UserCenterView, 
                 R.drawable.ic_user_center_feedback
         };
         int[] titles = {
-                R.string.stringVouchers,
+                // R.string.stringVouchers,
                 R.string.stringSetUp,
                 R.string.stringFeedback
         };
@@ -276,14 +276,14 @@ public class UserCenterFragment extends BaseFragment implements UserCenterView, 
         //列表Item点击事件监听器
         mOptAdapter.setOnItemClickListener((adapter, view, itemData, position) -> {
             switch (position) {
-                case 0:         //Vouchers
-                    mPresenter.startVouchers();
-                    break;
-                case 1:         //Setting
+//                case 0:         //Vouchers
+//                    mPresenter.startVouchers();
+//                    break;
+                case 0:         //Setting
                     StartUtil.startSettingActivity(getActivity());
                     BuriedPointEvent.get().onMePageOfSetUpButton(getContext());
                     break;
-                case 2:         //Feedback
+                case 1:         //Feedback
                     StartUtil.startFeedbackActivity();
                     break;
             }
@@ -310,7 +310,7 @@ public class UserCenterFragment extends BaseFragment implements UserCenterView, 
                 v -> com.gjjy.basiclib.utils.StartUtil.startBuyVipActivity(getActivity())
         );
 
-        /* 我的成就 */
+        // 我的成就
         View.OnClickListener achievementClickListener = v -> {
             StartUtil.startAchievementActivity(getActivity(), xpNum);
             mPresenter.buriedPointToViewAchievement();
@@ -512,7 +512,7 @@ public class UserCenterFragment extends BaseFragment implements UserCenterView, 
         }
         tvVipTime.setVisibility(data.getIsVip() ? View.VISIBLE : View.GONE);
 
-        /* 货币 */
+        // 货币
         xpNum = data.getExpCount();
         pvExp.setTitle(xpNum + getResources().getString(R.string.stringRewardItemXPTitle));
         pvHeart.setTitle(String.valueOf(data.getHeart()));
